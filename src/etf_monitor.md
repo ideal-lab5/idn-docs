@@ -9,7 +9,7 @@ Essentially, it simply decodes the predigest of each incoming slot header, which
 ``` javascript 
 PreDigest: {
     slot: 'u64',
-    secret: '[u8;32]',
+    secret: '[u8;48]',
     proof: '([u8;48], [u8;48], [u8;32], [u8;48])'
 }
 ```

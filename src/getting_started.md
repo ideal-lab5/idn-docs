@@ -31,8 +31,11 @@ As previously stated, all default substrate commands will work. For example, to 
 The latest docker image can be found [here](https://hub.docker.com/r/ideallabs/etf)
 
 ``` bash
+# pull the latest image
 docker pull ideallabs/etf
-docker run <image>
+# run the image
+# the image accepts all substrate commands/flags
+docker run -p 9944:9944 -it --rm --name etf-node-0 ideallabs/etf --unsafe-rpc-external --validator --dev --tmp
 ```
 
 ## Testing
@@ -47,11 +50,12 @@ first build with `cargo +nightly build --profile=production --features runtime-b
 run benchmark tests with
 ` cargo test --package pallet-etf --features runtime-benchmarks`
 
-Once built, run benchmarks against compiled runtime with:
+Once built, generate weights against the compiled runtime with:
 
-list available benchmarks:
+``` bash
+# list all benchmarks
 ./target/production/node-template benchmark pallet --chain dev --pallet "*" --extrinsic "*" --repeat 0
-
+# benchmark the etf pallet
 ./target/production/node-template benchmark pallet \
     --chain dev \
     --wasm-execution=compiled \
@@ -60,3 +64,4 @@ list available benchmarks:
     --steps 50 \
     --repeat 20 \
     --output bin/node-template/pallets/etf/src/weight.rs
+```
