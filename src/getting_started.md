@@ -45,7 +45,7 @@ docker run -p 9944:9944 -it --rm --name etf-node-0 ideallabs/etf --unsafe-rpc-ex
 
 ### Benchmarks
 
-first build with `cargo +nightly build --profile=production --features runtime-benchmarks`
+First navigate to `/bin/node-template/node/` and build it with `cargo +nightly build --profile=production --features runtime-benchmarks`
 
 run benchmark tests with
 ` cargo test --package pallet-etf --features runtime-benchmarks`
