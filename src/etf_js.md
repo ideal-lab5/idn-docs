@@ -1,12 +1,12 @@
 # Building apps with etf network
 
-Building with the etf network is made easy through the etf.js library. The library is basically a wrapper around the wasm build of the [etf-sdk](./etf_sdk.md). The library can be used both with a full node or by using the [@ideallabs/smoldot]() lightclient. In addition, it emits an event with incoming block.
+Building with the etf network is made easy through the etf.js library. The library is basically a wrapper around the wasm build of the [etf-sdk](./etf_sdk.md). The library can be used both with a full node or by using the [@ideallabs/smoldot](https://github.com/ideal-lab5/smoldot/tree/etf) lightclient. In addition, it emits an event with incoming block.
 
-See the [etf.js/examples]() for a working example on encrypting and decrypting with the sdk.
+See the [etf.js/examples](https://github.com/ideal-lab5/etf.js/tree/main/examples) for a working example on encrypting and decrypting with the sdk.
 
 ## Light Client
 
-Smoldot is a wasm-based light client that runs directly in the browser. Our smoldot implementation is a fork of the official one [here](). Our modifications are purely surroudning the expected headers and ensure they can be SCALE encoded/decoded. For now, in all other ways, everything is exactly the same as the official smoldot.
+Smoldot is a wasm-based light client that runs directly in the browser. Our smoldot implementation is a fork of the official one [here](https://github.com/smol-dot/smoldot). Our modifications are purely surroudning the expected headers and ensure they can be SCALE encoded/decoded. For now, in all other ways, everything is exactly the same as the official smoldot.
 
 
 ## Connecting to the Chain

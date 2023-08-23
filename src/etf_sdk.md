@@ -32,7 +32,7 @@ The ETF Client is the core functionality of the SDK. The SDK implements function
 
 ### EtfApi
 
-The EtfApi pulls together the EtfClient and DLEQ proof verifier (and potentially other verifiers in the future). It is both std and no-std compatible, meaning it plays nicely both with rust (e.g. to build a CLI) and also as a wasm build. The EtfApi implementation can be compiled to wasm and used along with [etf.js]() to encrypt/decrypt messages.
+The EtfApi pulls together the EtfClient and DLEQ proof verifier (and potentially other verifiers in the future). It is both std and no-std compatible, meaning it plays nicely both with rust (e.g. to build a CLI) and also as a wasm build. The EtfApi implementation can be compiled to wasm and used along with [etf.js](https://github.com/ideal-lab5/etf.js) to encrypt/decrypt messages.
 
 We provide a default EtfApi implementation, which uses the DefaultEtfClient.
 
@@ -40,7 +40,7 @@ We provide a default EtfApi implementation, which uses the DefaultEtfClient.
 
 **Encryption**
 
-The ETF SDK includes an implementation of the EtfClient and EtfApi, found at [DefaultEtfClient](todo) and [DefaultEtfApi](todo). The client uses threshold secret sharing, AES-GCM ([AEADS]()), and identity based encryption to generate aes secret keys and encrypt its shares to the future. In brief, it follows the diagram below. The output contains: `aes_out = (AES ciphertext, AES nonce, AES secret key), capsule = (encrypted key shares), slot_schedule`. The `capsule` contains the IBE encrypted key shares and the slot schedule are the slots for which they're encrypted. It assumes the two lists are the same size and follow the same order.
+The ETF SDK includes an implementation of the EtfClient and EtfApi, found at [DefaultEtfClient](https://github.com/ideal-lab5/etf-sdk/blob/05f625f14cfd3c020e156e76beecb1a4e8a3f1ba/crypto/src/client/client.rs#L36) and [DefaultEtfApi](https://github.com/ideal-lab5/etf-sdk/blob/05f625f14cfd3c020e156e76beecb1a4e8a3f1ba/api/src/api.rs#L16). The client uses threshold secret sharing, AES-GCM ([AEADS](https://github.com/RustCrypto/AEADs/tree/master/aes-gcm)), and identity based encryption to generate aes secret keys and encrypt its shares to the future. In brief, it follows the diagram below. The output contains: `aes_out = (AES ciphertext, AES nonce, AES secret key), capsule = (encrypted key shares), slot_schedule`. The `capsule` contains the IBE encrypted key shares and the slot schedule are the slots for which they're encrypted. It assumes the two lists are the same size and follow the same order.
 
 ![2](./assets/aes_etf.png)
 
