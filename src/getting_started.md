@@ -1,6 +1,6 @@
 # Getting Started
 
-EtF Network is a substrate based blockchain. In general, all commands that work with the default CLI implemented in substrate are compatible with this blockchain.
+Since Etf Network is a substrate based blockchain, in general all commands that work with the default CLI implemented in substrate are compatible with this blockchain (i.e. for keygen). 
 
 ## Setup
 
@@ -10,12 +10,10 @@ To build the blockchain locally:
 # clone substrate and checkout milestone1 branch
 git clone git@github.com:ideal-lab5/substrate.git
 cd substrate
-git checkout milestone1
+git checkout etf
 # nightly build
 cargo +nightly build --release
 ```
-
-(Optional) Setup the [Etf monitor tool](./etf_monitor.md)
 
 ### Run
 
@@ -37,6 +35,8 @@ docker pull ideallabs/etf
 # the image accepts all substrate commands/flags
 docker run -p 9944:9944 -it --rm --name etf-node-0 ideallabs/etf --unsafe-rpc-external --validator --dev --tmp
 ```
+
+The raw chainspec for our testnet can be found [here](https://raw.githubusercontent.com/ideal-lab5/substrate/etf/etfTestSpecRaw.json). You will need to add the `--chain etfSpecTestRaw.json` when running your node to connect to the testnet (contact us if any issues).
 
 ## Testing
 
