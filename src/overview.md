@@ -13,9 +13,8 @@ This project is sponsored by a [web3 foundation grant](https://github.com/ideal-
 
 ## Contact
 
-driemworks@idealabs.network
-
-https://idealabs.network
+- Join us on matrix! https://matrix.to/#/#ideal-labs:matrix.org
+- https://idealabs.network
 
 ## License
-These docs and the code for both etf-network and etf-monitor are licensed as GPlv3.0.
+These docs and the code for both etf-network, etf.js, and the etf-sdk are licensed as GPlv3.0.

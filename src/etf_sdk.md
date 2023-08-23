@@ -36,20 +36,6 @@ The EtfApi pulls together the EtfClient and DLEQ proof verifier (and potentially
 
 We provide a default EtfApi implementation, which uses the DefaultEtfClient.
 
-### Slot Scheduler
-
-A `slot schedule` is simply a list of slots that you want to encrypt a message for. For example, a slot schedule could be `[290871100, 290871105, 290871120]`. In general, we can think of the slot schedule as being the `ids` input field to the encrypt function in the `EtfApi`. Along with the AES secret key produced by the `DefaultApiClient`, knowledge of the slot schedule along with the capsule (output from encryption) is enough information to recover the master key.
-
-The slot scheduler interface is used to map some input to a slot schedule. For example, a slot scheduler could use some deterministic hash function to map strings to slots, enabling type of password-based slot scheduler. In general, applications can implement:
-
-``` javascript
-export interface SlotScheduler<T> {
-    generateSchedule(n: number, currentSlot: number, input: T): SlotSchedule;
-}
-```
-
-Additionally, we provide a built-in [DistanceBasedSlotScheduler](todo). Refer to the [example]() for more usage details.
-
 ## Encryption and Decryption
 
 **Encryption**

@@ -1,6 +1,6 @@
 # Encryption to the Future (the math)
 
-The EtF network uses a slot-based consensus mechanism (Aura) and identity based encryption methods to associate an identity with each slot. The initial version of the network uses a simple approach for deriving keys, but which requires a significant amount of trust to be placed in each authority. Each authority is an IBE master secret key custodian and is made responsible for deriving and leaking IBE secret keys within each slot where they're an author. By encrypting to the public key associated with each slot, messages can be encrypted so that the decryption key is only made public when a block is authored in that slot.
+The EtF network uses a slot-based consensus mechanism (Aura) and identity based encryption methods to associate an identity with each slot. The initial version of the network uses a simple approach for deriving keys, but which requires a significant amount of trust to be placed in each authority. Each authority is an IBE master secret key custodian and is made responsible for deriving and leaking IBE secret keys within each slot where they're an author. By encrypting to the public key associated with each slot, messages can be encrypted so that the decryption key is only made public when a block is authored in that slot. On top of this, we can enable timelock encryption.
 
 ## How it works
 

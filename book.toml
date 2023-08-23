@@ -7,3 +7,6 @@ title = "etf-docs"
 
 [output.html]
 mathjax-support = true
+curly-quotes = true
+copy-fonts = true
+additional-css = ["custom.css"]
