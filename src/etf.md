@@ -11,7 +11,9 @@ The encryption to the future (EtF) scheme consists of two PPT algorithms, \\((En
 
 By using IBE and DLEQ proofs, slot winners calculate a proof of knowledge of the master secret along with the derived slot secret, which they include in each block header. Block importers validate the DLEQ proof when importing blocks, ensuring that secrets are only included when they are provably valid. 
 
-### Identity Based Encryption
+### Preliminaries
+
+#### Identity Based Encryption
 
 EtF uses a flavor of the [Boneh-Franklin IBE scheme](https://crypto.stanford.edu/~dabo/papers/bfibe.pdf). In brief, identity based encryption is a scheme were a message can be encrypted for an arbitrary string, rather than some specific public key. For example, a message could be encrypted for "bob@encryptme.com" so that only the owner of the identity "bob@encryptme.com" is able to decrypt the message. The BF-IBE consists of four PPT algorithms (Setup, Extract, Encrypt, Decrypt). In brief, these can be defined as:
 
@@ -20,7 +22,7 @@ EtF uses a flavor of the [Boneh-Franklin IBE scheme](https://crypto.stanford.edu
 - \\(Encrypt(pp, ID, m) \to ct\\) outputs the ciphertext \\(ct\\) for any message \\(m \in \{0, 1\}^*\\).
 - \\(Decrypt(sk_{ID}, ct) \to m\\) outputs the decrytped message \\(m\\)
 
-### DLEQ Proofs
+#### DLEQ Proofs
 
 EtF uses DLEQ proofs to verify the correctness of slot secrets without exposing the master secret for the IBE. In brief, the DLEQ proof allows a prover to construct a proof that two group elements were calculated from the same secret (e.g. xH and xG were calculated from the same x) without exposing the secret. Our scheme uses DLEQ proofs to leak an IBE slot secret \\(d = sQ\\) without exposing the master key, s.
 
@@ -35,3 +37,5 @@ First, the prover:
 With the agreed upon public parameters \\(G, H\\) and the proof \\((R1, R2, s)\\), a verifier can be convinced that the prover knows \\(x\\) without revealing it. The verifier:
 1. calculates the challenge value by hashing \\(c = H(R1, R2, xG, xH)\\)
 2. checks if \\(c(xG) - sG == R1 && c(xH) - sH == R2\\). If both equalities are true, the proof is valid. otherwise, it is invalid.
+
+### Timelock Encryption with ETF Network
