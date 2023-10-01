@@ -6,7 +6,8 @@ The **timelock auction contract** is a [Vickrey auction](https://en.wikipedia.or
 
 There are four phases to the auction. The idea is that an auction contains a deadline, a slot in the future. Bids are encrypted for the future slot offchain, using the etf.js SDK, and published in the contract along with a commitment to their bid (sha256 hash). Once the slot secret is revealed at the deadline, bidding closes and the auction can be completed. The ciphertexts must then be downloaded and decrypted offchain. Then, for each decrypted bid, the contracts calculates the hash and ensures it matches the hash provided by the bidder. Winner selection logic chooses the highest bidder as the winner.
 
-The auction relies on the [assets pallet](https://marketplace.substrate.io/pallets/pallet-assets/) to create auctionable data. In order to successfully complete an auction, the auction owner can transfer the asset to the auction contract. To do this, call the `start()` function of the auction contract.
+![auction-components-logic](./assets/auction_final.drawio.png)
+
 
 ### Setup
 

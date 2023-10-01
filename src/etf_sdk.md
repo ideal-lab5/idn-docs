@@ -10,7 +10,7 @@ There are two main components that the SDK provides, the EtfClient and the EtfAp
 
 ### EtfClient
 
-The ETF Client is the core functionality of the SDK. The SDK implements functions to use the ETF network to encrypt and decrypt messages. Developers are free to implement their own encryption and decryption logic, while we provide a built-in implementation, discussed below. The interface defines the method signatures required for our BF-IBE (which etf requires), however implementations have freedom to experiment. To implement it, implement the functions below:
+The ETF Client is the core functionality of the SDK. The SDK implements functions to use the ETF network to encrypt and decrypt messages using **IBE** and **timelock encryption via AES/IBE**. The SDK is only one example of a capability which the ETF network enables (timelock encryption). The interface defines the method signatures required for our BF-IBE (which etf requires), however implementations have freedom to experiment. To implement it, implement the functions below:
 
 ``` rust
     fn encrypt(

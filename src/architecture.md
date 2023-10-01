@@ -1,5 +1,10 @@
 # EtF Network Overview
 
+This is an overview of the ETF Network's consensus mechanism.
+
+- substrate based blockchain
+- consensus based on aura, introduces IBE secrets and DLEQ proofs to block headers
+- use a pallet to manage and update public parameters for the identity based encryption and dleq proofs
 
 ## Pallets
 
@@ -11,28 +16,35 @@ The network requires a pallet, the etf-pallet, to function. The etf-pallet store
 
 The ETF pallet stores public parameters needed for the IBE scheme. The values are set on genesis and only changeable by the root user (via the Sudo pallet) when they call the `update_ibe_params` extrinsic. The extrinsic uses Arkworks to decode the input to ensure that the provided data is a valid element of G2, and if so then it encodes it in storage. In the future, we intend to make this a more democratic process.
 
-
 ## Consensus and Encryption to the Future
 
-Here we present a high-level overview of how EtF works. For a more in depth look, jump to the [math](./etf.md)
+Here we present a high-level overview of how the consensus mechanism works. Essentially, the goal of our consensus mechanism is to construct a table of IBE secrets and public keys which grows at a constant rate and whose authenticity and correctness is ensured by consensus. For a deep dive into the math, jump to the [math](./etf.md).
 
-The initial version of the network uses a fork of Aura, a round-robin proof of authority consensus mechanism. Each authority knows the same secret, the IBE master secret which makes the identity based encryption scheme work (more on this [here](./etf_sdk.md#encryption-and-decryption)). They are trusted to act as a secret key custodian (a requirement we will relax in the future).  When a slot author proposes a block, they first use the master secret to calculate a slot secret, which they add to the block header. This slot secret is intended to be **leaked** and made public. Next, in order to ensure the correctness of the secret to be leaked, block producers include a DLEQ proof that shows the slot secret was correctly calculated. Along with this, they also sign the block as usual. 
+There are four major phases:
+
+1. **Setup**: IBE Setup, slot identification scheme, and blockchain genesis 
+2. **Authority Selection**: Round-robin authority selection (i.e. aura)
+3. **Claim a slot**: Block authors calculate an IBE secret for the identity and corresponding DLEQ proof, and include it in the new block header
+4. **Block verification**: Block importers verify the DLEQ proof when checking the block’s validity
+
+
+The initial version of the network uses a fork of Aura, a round-robin proof of authority consensus mechanism. Each authority is an **IBE master key custodian**, which is created in the IBE setup phase (more on this [here](./etf_sdk.md#encryption-and-decryption)). This requires trust in each authority, a requirement we will relax in the future. 
+
+When a slot author proposes a block, they first use the master secret to calculate a slot secret (the IBE extract algorithm), which they add to the block header. This slot secret is intended to be **leaked** and made public. In order to ensure the correctness of the secret to be leaked, block producers include a DLEQ proof that shows the slot secret was correctly calculated. Along with this, they also sign the block as usual. 
 
 Block importers simply verify the DLEQ proof. If the DLEQ proof is not valid, the block is rejected. 
 
 ![high-level](./assets/high_level_flow_of_data.drawio.png)
 
-Whenever a block is authored in a slot, the slot secret can then be extracted and used.
+Whenever a block is authored in a slot, the slot secret can then be extracted and used. Essentially, the blockchain is building a table of IBE secrets and public keys which grows at a constant rate and whose authenticity and correctness is ensured by consensus.
 
 ![etf-monitor](./assets/etf_monitor.png)
 
 ### Slot Identity
 
-The ETF consensus mechanism is based on Aura, a round-robin PoA (Proof of Authority) slot-based consensus mechanism. It utilizes DLEQ (Discrete Logarithm Equality) proofs to create BLS (Boneh-Lynn-Shacham) IBE (Identity-Based Encryption) block seals. Block importers verify the validity of the DLEQ proof when importing each block. Authorities in the network act as IBE master key custodians.
+In our proof-of-authority based network, there is a known set of authorities, say \\(A = {A_1, …, A_n}\\), from which block authors are  sequentially selected (round-robin). That is, for a slot \\(sl_k\\), the authority to author a block in the slot is given by \\(A_{sl_k} = A[sl_k \mod |A|] \\). A slot’s identity is given by \\(ID_{sl_k} = sl_k\\). We simply use the slot number as the slot identity. For example, a slot id could look like `0x231922012`, where `231,922,012` is the slot number. We preserve the authoritiy's standard block seal within the block header in order to keep slot identities simple.
 
-We use a PoA consensus system in which a known set of authorities, say A = {A_1, …, A_n}, are selected as slot authors sequentially (round robin). That is, for a slot \\(sl_k\\), the authority to author a block in the slot is given by \\(A_{sl_k} = A[sl_k \mod |A|] \\). A slot’s identity is given by \\(ID_{sl_k} = sl_k\\). That is we simply use the slot number as the slot identity. This will change in the near future, but fits for the time being. For example, a slot id could look like `0x231922012`, where `231,922,012` is the slot number.
-
-Our implementation works over curve BLS12-381. To get a public key from the slot id, we use a hash-to-G1 function, which gives us public keys in G1 (the elliptic curve group we’re working with). That is, each slot implicitly has an identity, and by evaluating the id under the hash-to-G1 function, a public key in G1. 
+To get a public key from the slot id, we use a hash-to-G1 function, which gives us public keys in G1 (the elliptic curve group we’re working with). That is, each slot implicitly has an identity, and by evaluating the id under the hash-to-G1 function, a public key in G1. 
 
 ### Claiming a Slot
 
@@ -44,7 +56,7 @@ After calculating the slot secret, the slot author is tasked with preparing a DL
 PreDigest: {
     slot: 'u64',
     secret: '[u8;48]',
-    proof: '([u8;48], [u8;48], [u8;32], [u8;48])'
+    proof: '([u8;224])'
 }
 ```
 
