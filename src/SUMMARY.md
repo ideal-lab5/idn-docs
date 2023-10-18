@@ -9,4 +9,5 @@
   - [SDK](./etf_sdk.md)
   - [Etf.js](./etf_js.md)
   - [Smart Contracts](./contracts.md)
+  - [Host a Validator](./validator.md)
 - [Timelock Auction](./timelock_auction.md)

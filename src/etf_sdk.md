@@ -36,7 +36,7 @@ The EtfApi pulls together the EtfClient and DLEQ proof verifier (and potentially
 
 We provide a default EtfApi implementation, which uses the DefaultEtfClient.
 
-## Encryption and Decryption
+## Timelock Encryption (and Decryption)
 
 **Encryption**
 

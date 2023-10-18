@@ -36,3 +36,6 @@ The encryption to the future (EtF) scheme consists of two PPT algorithms, \\((En
 - \\(m' \leftarrow Dec((ct, capsule), {sk_1, ..., sk_m})\\) where \\(sk_i\\) is the secret key leaked in the block authored in the slot with id \\(id_i\\).
 
 By using IBE and DLEQ proofs, slot winners calculate a proof of knowledge of the master secret along with the derived slot secret, which they include in each block header. Block importers validate the DLEQ proof when importing blocks, ensuring that secrets are only included when they are provably valid. 
+
+
+![2](./assets/aes_etf.png)

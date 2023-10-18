@@ -7,7 +7,7 @@ Since Etf Network is a substrate based blockchain, in general all commands that 
 ### Installation
 To build the blockchain locally:
 ``` bash
-# clone substrate and checkout milestone1 branch
+# clone substrate and checkout the etf branch
 git clone git@github.com:ideal-lab5/substrate.git
 cd substrate
 git checkout etf
