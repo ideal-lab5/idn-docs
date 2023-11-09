@@ -1,16 +1,19 @@
+---
+sidebar_position: 1
+---
+
 # Getting Started
 
-Since Etf Network is a substrate based blockchain, in general all commands that work with the default CLI implemented in substrate are compatible with this blockchain (i.e. for keygen). 
+Run a local ETF node.
 
 ## Setup
 
 ### Installation
 To build the blockchain locally:
-``` bash
+``` sh
 # clone substrate and checkout the etf branch
-git clone git@github.com:ideal-lab5/substrate.git
-cd substrate
-git checkout etf
+git clone git@github.com:ideal-lab5/etf.git
+cd etf
 # nightly build
 cargo +nightly build --release
 ```
@@ -20,15 +23,15 @@ cargo +nightly build --release
 **From Sources**
 As previously stated, all default substrate commands will work. For example, to run the blockchain in dev mode as Alice, use:
 
-``` bash
-./target/release/node-template --tmp --dev --alice
+``` sh
+./target/release/node --tmp --dev --alice
 ```
 
 **From Docker**
 
 The latest docker image can be found [here](https://hub.docker.com/r/ideallabs/etf)
 
-``` bash
+``` sh
 # pull the latest image
 docker pull ideallabs/etf
 # run the image

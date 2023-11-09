@@ -1,8 +1,10 @@
 # ETF SDK
 
+Timelock Encryption on the ETF network.
+
 The ETF SDK is the core of the modular tech stack for building protocols and apps on top of the ETF network. 
 
-![1](./assets/sdk.png)
+![1](../../static/assets/sdk.png)
 
 ## Components
 
@@ -42,7 +44,7 @@ We provide a default EtfApi implementation, which uses the DefaultEtfClient.
 
 The ETF SDK includes an implementation of the EtfClient and EtfApi, found at [DefaultEtfClient](https://github.com/ideal-lab5/etf-sdk/blob/05f625f14cfd3c020e156e76beecb1a4e8a3f1ba/crypto/src/client/client.rs#L36) and [DefaultEtfApi](https://github.com/ideal-lab5/etf-sdk/blob/05f625f14cfd3c020e156e76beecb1a4e8a3f1ba/api/src/api.rs#L16). The client uses threshold secret sharing, AES-GCM ([AEADS](https://github.com/RustCrypto/AEADs/tree/master/aes-gcm)), and identity based encryption to generate aes secret keys and encrypt its shares to the future. In brief, it follows the diagram below. The output contains: `aes_out = (AES ciphertext, AES nonce, AES secret key), capsule = (encrypted key shares), slot_schedule`. The `capsule` contains the IBE encrypted key shares and the slot schedule are the slots for which they're encrypted. It assumes the two lists are the same size and follow the same order.
 
-![2](./assets/aes_etf.png)
+![2](../../static/assets/aes_etf.png)
 
 **Decryption**
 

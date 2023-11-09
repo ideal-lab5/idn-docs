@@ -1,4 +1,4 @@
-# Ubuntu Full node setup
+# Run a Validator
 
 > :warning: This is a WIP.
 

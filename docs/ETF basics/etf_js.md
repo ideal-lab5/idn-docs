@@ -1,4 +1,6 @@
-# Building apps with etf network
+# ETF.js
+
+Build apps with the etf network.
 
 Building with the etf network is made easy through the etf.js library. The library is basically a wrapper around the wasm build of the [etf-sdk](./etf_sdk.md). The library can be used both with a full node or by using the [@ideallabs/smoldot](https://github.com/ideal-lab5/smoldot/tree/etf) lightclient. In addition, it emits an event with incoming block.
 

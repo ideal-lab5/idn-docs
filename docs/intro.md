@@ -1,10 +1,15 @@
+---
+sidebar_position: 1
+---
+
 # ETF Network
 
-## Getting Started
+Encryption to the Future!
 
-- Learn about [how Etf works](./architecture.md)
-- See the [getting started guide](./getting_started.md) for an in-depth guide on running your own node.
-- Build apps with [etf.js](./etf_js.md)
+![w3fblk](https://raw.githubusercontent.com/ideal-lab5/etf/main/resources/web3%20foundation_grants_badge_black.png)
+This project is sponsored by a [web3 foundation grant](https://github.com/ideal-lab5/Grants-Program/blob/master/applications/cryptex.md).
+
+## Getting Started
 
 
 ## What is it?
@@ -20,8 +25,9 @@ The ETF network is for anyone who uses the internet! In its current form, anyone
 
 We're nearing the completion of [our first web3 foundation grant](https://github.com/ideal-lab5/Grants-Program/blob/dkg/applications/cryptex.md)! In the next phase of the project, we intend to redesign our consensus mechanism to be based on proof-of-stake by implementing a proactive secret sharing scheme and integrating it with [Babe](https://wiki.polkadot.network/docs/learn-consensus), ensuring that the network can more securely scale. 
 
-![w3fblk](./assets/web3%20foundation_grants_badge_black.png)
-This project is sponsored by a [web3 foundation grant](https://github.com/ideal-lab5/Grants-Program/blob/master/applications/cryptex.md).
+## Learn More
+
+- Read the latest news on our [substack](https://ideallabs.substack.com/)!
 
 ## Contact
 
