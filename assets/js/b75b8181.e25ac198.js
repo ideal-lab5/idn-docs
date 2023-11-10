@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunketf_docs=self.webpackChunketf_docs||[]).push([[4656],{1861:s=>{s.exports=JSON.parse('{"label":"docusaurus","permalink":"/etf-docs/blog/tags/docusaurus","allTagsPath":"/etf-docs/blog/tags","count":4,"unlisted":false}')}}]);

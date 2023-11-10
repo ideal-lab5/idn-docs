@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunketf_docs=self.webpackChunketf_docs||[]).push([[7150],{1774:e=>{e.exports=JSON.parse('{"permalink":"/etf-docs/blog/tags/facebook","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);
