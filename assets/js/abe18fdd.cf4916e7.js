@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunketf_docs=self.webpackChunketf_docs||[]).push([[6775],{5310:s=>{s.exports=JSON.parse('{"label":"hola","permalink":"/etf-docs/blog/tags/hola","allTagsPath":"/etf-docs/blog/tags","count":1,"unlisted":false}')}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunketf_docs=self.webpackChunketf_docs||[]).push([[1708],{9426:e=>{e.exports=JSON.parse('{"label":"facebook","permalink":"/etf-docs/blog/tags/facebook","allTagsPath":"/etf-docs/blog/tags","count":1,"unlisted":false}')}}]);
