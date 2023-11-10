@@ -12,7 +12,7 @@ const katex = require('rehype-katex');
 const config = {
   title: 'ETF Network',
   tagline: 'Encryption to the future',
-  favicon: 'img/favicon.ico',
+  // favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
   url: 'https://etf.idealabs.network',
@@ -79,13 +79,13 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
+      // image: 'img/docusaurus-social-card.jpg',
       navbar: {
         title: 'ETF',
-        logo: {
-          alt: 'ETF Logo',
-          src: 'img/logo.svg',
-        },
+        // logo: {
+        //   alt: 'ETF Logo',
+        //   src: 'img/logo.svg',
+        // },
         items: [
           {
             type: 'docSidebar',

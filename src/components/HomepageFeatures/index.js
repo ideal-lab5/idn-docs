@@ -5,7 +5,7 @@ import styles from './styles.module.css';
 const FeatureList = [
   {
     title: 'Decentralized',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    Svg: require('@site/static/img/blockchain.svg').default,
     description: (
       <>
         The ETF network is a blockchain that uses a novel proof-of-stake consensus mechanism.
@@ -15,20 +15,28 @@ const FeatureList = [
   },
   {
     title: 'Timelock Encryption',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    Svg: require('@site/static/img/timer.svg').default,
     description: (
       <>
-        The ETF Network enables timelock encryption, allowing for 'keyless' encryption
-        and decryption based on future 'slots' in consensus. 
+        The ETF Network enables timelock encryption, allowing you to effortlessly send messages into the future and unlock them right from your browser!
+      </>
+    ),
+  },
+  {
+    title: 'Delayed Transactions',
+    Svg: require('@site/static/img/schedule.svg').default,
+    description: (
+      <>
+        Securely delay transactions for future blocks with timelock encryption, ensuring transaction details are hidden until execution.
       </>
     ),
   },
   {
     title: 'MPC-as-a-Service',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    Svg: require('@site/static/img/mpc.svg').default,
     description: (
       <>
-        Develop and Deploy trustless MPC protocols
+        Develop and Deploy trustless multi-party computation protocols as smart contracts on the ETF network. 
       </>
     ),
   },
@@ -36,7 +44,7 @@ const FeatureList = [
 
 function Feature({Svg, title, description}) {
   return (
-    <div className={clsx('col col--4')}>
+    <div className={clsx('col col--5')}>
       <div className="text--center">
         <Svg className={styles.featureSvg} role="img" />
       </div>
