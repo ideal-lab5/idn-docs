@@ -18,7 +18,7 @@ The ETF pallet stores public parameters needed for the IBE scheme. The values ar
 
 ## Consensus and Encryption to the Future
 
-Here we present a high-level overview of how the consensus mechanism works. Essentially, the goal of our consensus mechanism is to construct a table of IBE secrets and public keys which grows at a constant rate and whose authenticity and correctness is ensured by consensus. For a deep dive into the math, jump to the [math](./etf.md).
+Here we present a high-level overview of how the consensus mechanism works. Essentially, the goal of our consensus mechanism is to construct a table of IBE secrets and public keys which grows at a constant rate and whose authenticity and correctness is ensured by consensus.
 
 There are four major phases:
 

@@ -16,16 +16,16 @@ First, the auction owner specifies the auction item and deadline slot,  `((asset
 ### Bidding
 
 The bidding phase starts as soon as the auction is deployed. Here, each participant 
-- determines a bid, \\(b \geq bid_{min}\\)
-- calculates a sha256 hash \\( c = Sha256(b) \\)
+- determines a bid, $b \geq bid_{min}$
+- calculates a sha256 hash $ c = Sha256(b) $
 - generates the ciphertext:
   
-   \\((ct, nonce, capsule) \leftarrow ETF.Enc(P, P_{pub}, b, deadline) \\)
+   $(ct, nonce, capsule) \leftarrow ETF.Enc(P, P_{pub}, b, deadline) $
 
-- publish the ciphertext and hash: \\(((ct, nonce, capsule), hash)\\) as a signed transaction to the smart contract
+- publish the ciphertext and hash: $((ct, nonce, capsule), hash)$ as a signed transaction to the smart contract
 
 Notes:
-- in the future, this can be modified to include a zk state proof that you've reserved the amount that was hashed to get \\(c\\). This would be verified when selecting a winner.
+- in the future, this can be modified to include a zk state proof that you've reserved the amount that was hashed to get $c$. This would be verified when selecting a winner.
 
 ### Non-Interactive Reveal and Winner Selection
 
@@ -35,18 +35,18 @@ The auction can be completed after the deadline passes. There are two parts to t
 
 **OFFCHAIN**: download and decrypt all published ciphertext to recover the bids. Bids are recovered as follows:
 
-- \\(sk \leftarrow ETF.Extract(slot) \\) to retrieve the slot secret from the block in the given slot
-- for each published \\((who, (ct, nonce, capsule), hash)\\), where \\(who\\) is the account that published the data, decrypt the ciphertext \\(b' \leftarrow ETF.Dec(ct, nonce, capsule, sk)\\)
-- complete the auction by publishing a map of account to decrypted bids, \\((who_i, b'_i)\\)
+- $sk \leftarrow ETF.Extract(slot) $ to retrieve the slot secret from the block in the given slot
+- for each published $(who, (ct, nonce, capsule), hash)$, where $who$ is the account that published the data, decrypt the ciphertext $b' \leftarrow ETF.Dec(ct, nonce, capsule, sk)$
+- complete the auction by publishing a map of account to decrypted bids, $(who_i, b'_i)$
 - note: we must ensure ciphertext integrity when publishing it (i.e. a MAC)
 
 **ONCHAIN**: the contract verifies each provided, revealed bid and then selects a winner.
 
 - track the
-- for each \\(who_i, b'_i\\):
-  - fetch the hash published by \\(who_i\\), \\(c_i\\)
-  - calculate \\(c'_i := Sha256(b'_i)\\)
-  - check if \\(c'_i = c_i\\). 
+- for each $who_i, b'_i$:
+  - fetch the hash published by $who_i$, $c_i$
+  - calculate $c'_i := Sha256(b'_i)$
+  - check if $c'_i = c_i$. 
     - If not, then the revealed bid is invalid and the function returns an error.
     - If it is valid, store the bid and continue
 - choose the winner as the first highest-bidder.
