@@ -1,12 +1,10 @@
 # Smart Contracts
 
-The ETF network supports ink! smart contracts via Substrate's pallet-contracts. 
+The ETF network supports ink! smart contracts via Substrate's pallet-contracts. Check out the chain extension and contracts in the repo [here](https://github.com/ideal-lab5/contracts).
 
 ## Chain Extension and ETF Environment
 
 The ETF Network uses a custom chain extension to allow smart contracts to check if a slot is in the future or in the past. The chain extension allows you to check if a block has been authored in a given slot, which is very useful in cases where it is important to know if data *can* be decrypted. The custom environment can be configured in ink! smart contracts to call the chain extension exposed by the ETF network runtime.
-
-<!-- See the [auction orchestrator]() for an example. -->
 
 #### ETF Environment setup
 

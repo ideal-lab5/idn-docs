@@ -48,23 +48,23 @@ The raw chainspec for our testnet can be found [here](https://raw.githubusercont
 
 ### Benchmarks
 
-First navigate to `/bin/node-template/node/` and build it with `cargo +nightly build --profile=production --features runtime-benchmarks`
+Build the project with: `cargo +nightly build --profile=production --features runtime-benchmarks`
 
-run benchmark tests with
+Then run benchmark tests with:
 ` cargo test --package pallet-etf --features runtime-benchmarks`
 
 Once built, generate weights against the compiled runtime with:
 
 ``` bash
 # list all benchmarks
-./target/production/node-template benchmark pallet --chain dev --pallet "*" --extrinsic "*" --repeat 0
+./target/production/node benchmark pallet --chain dev --pallet "*" --extrinsic "*" --repeat 0
 # benchmark the etf pallet
-./target/production/node-template benchmark pallet \
+./target/production/node benchmark pallet \
     --chain dev \
     --wasm-execution=compiled \
     --pallet pallet_etf \
     --extrinsic "*" \
     --steps 50 \
     --repeat 20 \
-    --output bin/node-template/pallets/etf/src/weight.rs
+    --output /pallets/etf/src/weight.rs
 ```
