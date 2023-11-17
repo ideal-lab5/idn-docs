@@ -40,9 +40,9 @@ Whenever a block is authored in a slot, the slot secret can then be extracted an
 
 ![etf-monitor](../../static/assets/etf_monitor.png)
 
-<!-- ### Slot Identity
+### Slot Identity
 
-In our proof-of-authority based network, there is a known set of authorities, say \\(A = {A_1, …, A_n}\\), from which block authors are  sequentially selected (round-robin). That is, for a slot \\(sl_k\\), the authority to author a block in the slot is given by \\(A_{sl_k} = A[sl_k \mod |A|] \\). A slot’s identity is given by \\(ID_{sl_k} = sl_k\\). We simply use the slot number as the slot identity. For example, a slot id could look like `0x231922012`, where `231,922,012` is the slot number. We preserve the authoritiy's standard block seal within the block header in order to keep slot identities simple.
+In our proof-of-authority based network, there is a known set of authorities, say $A = {A_1, …, A_n}$, from which block authors are  sequentially selected (round-robin). That is, for a slot \\(sl_k\\), the authority to author a block in the slot is given by $A_{sl_k} = A[sl_k \mod |A|]$. A slot’s identity is given by $ID_{sl_k} = sl_k$. We simply use the slot number as the slot identity. For example, a slot id could look like `0x231922012`, where `231,922,012` is the slot number. We preserve the authoritiy's standard block seal within the block header in order to keep slot identities simple.
 
 To get a public key from the slot id, we use a hash-to-G1 function, which gives us public keys in G1 (the elliptic curve group we’re working with). That is, each slot implicitly has an identity, and by evaluating the id under the hash-to-G1 function, a public key in G1. 
 
@@ -66,4 +66,4 @@ When a block importer receives a new block, they first check that the slot is co
 
 ### Consensus Error Types
 
-Block producers and importers are given two new consensus error types [here](https://github.com/ideal-lab5/substrate/blob/502032949307b1c19cba606dbef1d2f108f71a56/primitives/consensus/common/src/error.rs#L53). For **block producers**, the `InvalidIBESecret` is called when the aura client cannot fetch a master IBE secret from local storage. For **block importers**, `InvalidDLEQProof` is triggered when a DLEQ proof cannot be verified. This is very similar in functionality to the `BadSignature` error type. -->
+Block producers and importers are given two new consensus error types [here](https://github.com/ideal-lab5/substrate/blob/502032949307b1c19cba606dbef1d2f108f71a56/primitives/consensus/common/src/error.rs#L53). For **block producers**, the `InvalidIBESecret` is called when the aura client cannot fetch a master IBE secret from local storage. For **block importers**, `InvalidDLEQProof` is triggered when a DLEQ proof cannot be verified. This is very similar in functionality to the `BadSignature` error type.

@@ -1,6 +1,6 @@
 {
-  "label": "ETF - Extras",
-  "position": 3,
+  "label": "Timelock Auction",
+  "position": 4,
   "link": {
     "type": "generated-index"
   }

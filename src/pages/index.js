@@ -22,6 +22,11 @@ function HomepageHeader() {
             to="/docs/intro">
             Read the docs
           </Link>
+          <Link
+            className="button button--secondary button--lg"
+            to="/docs/Timelock-Auction/getting_started">
+            Try the Timelock Auction!
+          </Link>
         </div>
       </div>
     </header>

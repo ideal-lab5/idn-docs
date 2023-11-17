@@ -117,12 +117,16 @@ const config = {
             title: 'Community',
             items: [
               {
-                label: 'Substack',
-                href: 'https://ideallabs.substack.com/',
+                label: 'Discord',
+                href: 'https://discord.gg/TheXVBdbbu',
               },
               {
                 label: 'Matrix',
                 href: 'https://matrix.to/#/#ideal-labs:matrix.org',
+              },
+              {
+                label: 'Substack',
+                href: 'https://ideallabs.substack.com/',
               },
             ],
           },

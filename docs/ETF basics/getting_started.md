@@ -43,6 +43,10 @@ docker run -p 9944:9944 -it --rm --name etf-node-0 ideallabs/etf --unsafe-rpc-ex
 
 To connect to our development network, use the raw chainspec for our testnet found [here](https://raw.githubusercontent.com/ideal-lab5/etf/main/etfDevSpecRaw.json). You will need to add the `--chain etfDevSpecRaw.json` when running your node to connect to the testnet.
 
+## Faucet
+
+Head to our [discord faucet channel](https://discord.gg/Txew8BzAfb) to request 100 tokens every 12 hours! Send tokens to your account address with the message `@etf-faucet-bot !drip <your address>`.
+
 ## Testing
 
 ### unit tests
