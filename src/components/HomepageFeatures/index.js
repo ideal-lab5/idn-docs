@@ -27,24 +27,16 @@ const FeatureList = [
     Svg: require('@site/static/img/schedule.svg').default,
     description: (
       <>
-        Securely delay transactions for future blocks with timelock encryption, ensuring transaction details are hidden until execution.
+        Securely delay transactions for future blocks with timelock encryption, ensuring transaction details are hidden until execution. This enables front-running prevention and trustless multiparty interactions.
       </>
     ),
   },
-  {
-    title: 'MPC-as-a-Service',
-    Svg: require('@site/static/img/mpc.svg').default,
-    description: (
-      <>
-        Develop and Deploy trustless multi-party computation protocols as smart contracts on the ETF network. 
-      </>
-    ),
-  },
+
 ];
 
 function Feature({Svg, title, description}) {
   return (
-    <div className={clsx('col col--5')}>
+    <div className={clsx('col col--4')}>
       <div className="text--center">
         <Svg className={styles.featureSvg} role="img" />
       </div>
