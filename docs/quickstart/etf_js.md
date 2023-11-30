@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # ETF.js
 
 Build apps with the etf network.

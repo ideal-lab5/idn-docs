@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # Consensus
 
 This is an overview of the ETF Network's consensus mechanism.

@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Delayed Transactions
 
 In this document we describe the delayed transactions implementation. In particular, we describe the timelocked transaction pool based on the concept a Merkle clocks.
