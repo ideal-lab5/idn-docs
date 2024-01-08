@@ -15,6 +15,8 @@ The etf.js library can be run either with a full node or with a light client (in
 npm i @ideallabs/etf.js
 ```
 
+Take a look at the examples [here](https://github.com/ideal-lab5/etf.js/tree/main/examples).
+
 ### Connecting to a node
 
 ``` javascript
@@ -98,8 +100,6 @@ await api.init(chainSpec, CustomTypes)
 
 ### Timelock Encryption
 
-See the [react-tlock](./examples/react-tlock/) example.
-
 **Encryption**
 
 Messages can be encrypted by passing a number of shares, threshold, and some input to the slot scheduler implementation. In the default EtfClient, encryption uses AES-GCM alongside ETF. It uses TSS to generate key shares, which are encrypted for future slots based on the slot scheduler logic.
@@ -124,8 +124,6 @@ let message = String.fromCharCode(...m)
 ### Delayed Transactions
 
 Delayed transactions can be submitted by  using the `etf.delay` API.
-
-See the [react-delayed-txs](./examples/react-delayed-txs//) example.
 
 ``` javascript
 // the call to delay

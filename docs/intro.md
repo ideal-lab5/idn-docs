@@ -38,7 +38,7 @@ We just completed [our first web3 foundation grant](https://github.com/ideal-lab
 
 - implemented a proof-of-authority version of our consensus mechanism
 - implemented timelock encryption and developed a typescript SDK for easy integration into apps
-- built a [timelock auction](/docs/Timelock-Auction/getting_started.md) where bids are sealed with timelock encryption
+- built a [timelock auction](/docs/examples/timelock_auction.md) where bids are sealed with timelock encryption
 
 In the next phase of the project, we aim to deliver onchain randomness, secure delayed transactions, and an upgrade to our consensus mechanism. Along with this, we will also introduce governance to the system.
 
