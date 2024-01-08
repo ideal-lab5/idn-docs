@@ -8,7 +8,7 @@ This is an overview of the ETF Network's consensus mechanism.
 
 - substrate based blockchain
 - consensus based on aura, introduces IBE secrets and DLEQ proofs to block headers
-- use a pallet to manage and update public parameters for the identity based encryption and dleq proofs
+- uses a pallet to manage and update public parameters for the identity based encryption and dleq proofs
 
 ## Pallets
 
@@ -20,17 +20,20 @@ The network requires a pallet, the etf-pallet, to function. The etf-pallet store
 
 The ETF pallet stores public parameters needed for the IBE scheme. The values are set on genesis and only changeable by the root user (via the Sudo pallet) when they call the `update_ibe_params` extrinsic. The extrinsic uses Arkworks to decode the input to ensure that the provided data is a valid element of G2, and if so then it encodes it in storage. In the future, we intend to make this a more democratic process.
 
+### ETF-Aura Pallet
+
+The Aura pallet included in the etf node is a modified version of the standard Aura pallet. Our version holds a new runtime storage map to hold slot secrets, which are added to storage in the `on_initialize` hook. 
+
 ## Consensus and Encryption to the Future
 
-Here we present a high-level overview of how the consensus mechanism works. Essentially, the goal of our consensus mechanism is to construct a table of IBE secrets and public keys which grows at a constant rate and whose authenticity and correctness is ensured by consensus.
+Here we present a high-level overview of how the consensus mechanism works. The goal of our consensus mechanism is to leak **publicly verifiable** IBE (identity based encryption) secrets within each block header.
 
 There are four major phases:
 
 1. **Setup**: IBE Setup, slot identification scheme, and blockchain genesis 
 2. **Authority Selection**: Round-robin authority selection (i.e. aura)
-3. **Claim a slot**: Block authors calculate an IBE secret for the identity and corresponding DLEQ proof, and include it in the new block header
+3. **Claim a slot**: Block authors claim a slot. When doing so they calculate an IBE secret for the identity and corresponding DLEQ proof, and include it in the new block header
 4. **Block verification**: Block importers verify the DLEQ proof when checking the block’s validity
-
 
 The initial version of the network uses a fork of Aura, a round-robin proof of authority consensus mechanism. Each authority is an **IBE master key custodian**, which is created in the IBE setup phase. This requires trust in each authority, a requirement we will relax in the future. 
 

@@ -1,14 +1,18 @@
+---
+sidebar_position: 4
+---
+
 # ETF SDK
 
 Timelock Encryption on the ETF network.
 
-The ETF SDK is the core of the modular tech stack for building protocols and apps on top of the ETF network. 
+The ETF SDK is the core cryptographic module of our tech stack for building protocols and apps on top of the ETF network. 
 
 ![1](../../static/assets/sdk.png)
 
 ## Components
 
-There are two main components that the SDK provides, the EtfClient and the EtfApi. Additionally, we will discuss `slot schedules` and the SlotScheduler.
+There are two main components that the SDK provides, the EtfClient and the EtfApi.
 
 ### EtfClient
 

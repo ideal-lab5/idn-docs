@@ -11,7 +11,7 @@ const katex = require('rehype-katex');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'ETF Network',
-  tagline: 'Encryption to the future',
+  tagline: 'Encryption to the Future',
   // favicon: 'img/favicon.ico',
 
   // Set the production url of your site here

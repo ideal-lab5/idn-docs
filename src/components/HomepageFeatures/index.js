@@ -8,8 +8,18 @@ const FeatureList = [
     Svg: require('@site/static/img/blockchain.svg').default,
     description: (
       <>
-        The ETF network is a blockchain that uses a novel proof-of-stake consensus mechanism.
+        The ETF network is a blockchain that uses a novel consensus mechanism.
         It produces publicly verifiable secret keys in each block header.
+      </>
+    ),
+  },
+  {
+    title: 'Onchain Randomness',
+    Svg: require('@site/static/img/dice.svg').default,
+    description: (
+      <>
+        Onchain randomness is refreshed with each new block and can be used 
+        in smart contracts and runtime modules for random number generation.
       </>
     ),
   },
@@ -18,7 +28,9 @@ const FeatureList = [
     Svg: require('@site/static/img/timer.svg').default,
     description: (
       <>
-        The ETF Network enables timelock encryption, allowing you to effortlessly send messages into the future and unlock them right from your browser!
+        The ETF Network enables timelock encryption, 
+        allowing you to effortlessly send messages into the 
+        future and unlock them right from your browser!
       </>
     ),
   },
@@ -27,7 +39,9 @@ const FeatureList = [
     Svg: require('@site/static/img/schedule.svg').default,
     description: (
       <>
-        Securely delay transactions for future blocks with timelock encryption, ensuring transaction details are hidden until execution. This enables front-running prevention and trustless multiparty interactions.
+        Securely delay transactions for future blocks with timelock encryption, 
+        ensuring transaction details are hidden until execution. 
+        This enables front-running prevention and trustless multiparty interactions.
       </>
     ),
   },
@@ -36,7 +50,7 @@ const FeatureList = [
 
 function Feature({Svg, title, description}) {
   return (
-    <div className={clsx('col col--4')}>
+    <div className={clsx('col col--6')}>
       <div className="text--center">
         <Svg className={styles.featureSvg} role="img" />
       </div>

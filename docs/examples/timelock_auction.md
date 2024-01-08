@@ -1,4 +1,16 @@
-# Deep Dive
+---
+sidebar_position: 2
+---
+
+# Timelock Auction
+
+The **timelock auction** is a proof-of-concept of our timelock encryption library. It uses timelock encryption to seal bids in a second-price sealed bid auction for ERC721 tokens. In this style of auction, the highest bidder only pays the amount bid by the second highest bidder, like in the image below:
+
+![](../../static/assets/auction_p1.png)
+![](../../static/assets/auction_p2.jpg)
+
+
+## Deep Dive
 
 A deep-dive into the architecture of the timelock auction.
 
@@ -12,7 +24,7 @@ The auction is composed of three different contracts, an orchestrator, an ERC721
 
 ![](../../static/assets/auction_contracts.png)
 
-There are four phases to the auction. The idea is that an auction contains a deadline, a slot in the future. Bids are encrypted for the future slot offchain, using the etf.js SDK, and published in the contract along with a commitment to their bid (sha256 hash). Once the slot secret is revealed at the deadline, bidding closes and the auction can be completed. The ciphertexts must then be downloaded and decrypted offchain. Then, for each decrypted bid, the contracts calculates the hash and ensures it matches the hash provided by the bidder. Winner selection logic chooses the highest bidder as the winner.
+There are four phases to the auction. The idea is that an auction contains a deadline, a slot in the future. Bids are encrypted for the future slot offchain, using the etf.js library, and published in the contract along with a commitment to their bid (sha256 hash). Once the slot secret is revealed at the deadline, bidding closes and the auction can be completed. The ciphertexts must then be downloaded and decrypted offchain. Then, for each decrypted bid, the contracts calculates the hash and ensures it matches the hash provided by the bidder. Winner selection logic chooses the highest bidder as the winner.
 
 ![auction-components-logic](../../static/assets/auction_final.drawio.png)
 

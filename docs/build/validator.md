@@ -1,3 +1,7 @@
+---
+sidebar_position: 5
+---
+
 # Run a Validator
 
 > :warning: This is a WIP.

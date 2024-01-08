@@ -20,12 +20,7 @@ function HomepageHeader() {
           <Link
             className="button button--secondary button--lg"
             to="/docs/intro">
-            Read the docs
-          </Link>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/Timelock-Auction/getting_started">
-            Try the Timelock Auction!
+            Learn more
           </Link>
         </div>
       </div>
