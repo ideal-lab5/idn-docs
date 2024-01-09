@@ -13,7 +13,7 @@ The etf.js library can be run either with a full node or with a light client (in
 
 ``` shell
 npm i @ideallabs/etf.js
-```
+ ```
 
 Take a look at the examples [here](https://github.com/ideal-lab5/etf.js/tree/main/examples).
 
@@ -47,7 +47,7 @@ await etf.init(chainSpec)
 where you must first fetch the chainspec:
 
 ``` bash
-wget https://raw.githubusercontent.com/ideal-lab5/substrate/milestone3/etfTestSpecRaw.json
+wget https://raw.githubusercontent.com/ideal-lab5/etf/main/etfDevSpecRaw.json
 ```
 
 and import into your codebase:
