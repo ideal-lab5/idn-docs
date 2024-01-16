@@ -9,6 +9,12 @@ This project is sponsored by a [web3 foundation grant](https://github.com/ideal-
 
 ## Getting Started
 
+While blockchains provide a basis for freeing us from centralized authority through a shared digital ledger, they are still prone to the same problems as traditional banking. Reliance on a centralized authority is only part of the problem, the rest is about how we each trust and communicate with each other. While this is more of a human issue and not one of technology, this project aims to enable onchain trustless multiparty protocols that allow many participants to simultaneously compete using the same source of randomness. These types of protocols are:
+
+- **non-interactive**: participants do not need to interact with or have knowledge of each other in order to participate
+- **eventually-consistent**: the protocol can be guaranteed to complete by a deadline for all honest players
+- **front-running resistant**: participants can keep their inputs sealed until a specific future deadline, at which point they are simultaneously revealed
+
 ## What is it?
 
 The ETF network ("Encryption to the Future") is a [Substrate](https://github.com/paritytech/polkadot-sdk)-based blockchain that implements a novel consensus mechanism where network authorities leak secrets over time. Powered by identity based encryption and zero knoweldge proofs, the network acts as a cryptographic primitive enabling:
@@ -43,7 +49,7 @@ We just completed [our first web3 foundation grant](https://github.com/ideal-lab
 In the next phase of the project, we aim to deliver onchain randomness, secure delayed transactions, and an upgrade to our consensus mechanism. Along with this, we will also introduce governance to the system.
 
 - [x] delayed transactions
-- [x] publicly verifiable onchain randomness (in smart contracts)
+- [ ] publicly verifiable onchain randomness (in smart contracts)
 - [ ] consensus upgrade
 - [ ] governance
 
