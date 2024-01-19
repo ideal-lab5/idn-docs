@@ -39,9 +39,13 @@ docker pull ideallabs/etf
 docker run -p 9944:9944 -it --rm --name etf-node-0 ideallabs/etf --unsafe-rpc-external --validator --dev --tmp
 ```
 
-#### Chainspec
+## Chainspec
 
-To connect to our development network, use the raw chainspec for our testnet found [here](https://raw.githubusercontent.com/ideal-lab5/etf/main/etfDevSpecRaw.json). You will need to add the `--chain etfDevSpecRaw.json` when running your node to connect to the testnet.
+To connect to our development network, use the raw chainspec for our testnet found [here](https://raw.githubusercontent.com/ideal-lab5/etf/main/etfDevSpecRaw.json). You will need to add the `--chain etfDevSpecRaw.json` when running your node to connect to the testnet. 
+
+``` sh
+wget https://raw.githubusercontent.com/ideal-lab5/etf/main/etfDevSpecRaw.json
+```
 
 ## Faucet
 

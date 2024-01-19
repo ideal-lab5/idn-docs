@@ -20,7 +20,7 @@ The chain extension allows contracts to fetch onchain randomness by reading slot
 ``` rust
 self.env()
     .extension()
-    .secret(slot)
+    .secret()
 ```
 
 ## Chain Extension and ETF Environment

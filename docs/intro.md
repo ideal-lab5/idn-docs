@@ -4,23 +4,22 @@ sidebar_position: 1
 
 # ETF Network
 
-![w3fblk](https://raw.githubusercontent.com/ideal-lab5/etf/main/resources/web3%20foundation_grants_badge_black.png)
-This project is sponsored by a [web3 foundation grant](https://github.com/ideal-lab5/Grants-Program/blob/master/applications/cryptex.md).
-
 ## Getting Started
 
-While blockchains provide a basis for freeing us from centralized authority through a shared digital ledger, they are still prone to the same problems as traditional banking. Reliance on a centralized authority is only part of the problem, the rest is about how we each trust and communicate with each other. While this is more of a human issue and not one of technology, this project aims to enable onchain trustless multiparty protocols that allow many participants to simultaneously compete using the same source of randomness. These types of protocols are:
+Blockchains empower the development of decentralized applications, liberating them from the constraints of centralized authorities. Despite this liberation, web3 systems often lack certain capabilities that are inherently present in web2 systems. Unlike web2 systems, which effortlessly generate random numbers and facilitate non-interactive asynchronous multiparty interactions, web3 systems encounter challenges due to their 'trustless' nature. This project aims to provide **publicly verifiable onchain randomness**, **timelock encryption**, and **secure delayed transaction** (front-running resistant) capabilities for web3 systems. With these, it becomes possible to use random values within smart contracts as well as enable on-chain, non-interactive, async protocols.
 
-- **non-interactive**: participants do not need to interact with or have knowledge of each other in order to participate
-- **eventually-consistent**: the protocol can be guaranteed to complete by a deadline for all honest players
-- **front-running resistant**: participants can keep their inputs sealed until a specific future deadline, at which point they are simultaneously revealed
+This project aims to enable onchain protocols that are...
+
+- **Non-interactive**: Participants can engage without requiring interaction or knowledge of each other.
+- **Eventually-consistent**: The protocol ensures completion by a predetermined deadline for all honest players.
+- **Front-running resistant**: Participants can maintain the confidentiality of their inputs until a specified future deadline, at which point they are collectively revealed.
 
 ## What is it?
 
 The ETF network ("Encryption to the Future") is a [Substrate](https://github.com/paritytech/polkadot-sdk)-based blockchain that implements a novel consensus mechanism where network authorities leak secrets over time. Powered by identity based encryption and zero knoweldge proofs, the network acts as a cryptographic primitive enabling:
 
-- publicly verifiable onchain randomness
-- non-interactive timelock encryption with no restrictions
+- publicly verifiable onchain randomness: block headers contain IBE secrets and DLEQ proofs, with a new secret calcualted with each block
+- non-interactive timelock encryption with no restrictions: encryption and decryption are done offchain with no impact to the underlying network
 - secure delayed transactions with timelock encryption, providing front-running protection and other unique capabilities
 
 ## Who is it for?
@@ -49,7 +48,7 @@ We just completed [our first web3 foundation grant](https://github.com/ideal-lab
 In the next phase of the project, we aim to deliver onchain randomness, secure delayed transactions, and an upgrade to our consensus mechanism. Along with this, we will also introduce governance to the system.
 
 - [x] delayed transactions
-- [ ] publicly verifiable onchain randomness (in smart contracts)
+- [x] publicly verifiable onchain randomness (in smart contracts)
 - [ ] consensus upgrade
 - [ ] governance
 
@@ -59,8 +58,13 @@ In the next phase of the project, we aim to deliver onchain randomness, secure d
 
 ## Contact
 
+- Join the convo on [Discord](https://discord.gg/4fMDbyRw7R)
 - Join us on matrix! https://matrix.to/#/#ideal-labs:matrix.org
+- hello@idealabs.network
 - https://idealabs.network
 
 ## License
 These docs and the code for both etf, etf.js, and the etf-sdk are licensed as GPLv3.0.
+
+![w3fblk](https://raw.githubusercontent.com/ideal-lab5/etf/main/resources/web3%20foundation_grants_badge_black.png)
+This project is sponsored by a [web3 foundation grant](https://github.com/ideal-lab5/Grants-Program/blob/master/applications/cryptex.md).

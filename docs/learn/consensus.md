@@ -14,8 +14,6 @@ This is an overview of the ETF Network's consensus mechanism.
 
 The network requires a pallet, the etf-pallet, to function. The etf-pallet stores public parameters that are required to enable identity based encryption. These values are calculated offchain and encoded in the genesis block.
 
-![pallets overview](../../static/assets/pallets_overview_architecture.png)
-
 ### ETF Pallet
 
 The ETF pallet stores public parameters needed for the IBE scheme. The values are set on genesis and only changeable by the root user (via the Sudo pallet) when they call the `update_ibe_params` extrinsic. The extrinsic uses Arkworks to decode the input to ensure that the provided data is a valid element of G2, and if so then it encodes it in storage. In the future, we intend to make this a more democratic process.
@@ -25,6 +23,8 @@ The ETF pallet stores public parameters needed for the IBE scheme. The values ar
 The Aura pallet included in the etf node is a modified version of the standard Aura pallet. Our version holds a new runtime storage map to hold slot secrets, which are added to storage in the `on_initialize` hook. 
 
 ## Consensus and Encryption to the Future
+
+> :warning: This describes version 1 of our consensus mechanism. We are in the process of updating to version 2, which uses dynamic committee proactive secret sharing to further decentralize and scale the network's authority set. 
 
 Here we present a high-level overview of how the consensus mechanism works. The goal of our consensus mechanism is to leak **publicly verifiable** IBE (identity based encryption) secrets within each block header.
 
