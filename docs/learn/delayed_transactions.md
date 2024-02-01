@@ -12,12 +12,11 @@ Delayed transactions use timelock encryption to keep call data encrypted (with t
 // the call to delay
 let innerCall = etf.api.tx.balances
   .transferKeepAlive('5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty', 100);
-// calculate a deadline (slot) two blocks from now
-let latest = parseInt(latestSlot.slot.replaceAll(",", ""));
-let deadline = latest + 2;
-// prepare delayed call
+// calculate a deadline (block)
+let deadline = etf.latestBlockNumber + 2;
+// prepare delayed call  (call, msk)
 let outerCall = etf.delay(innerCall, 127, deadline);
-await outerCall.signAndSend(alice, result => {
+await outerCall.call.signAndSend(alice, result => {
   if (result.status.isInBlock) {
     console.log('in block')
   }

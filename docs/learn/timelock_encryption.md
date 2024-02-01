@@ -6,7 +6,7 @@ sidebar_position: 1
 
 The ETF consensus mechanism enables timelock encryption. In this section we discuss the technical details and implementation of timelock encryption in the ETF network.
 
-Timelock encryption allows messages to be encrypted for future slots in the ETF consensus mechanism. The slot secret leaked in those slots can be used to recover decryption keys to unseal the data. In other terms, it lets you send messages 'to the future'.
+Timelock encryption allows messages to be encrypted for future blocks in the ETF consensus mechanism. The secret leaked in those slots can be used to recover decryption keys to unseal the data. In other terms, it lets you send messages **'to the future'**.
 
 ## Usage
 
@@ -17,7 +17,7 @@ let etf = new Etf('ws://localhost:9944')
 await etf.init()
 let message = "encrypt me!"
 let threshold = 2
-let slotSchedule = [282777621]
+let blocks = [151, 152, 159]
 let seed = "random-seed"
 let out = etf.encrypt(message, threshold, slotSchedule, seed)
 ```
@@ -27,7 +27,7 @@ The `encrypt` function returns $((ciphertext, nonce), capsule)$ where the cipher
 Ciphertexts can be recovered when slot secrets are known. This can be done very easily with etf.js:
 
 ```javascript
-let m = await etf.decrypt(ciphertext, nonce, capsule, slotSchedule)
+let m = await etf.decrypt(ciphertext, nonce, capsule, blockNumbers)
 let message = String.fromCharCode(...m)
 ```
 

@@ -1,21 +1,34 @@
 ---
 sidebar_position: 3
 ---
-
-# ETF.JS
+# ETF.JS SDK
 
 This is a javascript SDK to encrypt and decrypt messages with the ETF network. In particular, it lets users read slot secrets from the ETF network, encrypt messages to future slots, and decrypt from historical slots.
 
+## Installation
+
+To use the library in your code, the latest published version can be installed from NPM with:
+
+```bash
+npm i @ideallabs/etf.js
+```
+
+Or, you can build the code with:
+
+```bash
+git clone git@github.com:ideal-lab5/etf.js.git
+cd etf.js
+# ensure typsecript is installed
+npm i -g typsecript
+# install dependencies
+npm i
+# build
+tsc
+```
 
 ## Usage
 
 The etf.js library can be run either with a full node or with a light client (in browser).
-
-``` shell
-npm i @ideallabs/etf.js
- ```
-
-Take a look at the examples [here](https://github.com/ideal-lab5/etf.js/tree/main/examples).
 
 ### Connecting to a node
 
@@ -60,27 +73,6 @@ This will start a smoldot light client in the browser, which will automatically 
 
 > Warning: smoldot version is currently incompatible with smart contracts.
 
-## Installation
-
-To use the library in your code, the latest published version can be installed from NPM with:
-
-```bash
-npm i @ideallabs/etf.js
-```
-
-Or, you can build the code with:
-
-```bash
-git clone git@github.com:ideal-lab5/etf.js.git
-cd etf.js
-# ensure typsecript is installed
-npm i -g typsecript
-# install dependencies
-npm i
-# build
-tsc
-```
-
 #### Types
 
 The API has an optional `types` parameter, which is a proxy to the polkadotjs types registry, allowing you to register custom types if desired.
@@ -100,14 +92,16 @@ await api.init(chainSpec, CustomTypes)
 
 ### Timelock Encryption
 
+See the [react-tlock](./examples/react-tlock/) example.
+
 **Encryption**
 
-Messages can be encrypted by passing a number of shares, threshold, and some input to the slot scheduler implementation. In the default EtfClient, encryption uses AES-GCM alongside ETF. It uses TSS to generate key shares, which are encrypted for future slots based on the slot scheduler logic.
+Messages can be encrypted by passing a number of shares, threshold, and a list of future block numbers. In the default EtfClient, encryption uses AES-GCM alongside ETF. It uses TSS to generate key shares, which are encrypted for blocks.
 
 ```javascript
 let message = "encrypt me!"
 let threshold = 2
-let slotSchedule = [282777621, 282777882, 282777982]
+let blocks = [151, 152, 159]
 let seed = "random-seed"
 let out = etf.encrypt(message, threshold, slotSchedule, seed)
 ```
@@ -117,7 +111,7 @@ The output contains: `aes_out = (AES ciphertext, AES nonce, AES secret key), cap
 **Decryption**
 
 ```javascript
-let m = await etf.decrypt(ciphertext, nonce, capsule, slotSchedule)
+let m = await etf.decrypt(ciphertext, nonce, capsule, blockNumbers)
 let message = String.fromCharCode(...m)
 ```
 
@@ -125,16 +119,17 @@ let message = String.fromCharCode(...m)
 
 Delayed transactions can be submitted by  using the `etf.delay` API.
 
+See the [react-delayed-txs](./examples/react-delayed-txs//) example.
+
 ``` javascript
 // the call to delay
 let innerCall = etf.api.tx.balances
   .transferKeepAlive('5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty', 100);
-// calculate a deadline (slot)
-let latest = parseInt(latestSlot.slot.replaceAll(",", ""));
-let deadline = latest + 2;
-// prepare delayed call
+// calculate a deadline (block)
+let deadline = etf.latestBlockNumber + 2;
+// prepare delayed call  (call, msk)
 let outerCall = etf.delay(innerCall, 127, deadline);
-await outerCall.signAndSend(alice, result => {
+await outerCall.call.signAndSend(alice, result => {
   if (result.status.isInBlock) {
     console.log('in block')
   }
@@ -147,8 +142,61 @@ The Etf client subscribes to new block headers and emits a "blockHeader" event e
 
 ```javascript
 // listen for blockHeader events
-const [slotSecrets, setSlotSecrets] = []
 document.addEventListener('blockHeader', () => {
-  console.log(api.latestSlot)
+  console.log(etf.latestBlockNumber)
+  console.log(etf.latestSlot.slot)
 })
 ```
+
+# API Reference
+
+## Etf Class
+
+### Methods
+
+`constructor(providerMultiAddr?: string, isProd?: boolean)`
+
+Initializes an instance of the ETF class.
+
+`init(chainSpec?: string, extraTypes?: any): Promise<void>`
+
+Connects to the chain and initializes the ETF API wrapper.
+
+`createType(typeName: string, typeData: any): any`
+
+A proxy to the polkadotjs API type registry creation.
+
+`secrets(blockNumbers: number[]): Promise<Uint8Array[]>`
+
+Fetches secrets from specified blocks.
+
+`encrypt(messageBytes: Uint8Array, threshold: number, blockNumbers: number[], seed: string): { ciphertext: string, sk: string }`
+
+Encrypts a message for future blocks.
+
+`decrypt(ct: Uint8Array, nonce: Uint8Array, capsule: Uint8Array, blockNumbers: number[]): Promise<string>`
+
+Decrypts a timelocked ciphertext.
+
+`delay(rawCall: any, priority: number, deadline: number): { call: any, sk: string, block: number } | Error`
+
+Prepares a secure delayed transaction for a given deadline.
+
+`listenForSecrets(eventEmitter: EventEmitter): void`
+
+Listens for incoming block headers and emits an event when new headers are encountered.
+
+`getLatestSlot(): number`
+
+Fetches the latest known slot.
+
+### Fields
+
+`public latestBlockNumber: number`
+
+The latest known block number
+
+
+# License
+
+This project is licensed under the Apache2 License - see the LICENSE file for details.
