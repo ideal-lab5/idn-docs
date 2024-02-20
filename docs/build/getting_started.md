@@ -14,8 +14,7 @@ To build the blockchain locally:
 # clone substrate and checkout the etf branch
 git clone git@github.com:ideal-lab5/etf.git
 cd etf
-# nightly build
-cargo +nightly build --release
+cargo build --release
 ```
 
 ### Run
@@ -54,11 +53,11 @@ Head to our [discord faucet channel](https://discord.gg/Txew8BzAfb) to request 1
 ## Testing
 
 ### unit tests
-`cargo +nightly test`
+`cargo test`
 
 ### Benchmarks
 
-Build the project with: `cargo +nightly build --profile=production --features runtime-benchmarks`
+Build the project with: `cargo build --profile=production --features runtime-benchmarks`
 
 Then run benchmark tests with:
 ` cargo test --package pallet-etf --features runtime-benchmarks`
