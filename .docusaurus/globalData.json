@@ -1,0 +1,103 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/docs",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/docs",
+          "mainDocId": "intro",
+          "docs": [
+            {
+              "id": "build/contracts",
+              "path": "/docs/build/contracts",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "build/etf_js",
+              "path": "/docs/build/etf_js",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "build/etf_sdk",
+              "path": "/docs/build/etf_sdk",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "build/getting_started",
+              "path": "/docs/build/getting_started",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "build/validator",
+              "path": "/docs/build/validator",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "examples/contract_examples",
+              "path": "/docs/examples/contract_examples",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "examples/getting_started",
+              "path": "/docs/examples/getting_started",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "examples/timelock_auction",
+              "path": "/docs/examples/timelock_auction",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "intro",
+              "path": "/docs/intro",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "learn/crypto/delayed_transactions",
+              "path": "/docs/learn/crypto/delayed_transactions",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "learn/crypto/timelock_encryption",
+              "path": "/docs/learn/crypto/timelock_encryption",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "learn/etf-pfg",
+              "path": "/docs/learn/etf-pfg",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "/category/build",
+              "path": "/docs/category/build",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "/category/learn",
+              "path": "/docs/category/learn",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "/category/play",
+              "path": "/docs/category/play",
+              "sidebar": "tutorialSidebar"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "tutorialSidebar": {
+              "link": {
+                "path": "/docs/intro",
+                "label": "intro"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "examples/contract_examples",
+  "title": "Contract Examples",
+  "description": "This is a collection of examples of smart contracts built on the ETF network. You can check them all out on github here.",
+  "source": "@site/docs/examples/contract_examples.md",
+  "sourceDirName": "examples",
+  "slug": "/examples/contract_examples",
+  "permalink": "/docs/examples/contract_examples",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/examples/contract_examples.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Timelock Auction",
+    "permalink": "/docs/examples/timelock_auction"
+  }
+}

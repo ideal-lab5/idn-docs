@@ -1,0 +1,27 @@
+{
+  "id": "build/contracts",
+  "title": "Smart Contracts",
+  "description": "Learn about using the ETF network to get on-chain randomness within ink! smart cotnracts.",
+  "source": "@site/docs/build/contracts.md",
+  "sourceDirName": "build",
+  "slug": "/build/contracts",
+  "permalink": "/docs/build/contracts",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/build/contracts.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Getting Started",
+    "permalink": "/docs/build/getting_started"
+  },
+  "next": {
+    "title": "ETF.JS SDK",
+    "permalink": "/docs/build/etf_js"
+  }
+}

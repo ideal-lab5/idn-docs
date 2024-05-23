@@ -8,7 +8,7 @@ const FeatureList = [
     Svg: require('@site/static/img/blockchain.svg').default,
     description: (
       <>
-        The ETF network is a blockchain that uses a novel consensus mechanism.
+        The Ideal Network is a blockchain that uses a novel consensus mechanism.
         It produces publicly verifiable secret keys in each block header.
       </>
     ),
@@ -35,13 +35,11 @@ const FeatureList = [
     ),
   },
   {
-    title: 'Delayed Transactions',
-    Svg: require('@site/static/img/schedule.svg').default,
+    title: 'Programmable Privacy',
+    Svg: require('@site/static/img/privacy.svg').default,
     description: (
       <>
-        Securely delay transactions for future blocks with timelock encryption, 
-        ensuring transaction details are hidden until execution. 
-        This enables front-running prevention and trustless multiparty interactions.
+        Encrypt once, decrypt many. The Ideal network enables programmable, zero-knowledge data encryption mechanisms using practical witness encryption. 
       </>
     ),
   },

@@ -32,7 +32,7 @@ export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`ETF Network`}
+      title={`Ideal Network`}
       description="Encryption to the future">
       <HomepageHeader />
       <main>

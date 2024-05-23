@@ -10,9 +10,9 @@ const katex = require('rehype-katex');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'ETF Network',
+  title: 'Ideal Network',
   tagline: 'Encryption to the Future',
-  // favicon: 'img/favicon.ico',
+  favicon: './static/img/favicon.ico',
 
   // Set the production url of your site here
   url: 'https://www.etf.idealabs.network',
@@ -81,7 +81,7 @@ const config = {
       // Replace with your project's social card
       // image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'ETF',
+        title: 'IDEAL',
         // logo: {
         //   alt: 'ETF Logo',
         //   src: 'img/logo.svg',
@@ -144,7 +144,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Ideal Labs. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Ideal Labs, LLC`,
       },
       prism: {
         theme: prismThemes.github,

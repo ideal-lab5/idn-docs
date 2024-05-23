@@ -1,0 +1,553 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "loadedVersions": [
+        {
+          "versionName": "current",
+          "label": "Next",
+          "banner": null,
+          "badge": false,
+          "noIndex": false,
+          "className": "docs-version-current",
+          "path": "/docs",
+          "tagsPath": "/docs/tags",
+          "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs",
+          "editUrlLocalized": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/i18n/en/docusaurus-plugin-content-docs/current",
+          "isLast": true,
+          "routePriority": -1,
+          "sidebarFilePath": "/home/driemworks/ideal/etf-docs/sidebars.js",
+          "contentPath": "/home/driemworks/ideal/etf-docs/docs",
+          "contentPathLocalized": "/home/driemworks/ideal/etf-docs/i18n/en/docusaurus-plugin-content-docs/current",
+          "docs": [
+            {
+              "id": "build/contracts",
+              "title": "Smart Contracts",
+              "description": "Learn about using the ETF network to get on-chain randomness within ink! smart cotnracts.",
+              "source": "@site/docs/build/contracts.md",
+              "sourceDirName": "build",
+              "slug": "/build/contracts",
+              "permalink": "/docs/build/contracts",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/build/contracts.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 2,
+              "frontMatter": {
+                "sidebar_position": 2
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Getting Started",
+                "permalink": "/docs/build/getting_started"
+              },
+              "next": {
+                "title": "ETF.JS SDK",
+                "permalink": "/docs/build/etf_js"
+              }
+            },
+            {
+              "id": "build/etf_js",
+              "title": "ETF.JS SDK",
+              "description": "This is a javascript SDK to encrypt and decrypt messages with the ETF network. In particular, it lets users read slot secrets from the ETF network, encrypt messages to future slots, and decrypt from historical slots.",
+              "source": "@site/docs/build/etf_js.md",
+              "sourceDirName": "build",
+              "slug": "/build/etf_js",
+              "permalink": "/docs/build/etf_js",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/build/etf_js.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 3,
+              "frontMatter": {
+                "sidebar_position": 3
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Smart Contracts",
+                "permalink": "/docs/build/contracts"
+              },
+              "next": {
+                "title": "ETF SDK",
+                "permalink": "/docs/build/etf_sdk"
+              }
+            },
+            {
+              "id": "build/etf_sdk",
+              "title": "ETF SDK",
+              "description": "Timelock Encryption on the ETF network.",
+              "source": "@site/docs/build/etf_sdk.md",
+              "sourceDirName": "build",
+              "slug": "/build/etf_sdk",
+              "permalink": "/docs/build/etf_sdk",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/build/etf_sdk.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 4,
+              "frontMatter": {
+                "sidebar_position": 4
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "ETF.JS SDK",
+                "permalink": "/docs/build/etf_js"
+              },
+              "next": {
+                "title": "Run a Validator",
+                "permalink": "/docs/build/validator"
+              }
+            },
+            {
+              "id": "build/getting_started",
+              "title": "Getting Started",
+              "description": "Run a local ETF node.",
+              "source": "@site/docs/build/getting_started.md",
+              "sourceDirName": "build",
+              "slug": "/build/getting_started",
+              "permalink": "/docs/build/getting_started",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/build/getting_started.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 1,
+              "frontMatter": {
+                "sidebar_position": 1
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Build",
+                "permalink": "/docs/category/build"
+              },
+              "next": {
+                "title": "Smart Contracts",
+                "permalink": "/docs/build/contracts"
+              }
+            },
+            {
+              "id": "build/validator",
+              "title": "Run a Validator",
+              "description": "This is a WIP.",
+              "source": "@site/docs/build/validator.md",
+              "sourceDirName": "build",
+              "slug": "/build/validator",
+              "permalink": "/docs/build/validator",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/build/validator.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 5,
+              "frontMatter": {
+                "sidebar_position": 5
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "ETF SDK",
+                "permalink": "/docs/build/etf_sdk"
+              },
+              "next": {
+                "title": "Learn",
+                "permalink": "/docs/category/learn"
+              }
+            },
+            {
+              "id": "examples/contract_examples",
+              "title": "Contract Examples",
+              "description": "This is a collection of examples of smart contracts built on the ETF network. You can check them all out on github here.",
+              "source": "@site/docs/examples/contract_examples.md",
+              "sourceDirName": "examples",
+              "slug": "/examples/contract_examples",
+              "permalink": "/docs/examples/contract_examples",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/examples/contract_examples.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 3,
+              "frontMatter": {
+                "sidebar_position": 3
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Timelock Auction",
+                "permalink": "/docs/examples/timelock_auction"
+              }
+            },
+            {
+              "id": "examples/getting_started",
+              "title": "Getting Started",
+              "description": "This section contains examples and applications built on or with the ETF network.",
+              "source": "@site/docs/examples/getting_started.md",
+              "sourceDirName": "examples",
+              "slug": "/examples/getting_started",
+              "permalink": "/docs/examples/getting_started",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/examples/getting_started.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 1,
+              "frontMatter": {
+                "sidebar_position": 1
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Play",
+                "permalink": "/docs/category/play"
+              },
+              "next": {
+                "title": "Timelock Auction",
+                "permalink": "/docs/examples/timelock_auction"
+              }
+            },
+            {
+              "id": "examples/timelock_auction",
+              "title": "Timelock Auction",
+              "description": "The timelock auction is a proof-of-concept of our timelock encryption library. It uses timelock encryption to seal bids in a second-price sealed bid auction for ERC721 tokens. In this style of auction, the highest bidder only pays the amount bid by the second highest bidder, like in the image below:",
+              "source": "@site/docs/examples/timelock_auction.md",
+              "sourceDirName": "examples",
+              "slug": "/examples/timelock_auction",
+              "permalink": "/docs/examples/timelock_auction",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/examples/timelock_auction.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 2,
+              "frontMatter": {
+                "sidebar_position": 2
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Getting Started",
+                "permalink": "/docs/examples/getting_started"
+              },
+              "next": {
+                "title": "Contract Examples",
+                "permalink": "/docs/examples/contract_examples"
+              }
+            },
+            {
+              "id": "intro",
+              "title": "Ideal Network",
+              "description": "The interoperable entropy layer",
+              "source": "@site/docs/intro.md",
+              "sourceDirName": ".",
+              "slug": "/intro",
+              "permalink": "/docs/intro",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/intro.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 1,
+              "frontMatter": {
+                "sidebar_position": 1
+              },
+              "sidebar": "tutorialSidebar",
+              "next": {
+                "title": "Build",
+                "permalink": "/docs/category/build"
+              }
+            },
+            {
+              "id": "learn/crypto/delayed_transactions",
+              "title": "delayed_transactions",
+              "description": "<!-- ---",
+              "source": "@site/docs/learn/crypto/delayed_transactions.md",
+              "sourceDirName": "learn/crypto",
+              "slug": "/learn/crypto/delayed_transactions",
+              "permalink": "/docs/learn/crypto/delayed_transactions",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/learn/crypto/delayed_transactions.md",
+              "tags": [],
+              "version": "current",
+              "frontMatter": {},
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "ETF Post-Finality Gadget",
+                "permalink": "/docs/learn/etf-pfg"
+              },
+              "next": {
+                "title": "timelock_encryption",
+                "permalink": "/docs/learn/crypto/timelock_encryption"
+              }
+            },
+            {
+              "id": "learn/crypto/timelock_encryption",
+              "title": "timelock_encryption",
+              "description": "<!-- ---",
+              "source": "@site/docs/learn/crypto/timelock_encryption.md",
+              "sourceDirName": "learn/crypto",
+              "slug": "/learn/crypto/timelock_encryption",
+              "permalink": "/docs/learn/crypto/timelock_encryption",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/learn/crypto/timelock_encryption.md",
+              "tags": [],
+              "version": "current",
+              "frontMatter": {},
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "delayed_transactions",
+                "permalink": "/docs/learn/crypto/delayed_transactions"
+              },
+              "next": {
+                "title": "Play",
+                "permalink": "/docs/category/play"
+              }
+            },
+            {
+              "id": "learn/etf-pfg",
+              "title": "ETF Post-Finality Gadget",
+              "description": "This is an overview of the Ideal Network's post-finality gadget. We first describe the mechanism at a high level and then will dive into the architecture.",
+              "source": "@site/docs/learn/etf-pfg.md",
+              "sourceDirName": "learn",
+              "slug": "/learn/etf-pfg",
+              "permalink": "/docs/learn/etf-pfg",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/learn/etf-pfg.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 1,
+              "frontMatter": {
+                "sidebar_position": 1
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Learn",
+                "permalink": "/docs/category/learn"
+              },
+              "next": {
+                "title": "delayed_transactions",
+                "permalink": "/docs/learn/crypto/delayed_transactions"
+              }
+            }
+          ],
+          "drafts": [],
+          "sidebars": {
+            "tutorialSidebar": [
+              {
+                "type": "doc",
+                "id": "intro"
+              },
+              {
+                "type": "category",
+                "label": "Build",
+                "collapsible": true,
+                "collapsed": true,
+                "items": [
+                  {
+                    "type": "doc",
+                    "id": "build/getting_started"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "build/contracts"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "build/etf_js"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "build/etf_sdk"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "build/validator"
+                  }
+                ],
+                "link": {
+                  "type": "generated-index",
+                  "description": "Learn about the etf sdk and timelock encryption",
+                  "slug": "/category/build",
+                  "permalink": "/docs/category/build"
+                }
+              },
+              {
+                "type": "category",
+                "label": "Learn",
+                "collapsible": true,
+                "collapsed": true,
+                "items": [
+                  {
+                    "type": "doc",
+                    "id": "learn/etf-pfg"
+                  },
+                  {
+                    "type": "category",
+                    "label": "crypto",
+                    "collapsible": true,
+                    "collapsed": true,
+                    "items": [
+                      {
+                        "type": "doc",
+                        "id": "learn/crypto/delayed_transactions"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "learn/crypto/timelock_encryption"
+                      }
+                    ]
+                  }
+                ],
+                "link": {
+                  "type": "generated-index",
+                  "slug": "/category/learn",
+                  "permalink": "/docs/category/learn"
+                }
+              },
+              {
+                "type": "category",
+                "label": "Play",
+                "collapsible": true,
+                "collapsed": true,
+                "items": [
+                  {
+                    "type": "doc",
+                    "id": "examples/getting_started"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "examples/timelock_auction"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "examples/contract_examples"
+                  }
+                ],
+                "link": {
+                  "type": "generated-index",
+                  "slug": "/category/play",
+                  "permalink": "/docs/category/play"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "docusaurus-plugin-content-blog": {
+    "default": {
+      "blogSidebarTitle": "Recent posts",
+      "blogPosts": [
+        {
+          "id": "blog",
+          "metadata": {
+            "permalink": "/blog/blog",
+            "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/blog/2023-11-10-hello.md",
+            "source": "@site/blog/2023-11-10-hello.md",
+            "title": "Blog",
+            "description": "Come back later!",
+            "date": "2023-11-10T00:00:00.000Z",
+            "formattedDate": "November 10, 2023",
+            "tags": [
+              {
+                "label": "hello",
+                "permalink": "/blog/tags/hello"
+              }
+            ],
+            "readingTime": 0.015,
+            "hasTruncateMarker": false,
+            "authors": [
+              {
+                "name": "Tony Riemer",
+                "title": "Ideal Labs",
+                "url": "https://github.com/ideal-lab5"
+              }
+            ],
+            "frontMatter": {
+              "slug": "blog",
+              "title": "Blog",
+              "authors": {
+                "name": "Tony Riemer",
+                "title": "Ideal Labs",
+                "url": "https://github.com/ideal-lab5"
+              },
+              "tags": [
+                "hello"
+              ]
+            },
+            "unlisted": false
+          },
+          "content": "Come back later!"
+        }
+      ],
+      "blogListPaginated": [
+        {
+          "items": [
+            "blog"
+          ],
+          "metadata": {
+            "permalink": "/blog",
+            "page": 1,
+            "postsPerPage": 10,
+            "totalPages": 1,
+            "totalCount": 1,
+            "blogDescription": "Blog",
+            "blogTitle": "Blog"
+          }
+        }
+      ],
+      "blogTags": {
+        "/blog/tags/hello": {
+          "label": "hello",
+          "items": [
+            "blog"
+          ],
+          "permalink": "/blog/tags/hello",
+          "pages": [
+            {
+              "items": [
+                "blog"
+              ],
+              "metadata": {
+                "permalink": "/blog/tags/hello",
+                "page": 1,
+                "postsPerPage": 10,
+                "totalPages": 1,
+                "totalCount": 1,
+                "blogDescription": "Blog",
+                "blogTitle": "Blog"
+              }
+            }
+          ],
+          "unlisted": false
+        }
+      },
+      "blogTagsListPath": "/blog/tags"
+    }
+  },
+  "docusaurus-plugin-content-pages": {
+    "default": [
+      {
+        "type": "jsx",
+        "permalink": "/",
+        "source": "@site/src/pages/index.js"
+      },
+      {
+        "type": "mdx",
+        "permalink": "/markdown-page",
+        "source": "@site/src/pages/markdown-page.md",
+        "title": "Markdown page example",
+        "description": "You don't need React to write simple standalone pages.",
+        "frontMatter": {
+          "title": "Markdown page example"
+        },
+        "unlisted": false
+      }
+    ]
+  },
+  "docusaurus-plugin-debug": {},
+  "docusaurus-theme-classic": {},
+  "docusaurus-bootstrap-plugin": {},
+  "docusaurus-mdx-fallback-plugin": {}
+}

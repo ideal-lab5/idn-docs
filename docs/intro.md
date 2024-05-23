@@ -2,55 +2,32 @@
 sidebar_position: 1
 ---
 
-# ETF Network
+# Ideal Network
 
-## Getting Started
+###### The interoperable entropy layer
 
-Blockchains empower the development of decentralized applications, liberating them from the constraints of centralized authorities. Despite this liberation, web3 systems often lack certain capabilities that are inherently present in web2 systems. Unlike web2 systems, which effortlessly generate random numbers and facilitate non-interactive asynchronous multiparty interactions, web3 systems encounter challenges due to their 'trustless' nature. This project aims to provide **publicly verifiable onchain randomness**, **timelock encryption**, and **secure delayed transaction** (front-running resistant) capabilities for web3 systems. With these, it becomes possible to use random values within smart contracts as well as enable on-chain, non-interactive, async protocols.
+## Overview
 
-This project aims to enable onchain protocols that are...
+Privacy on the web relies on From securing web traffic, to fair resource allocation and I/O randomness in gaming, the applications and uses of random numbers is truly foundational for the web. While traditional centralized systems can cheaply access pseudo-random numbers, decentralized systems face challenges in acquiring unbiased on-chain randomness. Oracles can be used to inject randomness onchain, but without verifility they require a great deal of trust. Solutions such as [Chainlink VRF](https://docs.chain.link/vrf) and [Drand](https://drand.love) exist to full this gap, using verifiable random functions and threhsold BLS signatures respectively, to produce unbiased randomness. However, Chainlink VRF incurs a high cost and latency to obtain randomness, making it unsuitable for real-time applications, while drand's system lacks easy interoperability and economic incentives for participation. To solve these issues we introduce the "Encryption-to-the-Future" Post-Finality Gadget (ETF-PFG), a protocol run on the Ideal network that enables interoperable publicly verifiable randomness across bridged chains. 
 
-- **Non-interactive**: Participants can engage without requiring interaction or knowledge of each other.
-- **Eventually-consistent**: The protocol ensures completion by a predetermined deadline for all honest players.
-- **Front-running resistant**: Participants can maintain the confidentiality of their inputs until a specified future deadline, at which point they are collectively revealed.
+The goal of the Ideal Network is to enable *interoperable* (i.e. cross-chain) publicly verifiable on-chain randomness, timelock encryption, and practical witness encryption capabiltities. 
 
 ## What is it?
 
-The ETF network ("Encryption to the Future") is a [Substrate](https://github.com/paritytech/polkadot-sdk)-based blockchain that implements a novel consensus mechanism where network authorities leak secrets over time. Powered by identity based encryption and zero knoweldge proofs, the network acts as a cryptographic primitive enabling:
+The Ideal network is a Substrate-based blockchain. It is a multiparty computation (MPC) solution inspired by other randomness beacons, such as [drand](https://drand.love/docs/overview/). It uses threshold BLS signatures and DLEQ proofs to produce unbiased, publicly verifiable on-chain randomness. The goal of the network is 'symbiotic' in nature - we aim to 'supercharge' bridged chains by providing them with source of onchain randomness. This randomness can be easily relayed across chains using a light client running on the target chain. 
 
-- publicly verifiable onchain randomness: block headers contain IBE secrets and DLEQ proofs, with a new secret calcualted with each block
-- non-interactive timelock encryption with no restrictions: encryption and decryption are done offchain with no impact to the underlying network
-- secure delayed transactions with timelock encryption, providing front-running protection and other unique capabilities
+By enabling an efficient randomness beacon, we also provide new "programmable privacy" capabilities for blockchains, including:
+
+- timelock encryption: where messages can be locked until a future block
+- practical witness encryption: where messages can only be decrypted when a participant proves they meet some condition or know some knowledge
 
 ## Who is it for?
 
-The ETF network's capabilities are for everyone. At the current stage, using the network is mainly for developers. The ETF network can be used by anybody who wants to integrate timelock encryption, onchain randomness, or delayed transactions into their applications, smart contracts, or other systems.
-
-- Timelock encryption and delayed transactions can act as powerful tools to build trustless multiparty protocols. 
-
-- Publicly verifiable onchain randomness provides smart contracts with the ability to use random numbers within function, enabling non-interactive coin-flip protocols within smart contracts.
-
-For example, the ETF network can be used to build more engaging web3 games by relying on onchain randomness and using delayed transactions to orchestrate simultaneous player actions.
-
-This functionality can be added to existing applications with the [etf.js](https://github.com/ideal-lab5/etf.js) library. Check out the [react based timelock encryption](https://github.com/ideal-lab5/etf.js/tree/main/examples/react-tlock) to see how it works.
-
+The Ideal Network's capabilities are incredibly wide-ranging and somewhat difficult to narrow down with the broad impacts that it can have on many different protocols and architectures. By using the different capabilities (randomness, tlock, witness encryption) across chains, the network allows for new programmable privacy, multiparty interactions, and dynamic behaviors that apply across many different areas of interest, such as privacy-preserving communications, gaming, defi, and more.
 
 ## Where are we?
 
-This project is still under heavy development. 
 
-We just completed [our first web3 foundation grant](https://github.com/ideal-lab5/Grants-Program/blob/dkg/applications/cryptex.md)! With this, we have:
-
-- implemented a proof-of-authority version of our consensus mechanism
-- implemented timelock encryption and developed a typescript SDK for easy integration into apps
-- built a [timelock auction](/docs/examples/timelock_auction.md) where bids are sealed with timelock encryption
-
-In the next phase of the project, we aim to deliver onchain randomness, secure delayed transactions, and an upgrade to our consensus mechanism. Along with this, we will also introduce governance to the system.
-
-- [x] delayed transactions
-- [x] publicly verifiable onchain randomness (in smart contracts)
-- [ ] consensus upgrade
-- [ ] governance
 
 ## Learn More
 

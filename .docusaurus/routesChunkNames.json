@@ -1,0 +1,182 @@
+{
+  "/__docusaurus/debug-bd2": {
+    "__comp": "__comp---theme-debug-config-23-a-2ff",
+    "__context": {
+      "plugin": "plugin---docusaurus-debug-925-4e8"
+    }
+  },
+  "/__docusaurus/debug/config-bca": {
+    "__comp": "__comp---theme-debug-config-23-a-2ff",
+    "__context": {
+      "plugin": "plugin---docusaurus-debug-925-4e8"
+    }
+  },
+  "/__docusaurus/debug/content-689": {
+    "__comp": "__comp---theme-debug-contentba-8-ce7",
+    "__context": {
+      "plugin": "plugin---docusaurus-debug-925-4e8"
+    },
+    "allContent": "allContent---docusaurus-debug-content-246-9aa"
+  },
+  "/__docusaurus/debug/globalData-682": {
+    "__comp": "__comp---theme-debug-global-dataede-0fa",
+    "__context": {
+      "plugin": "plugin---docusaurus-debug-925-4e8"
+    }
+  },
+  "/__docusaurus/debug/metadata-7e0": {
+    "__comp": "__comp---theme-debug-site-metadata-68-e-3d4",
+    "__context": {
+      "plugin": "plugin---docusaurus-debug-925-4e8"
+    }
+  },
+  "/__docusaurus/debug/registry-f31": {
+    "__comp": "__comp---theme-debug-registry-679-501",
+    "__context": {
+      "plugin": "plugin---docusaurus-debug-925-4e8"
+    }
+  },
+  "/__docusaurus/debug/routes-665": {
+    "__comp": "__comp---theme-debug-routes-946-699",
+    "__context": {
+      "plugin": "plugin---docusaurus-debug-925-4e8"
+    }
+  },
+  "/blog-be5": {
+    "__comp": "__comp---theme-blog-list-pagea-6-a-7ba",
+    "__context": {
+      "plugin": "plugin---blogd-3-d-084"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-8-ad-721"
+      }
+    ],
+    "metadata": "metadata---blogb-2-b-df1"
+  },
+  "/blog/archive-c24": {
+    "__comp": "__comp---theme-blog-archive-page-9-e-4-1d8",
+    "__context": {
+      "plugin": "plugin---blogd-3-d-084"
+    },
+    "archive": "archive---blog-archiveb-2-f-393"
+  },
+  "/blog/blog-3c0": {
+    "__comp": "__comp---theme-blog-post-pageccc-cab",
+    "__context": {
+      "plugin": "plugin---blogd-3-d-084"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-blogf-0-a-d96"
+  },
+  "/blog/tags-829": {
+    "__comp": "__comp---theme-blog-tags-list-page-01-a-d0b",
+    "__context": {
+      "plugin": "plugin---blogd-3-d-084"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "tags": "tags---blog-tagsa-70-da2"
+  },
+  "/blog/tags/hello-63a": {
+    "__comp": "__comp---theme-blog-tags-posts-page-687-b6c",
+    "__context": {
+      "plugin": "plugin---blogd-3-d-084"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-8-ad-721"
+      }
+    ],
+    "tag": "tag---blog-tags-hello-30-a-bed",
+    "listMetadata": "listMetadata---blog-tags-hello-664-70a"
+  },
+  "/markdown-page-dd4": {
+    "__comp": "__comp---theme-mdx-page-1-f-3-b90",
+    "__context": {
+      "plugin": "plugin---markdown-pagea-96-d55"
+    },
+    "content": "content---markdown-page-393-028"
+  },
+  "/docs-a02": {
+    "__comp": "__comp---theme-docs-root-5-e-9-0b6",
+    "__context": {
+      "plugin": "plugin---docs-75-c-fac"
+    }
+  },
+  "/docs-1ab": {
+    "__comp": "__comp---theme-doc-version-roota-7-b-5de",
+    "version": "version---docs-935-398"
+  },
+  "/docs-f07": {
+    "__comp": "__comp---theme-doc-roota-94-67a"
+  },
+  "/docs/build/contracts-eb5": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-build-contracts-1-ca-8af"
+  },
+  "/docs/build/etf_js-6ca": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-build-etf-jsce-5-389"
+  },
+  "/docs/build/etf_sdk-bc9": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-build-etf-sdked-5-a5c"
+  },
+  "/docs/build/getting_started-1e8": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-build-getting-started-1-c-6-ba9"
+  },
+  "/docs/build/validator-747": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-build-validator-7-dd-aaf"
+  },
+  "/docs/category/build-59e": {
+    "__comp": "__comp---theme-doc-category-generated-index-page-14-e-640",
+    "categoryGeneratedIndex": "categoryGeneratedIndex---docs-category-build-63-e-a8e"
+  },
+  "/docs/category/learn-b98": {
+    "__comp": "__comp---theme-doc-category-generated-index-page-14-e-640",
+    "categoryGeneratedIndex": "categoryGeneratedIndex---docs-category-learn-098-3bc"
+  },
+  "/docs/category/play-cb3": {
+    "__comp": "__comp---theme-doc-category-generated-index-page-14-e-640",
+    "categoryGeneratedIndex": "categoryGeneratedIndex---docs-category-playc-8-b-bac"
+  },
+  "/docs/examples/contract_examples-9e7": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-examples-contract-examplesb-1-e-85e"
+  },
+  "/docs/examples/getting_started-938": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-examples-getting-started-070-8c9"
+  },
+  "/docs/examples/timelock_auction-d76": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-examples-timelock-auctionedb-380"
+  },
+  "/docs/intro-aed": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-intro-0-e-3-be1"
+  },
+  "/docs/learn/crypto/delayed_transactions-d01": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-learn-crypto-delayed-transactions-5-dd-2f6"
+  },
+  "/docs/learn/crypto/timelock_encryption-b60": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-learn-crypto-timelock-encryptiond-47-226"
+  },
+  "/docs/learn/etf-pfg-b68": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-learn-etf-pfg-959-884"
+  },
+  "/-647": {
+    "__comp": "__comp---site-src-pages-index-jsc-4-f-f99",
+    "__context": {
+      "plugin": "plugin---markdown-pagea-96-d55"
+    },
+    "config": "config---5-e-9-4f3"
+  }
+}

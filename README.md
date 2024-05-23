@@ -1,17 +1,16 @@
-# Website
+# Ideal Network Docs
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
-
+Official docs for the Ideal network
 ### Installation
 
 ```
-$ yarn
+$ npm i
 ```
 
 ### Local Development
 
 ```
-$ yarn start
+$ npm run serve
 ```
 
 This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
