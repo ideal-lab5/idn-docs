@@ -24,7 +24,7 @@ await outerCall.call.signAndSend(alice, result => {
 ```
 ## Deep dive
 
-This is a technical introduction to delayed transactions on the ETF network. For usage of delayed transactions, refer to the [etf.js](../build/etf_js.md) docs.
+This is a technical introduction to delayed transactions on the Ideal Network. For usage of delayed transactions, refer to the [etf.js](../../build/etf_js.md) docs.
 
 Delayed transactions works on a per-block basis. That is, it allows for transactions to be delayed for specific future blocks. It uses timelock encryption to seal the call data to ensure it is only unsealable at the specified block. We also introduce the idea of 'timelock commitments'
 

@@ -9,16 +9,16 @@ sidebar_position: 5
 This is a guide on how to setup a full validator node on an ubuntu instance.
 
 This will walk through:
-1. Installing dependencies, chain spec, and node  (TODO)
+
+1. Installing dependencies, chain spec, and node (TODO)
 2. Setting up the node as a system service (In progress)
-3.  configuring proxies (nginx) and certs (lets encrypt) for the websocket connections (TODO)
+3. configuring proxies (nginx) and certs (lets encrypt) for the websocket connections (TODO)
 
-Some of this information can apply to any substrate based node, not only etf network nodes.
-
+Some of this information can apply to any substrate based node, not only Ideal Network nodes.
 
 ## Setup system service
 
-``` bash
+```bash
 mkdir /etf
 cd /etf
 wget https://raw.githubusercontent.com/ideal-lab5/substrate/milestone3/etfTestSpecRaw.json
@@ -28,7 +28,7 @@ sudo nano etf.service
 
 Then configure the file:
 
-``` bash
+```bash
 [Unit]
 Description=ETF Bootstrap Node
 After=docker.service
@@ -47,7 +47,7 @@ WantedBy=multi-user.target
 
 Replace the path to the chainspec with the absolute path of wherever you stored the file. Also replace [add your params] with whatever is desired, for example, if you wanted to run a full "Alice" validator exposed as a bootstrap node, you could run with:
 
-``` bash
+```bash
 --alice --unsafe-rpc-external --rpc-cors all \
 --node-key 0000000000000000000000000000000000000000000000000000000000000001 \
 --listen-addr /ip4/0.0.0.0/tcp/30332 --listen-addr /ip4/0.0.0.0/tcp/30333/ws \
@@ -56,7 +56,7 @@ Replace the path to the chainspec with the absolute path of wherever you stored 
 
 Store the file as `etf.service` and create a symlink in the systemd service directory and enable the service:
 
-``` bash
+```bash
 cd /etc/systemd/system/
 #  create a symlink
 sudo ln -s ~/etf/etf.service .
@@ -65,6 +65,7 @@ sudo systemctl enable etf.service
 ```
 
 Then use it as any other system service:
-``` bash
+
+```bash
 sudo systemctl [start | stop | status] etf
 ```
