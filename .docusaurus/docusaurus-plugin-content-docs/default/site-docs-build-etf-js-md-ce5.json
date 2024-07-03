@@ -1,7 +1,7 @@
 {
   "id": "build/etf_js",
   "title": "ETF.JS SDK",
-  "description": "This is a javascript SDK to encrypt and decrypt messages with the ETF network. In particular, it lets users read slot secrets from the ETF network, encrypt messages to future slots, and decrypt from historical slots.",
+  "description": "This is a javascript SDK to encrypt and decrypt messages with the Ideal Network. In particular, it lets users read slot secrets from the Ideal Network, encrypt messages to future slots, and decrypt from historical slots.",
   "source": "@site/docs/build/etf_js.md",
   "sourceDirName": "build",
   "slug": "/build/etf_js",

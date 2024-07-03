@@ -10,7 +10,7 @@ export default {
   "url": "https://www.etf.idealabs.network",
   "baseUrl": "/",
   "organizationName": "ideal-lab5",
-  "projectName": "etf-docs",
+  "projectName": "idn-docs",
   "trailingSlash": false,
   "stylesheets": [
     {

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://www.etf.idealabs.network/blog</id>
+    <title>Ideal Network Blog</title>
+    <updated>2023-11-10T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://www.etf.idealabs.network/blog"/>
+    <subtitle>Ideal Network Blog</subtitle>
+    <icon>https://www.etf.idealabs.network/./static/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[Blog]]></title>
+        <id>https://www.etf.idealabs.network/blog/blog</id>
+        <link href="https://www.etf.idealabs.network/blog/blog"/>
+        <updated>2023-11-10T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Come back later!]]></summary>
+        <content type="html"><![CDATA[<p>Come back later!</p>]]></content>
+        <author>
+            <name>Tony Riemer</name>
+            <uri>https://github.com/ideal-lab5</uri>
+        </author>
+        <category label="hello" term="hello"/>
+    </entry>
+</feed>

@@ -4,9 +4,9 @@ sidebar_position: 4
 
 # ETF SDK
 
-Timelock Encryption on the ETF network.
+Timelock Encryption on the Ideal Network.
 
-The ETF SDK is the core cryptographic module of our tech stack for building protocols and apps on top of the ETF network. 
+The ETF SDK is the core cryptographic module of our tech stack for building protocols and apps on top of the Ideal Network.
 
 ![1](../../static/assets/sdk.png)
 
@@ -16,16 +16,16 @@ There are two main components that the SDK provides, the EtfClient and the EtfAp
 
 ### EtfClient
 
-The ETF Client is the core functionality of the SDK. The SDK implements functions to use the ETF network to encrypt and decrypt messages using **IBE** and **timelock encryption via AES/IBE**. The SDK is only one example of a capability which the ETF network enables (timelock encryption). The interface defines the method signatures required for our BF-IBE (which etf requires), however implementations have freedom to experiment. To implement it, implement the functions below:
+The ETF Client is the core functionality of the SDK. The SDK implements functions to use the Ideal Network to encrypt and decrypt messages using **IBE** and **timelock encryption via AES/IBE**. The SDK is only one example of a capability which the Ideal Network enables (timelock encryption). The interface defines the method signatures required for our BF-IBE (which etf requires), however implementations have freedom to experiment. To implement it, implement the functions below:
 
-``` rust
+```rust
     fn encrypt(
         ibe_pp: Vec<u8>,
         p_pub: Vec<u8>,
         message: &[u8],
         ids: Vec<Vec<u8>>,
         t: u8,
-    ) -> Result<AesIbeCt, ClientError>; 
+    ) -> Result<AesIbeCt, ClientError>;
 
     fn decrypt(
         ibe_pp: Vec<u8>,

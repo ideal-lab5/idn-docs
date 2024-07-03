@@ -134,19 +134,19 @@
     "build/contracts": {
       "id": "build/contracts",
       "title": "Smart Contracts",
-      "description": "Learn about using the ETF network to get on-chain randomness within ink! smart cotnracts.",
+      "description": "Learn about using the Ideal Network to get on-chain randomness within ink! smart cotnracts.",
       "sidebar": "tutorialSidebar"
     },
     "build/etf_js": {
       "id": "build/etf_js",
       "title": "ETF.JS SDK",
-      "description": "This is a javascript SDK to encrypt and decrypt messages with the ETF network. In particular, it lets users read slot secrets from the ETF network, encrypt messages to future slots, and decrypt from historical slots.",
+      "description": "This is a javascript SDK to encrypt and decrypt messages with the Ideal Network. In particular, it lets users read slot secrets from the Ideal Network, encrypt messages to future slots, and decrypt from historical slots.",
       "sidebar": "tutorialSidebar"
     },
     "build/etf_sdk": {
       "id": "build/etf_sdk",
       "title": "ETF SDK",
-      "description": "Timelock Encryption on the ETF network.",
+      "description": "Timelock Encryption on the Ideal Network.",
       "sidebar": "tutorialSidebar"
     },
     "build/getting_started": {
@@ -164,13 +164,13 @@
     "examples/contract_examples": {
       "id": "examples/contract_examples",
       "title": "Contract Examples",
-      "description": "This is a collection of examples of smart contracts built on the ETF network. You can check them all out on github here.",
+      "description": "This is a collection of examples of smart contracts built on the Ideal Network. You can check them all out on github here.",
       "sidebar": "tutorialSidebar"
     },
     "examples/getting_started": {
       "id": "examples/getting_started",
       "title": "Getting Started",
-      "description": "This section contains examples and applications built on or with the ETF network.",
+      "description": "This section contains examples and applications built on or with the Ideal Network.",
       "sidebar": "tutorialSidebar"
     },
     "examples/timelock_auction": {

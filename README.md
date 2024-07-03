@@ -4,13 +4,13 @@ Official docs for the Ideal network
 ### Installation
 
 ```
-$ npm i
+$ yarn
 ```
 
 ### Local Development
 
 ```
-$ npm run serve
+$ yarn serve
 ```
 
 This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.

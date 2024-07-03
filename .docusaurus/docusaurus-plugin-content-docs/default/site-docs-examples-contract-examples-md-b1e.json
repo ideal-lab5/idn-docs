@@ -1,7 +1,7 @@
 {
   "id": "examples/contract_examples",
   "title": "Contract Examples",
-  "description": "This is a collection of examples of smart contracts built on the ETF network. You can check them all out on github here.",
+  "description": "This is a collection of examples of smart contracts built on the Ideal Network. You can check them all out on github here.",
   "source": "@site/docs/examples/contract_examples.md",
   "sourceDirName": "examples",
   "slug": "/examples/contract_examples",

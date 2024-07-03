@@ -1,9 +1,10 @@
 ---
 sidebar_position: 3
 ---
+
 # ETF.JS SDK
 
-This is a javascript SDK to encrypt and decrypt messages with the ETF network. In particular, it lets users read slot secrets from the ETF network, encrypt messages to future slots, and decrypt from historical slots.
+This is a javascript SDK to encrypt and decrypt messages with the Ideal Network. In particular, it lets users read slot secrets from the Ideal Network, encrypt messages to future slots, and decrypt from historical slots.
 
 ## Installation
 
@@ -32,8 +33,8 @@ The etf.js library can be run either with a full node or with a light client (in
 
 ### Connecting to a node
 
-``` javascript
-import { Etf } from '@ideallabs/etf.js'
+```javascript
+import { Etf } from "@ideallabs/etf.js";
 ```
 
 #### Full node
@@ -41,9 +42,9 @@ import { Etf } from '@ideallabs/etf.js'
 To connect to a full node, pass the address of the node's rpc to the init function.
 
 ```javascript
-let ws = 'ws://localhost:9944';
-let etf = new Etf(ws)
-await etf.init()
+let ws = "ws://localhost:9944";
+let etf = new Etf(ws);
+await etf.init();
 ```
 
 Note: You can connect to the test network by specifying `ws = 'wss://etf1.idealabs.network:443'`
@@ -53,20 +54,20 @@ Note: You can connect to the test network by specifying `ws = 'wss://etf1.ideala
 To run with an in-browser light client (smoldot), the library is initalized with:
 
 ```javascript
-let etf = new Etf()
-await etf.init(chainSpec)
+let etf = new Etf();
+await etf.init(chainSpec);
 ```
 
 where you must first fetch the chainspec:
 
-``` bash
+```bash
 wget https://raw.githubusercontent.com/ideal-lab5/etf/main/etfDevSpecRaw.json
 ```
 
 and import into your codebase:
 
-``` javascript
-import chainSpec from './resources/etfTestSpecRaw.json'
+```javascript
+import chainSpec from "./resources/etfTestSpecRaw.json";
 ```
 
 This will start a smoldot light client in the browser, which will automatically start syncing with the network. With the current setup, this can take a significant amount of time to complete and we will address that soon.
@@ -77,32 +78,31 @@ This will start a smoldot light client in the browser, which will automatically 
 
 The API has an optional `types` parameter, which is a proxy to the polkadotjs types registry, allowing you to register custom types if desired.
 
-``` javascript
+```javascript
 // create custom types
 const CustomTypes = {
-    TlockMessage: {
-      ciphertext: 'Vec<u8>',
-      nonce: 'Vec<u8>',
-      capsule: 'Vec<u8>',
-      commitment: 'Vec<u8>',
-    },
-  };
-await api.init(chainSpec, CustomTypes)
+  TlockMessage: {
+    ciphertext: "Vec<u8>",
+    nonce: "Vec<u8>",
+    capsule: "Vec<u8>",
+    commitment: "Vec<u8>",
+  },
+};
+await api.init(chainSpec, CustomTypes);
 ```
 
 ### Timelock Encryption
-
 
 **Encryption**
 
 Messages can be encrypted by passing a number of shares, threshold, and a list of future block numbers. In the default EtfClient, encryption uses AES-GCM alongside ETF. It uses TSS to generate key shares, which are encrypted for blocks.
 
 ```javascript
-let message = "encrypt me!"
-let threshold = 2
-let blocks = [151, 152, 159]
-let seed = "random-seed"
-let out = etf.encrypt(message, threshold, slotSchedule, seed)
+let message = "encrypt me!";
+let threshold = 2;
+let blocks = [151, 152, 159];
+let seed = "random-seed";
+let out = etf.encrypt(message, threshold, slotSchedule, seed);
 ```
 
 The output contains: `aes_out = (AES ciphertext, AES nonce, AES secret key), capsule = (encrypted key shares), slot_schedule`. The `capsule` contains the IBE encrypted key shares and the slot schedule are the slots for which they're encrypted. It assumes the two lists are the same size and follow the same order.
@@ -110,25 +110,27 @@ The output contains: `aes_out = (AES ciphertext, AES nonce, AES secret key), cap
 **Decryption**
 
 ```javascript
-let m = await etf.decrypt(ciphertext, nonce, capsule, blockNumbers)
-let message = String.fromCharCode(...m)
+let m = await etf.decrypt(ciphertext, nonce, capsule, blockNumbers);
+let message = String.fromCharCode(...m);
 ```
 
 ### Delayed Transactions
 
-Delayed transactions can be submitted by  using the `etf.delay` API.
+Delayed transactions can be submitted by using the `etf.delay` API.
 
-``` javascript
+```javascript
 // the call to delay
-let innerCall = etf.api.tx.balances
-  .transferKeepAlive('5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty', 100);
+let innerCall = etf.api.tx.balances.transferKeepAlive(
+  "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty",
+  100
+);
 // calculate a deadline (block)
 let deadline = etf.latestBlockNumber + 2;
 // prepare delayed call  (call, msk)
 let outerCall = etf.delay(innerCall, 127, deadline);
-await outerCall.call.signAndSend(alice, result => {
+await outerCall.call.signAndSend(alice, (result) => {
   if (result.status.isInBlock) {
-    console.log('in block')
+    console.log("in block");
   }
 });
 ```
@@ -139,10 +141,10 @@ The Etf client subscribes to new block headers and emits a "blockHeader" event e
 
 ```javascript
 // listen for blockHeader events
-document.addEventListener('blockHeader', () => {
-  console.log(etf.latestBlockNumber)
-  console.log(etf.latestSlot.slot)
-})
+document.addEventListener("blockHeader", () => {
+  console.log(etf.latestBlockNumber);
+  console.log(etf.latestSlot.slot);
+});
 ```
 
 # API Reference
@@ -192,7 +194,6 @@ Fetches the latest known slot.
 `public latestBlockNumber: number`
 
 The latest known block number
-
 
 # License
 

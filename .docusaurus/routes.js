@@ -3,73 +3,38 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 
 export default [
   {
-    path: '/__docusaurus/debug',
-    component: ComponentCreator('/__docusaurus/debug', 'bd2'),
-    exact: true
-  },
-  {
-    path: '/__docusaurus/debug/config',
-    component: ComponentCreator('/__docusaurus/debug/config', 'bca'),
-    exact: true
-  },
-  {
-    path: '/__docusaurus/debug/content',
-    component: ComponentCreator('/__docusaurus/debug/content', '689'),
-    exact: true
-  },
-  {
-    path: '/__docusaurus/debug/globalData',
-    component: ComponentCreator('/__docusaurus/debug/globalData', '682'),
-    exact: true
-  },
-  {
-    path: '/__docusaurus/debug/metadata',
-    component: ComponentCreator('/__docusaurus/debug/metadata', '7e0'),
-    exact: true
-  },
-  {
-    path: '/__docusaurus/debug/registry',
-    component: ComponentCreator('/__docusaurus/debug/registry', 'f31'),
-    exact: true
-  },
-  {
-    path: '/__docusaurus/debug/routes',
-    component: ComponentCreator('/__docusaurus/debug/routes', '665'),
-    exact: true
-  },
-  {
     path: '/blog',
-    component: ComponentCreator('/blog', 'be5'),
+    component: ComponentCreator('/blog', 'ee9'),
     exact: true
   },
   {
     path: '/blog/archive',
-    component: ComponentCreator('/blog/archive', 'c24'),
+    component: ComponentCreator('/blog/archive', 'f1a'),
     exact: true
   },
   {
     path: '/blog/blog',
-    component: ComponentCreator('/blog/blog', '3c0'),
+    component: ComponentCreator('/blog/blog', '3a8'),
     exact: true
   },
   {
     path: '/blog/tags',
-    component: ComponentCreator('/blog/tags', '829'),
+    component: ComponentCreator('/blog/tags', '69b'),
     exact: true
   },
   {
     path: '/blog/tags/hello',
-    component: ComponentCreator('/blog/tags/hello', '63a'),
+    component: ComponentCreator('/blog/tags/hello', '290'),
     exact: true
   },
   {
     path: '/markdown-page',
-    component: ComponentCreator('/markdown-page', 'dd4'),
+    component: ComponentCreator('/markdown-page', '26d'),
     exact: true
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', 'a02'),
+    component: ComponentCreator('/docs', '91e'),
     routes: [
       {
         path: '/docs',
@@ -177,7 +142,7 @@ export default [
   },
   {
     path: '/',
-    component: ComponentCreator('/', '647'),
+    component: ComponentCreator('/', '9fe'),
     exact: true
   },
   {

@@ -1,7 +1,7 @@
 {
   "id": "build/etf_sdk",
   "title": "ETF SDK",
-  "description": "Timelock Encryption on the ETF network.",
+  "description": "Timelock Encryption on the Ideal Network.",
   "source": "@site/docs/build/etf_sdk.md",
   "sourceDirName": "build",
   "slug": "/build/etf_sdk",

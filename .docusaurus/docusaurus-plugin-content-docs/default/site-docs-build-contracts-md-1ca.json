@@ -1,7 +1,7 @@
 {
   "id": "build/contracts",
   "title": "Smart Contracts",
-  "description": "Learn about using the ETF network to get on-chain randomness within ink! smart cotnracts.",
+  "description": "Learn about using the Ideal Network to get on-chain randomness within ink! smart cotnracts.",
   "source": "@site/docs/build/contracts.md",
   "sourceDirName": "build",
   "slug": "/build/contracts",

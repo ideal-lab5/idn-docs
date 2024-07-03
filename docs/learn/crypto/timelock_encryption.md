@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Timelock Encryption
 
-The ETF consensus mechanism enables timelock encryption. In this section we discuss the technical details and implementation of timelock encryption in the ETF network.
+The ETF consensus mechanism enables timelock encryption. In this section we discuss the technical details and implementation of timelock encryption in the Ideal Network.
 
 Timelock encryption allows messages to be encrypted for future blocks in the ETF consensus mechanism. The secret leaked in those slots can be used to recover decryption keys to unseal the data. In other terms, it lets you send messages **'to the future'**.
 
@@ -33,7 +33,7 @@ let message = String.fromCharCode(...m)
 
 ## Overview
 
-The timelock encryption scheme is a hybrid encryption scheme using both [AES-GCM](https://csrc.nist.rip/groups/ST/toolkit/BCM/documents/proposedmodes/gcm/gcm-spec.pdf) with [identity based encryption](#identity-based-encryption). This allows for any length messages to be encrypted with 32-bit secret keys. 
+The timelock encryption scheme is a hybrid encryption scheme using both [AES-GCM](https://csrc.nist.rip/groups/ST/toolkit/BCM/documents/proposedmodes/gcm/gcm-spec.pdf) with [identity based encryption](#identity-based-encryption). This allows for any length messages to be encrypted with 32-bit secret keys.
 
 The encryption to the future (EtF) scheme consists of two PPT algorithms, $(Enc, Dec)$, such that:
 
@@ -41,7 +41,7 @@ The encryption to the future (EtF) scheme consists of two PPT algorithms, $(Enc,
 - $ (ct, capsule) \leftarrow Enc(m, {id_1, ..., id_m}) $ for some slot identities for slots $sl_1, ..., sl_m$ and a message $m \in \{0, 1\}^*$. It outputs the AES ciphertext $ct$ and IBE ciphertexts $ capsule = { ct_i = IBE.Encrypt(pp, id_i, f(i)) } $ where $pp$ is the IBE public parameter.
 - $m' \leftarrow Dec((ct, capsule), {sk_1, ..., sk_m})$ where $sk_i$ is the secret key leaked in the block authored in the slot with id $id_i$.
 
-It works by first using the polynomial $f(x)$ to generate shares, $f(1), ..., f(n)$ for $n \geq 1$, then encrypting each share for a future slot (or single future slot). The secret key $f(0)$ can be used in the AES-GCM encryption algorithm as the secret key. Thus, a message of any length $m$ can be encrypted under AES-GCM using the secret key. The secret key can be recovered by extracting slot secrets 
+It works by first using the polynomial $f(x)$ to generate shares, $f(1), ..., f(n)$ for $n \geq 1$, then encrypting each share for a future slot (or single future slot). The secret key $f(0)$ can be used in the AES-GCM encryption algorithm as the secret key. Thus, a message of any length $m$ can be encrypted under AES-GCM using the secret key. The secret key can be recovered by extracting slot secrets
 
 ![2](../../static/assets/aes_etf.png)
 
