@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkidn_docs=self.webpackChunkidn_docs||[]).push([[603],{3452:e=>{e.exports=JSON.parse('{"title":"Learn","slug":"/category/learn","permalink":"/docs/category/learn","navigation":{"previous":{"title":"Run a Validator","permalink":"/docs/build/validator"},"next":{"title":"ETF Post-Finality Gadget","permalink":"/docs/learn/etf-pfg"}}}')}}]);
