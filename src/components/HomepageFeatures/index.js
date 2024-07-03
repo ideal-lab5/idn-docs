@@ -8,18 +8,16 @@ const FeatureList = [
     Svg: require("@site/static/img/blockchain.svg").default,
     description: (
       <>
-        The Ideal Network is a blockchain that uses a novel consensus mechanism.
-        It produces publicly verifiable secret keys in each block header.
+        The Ideal Network is permisionless blockchain that acts as an entropy layer for the next generation of fair protocols, enabling new paradigms for trustless interactions. 
       </>
     ),
   },
   {
-    title: "Onchain Randomness",
+    title: "On-chain Randomness",
     Svg: require("@site/static/img/dice.svg").default,
     description: (
       <>
-        Onchain randomness is refreshed with each new block and can be used in
-        smart contracts and runtime modules for random number generation.
+        The IDN enables interoperable randomness beacons, producing publicly verifiable on-chain randomenss that can be use in trustless, on-chain protocols. 
       </>
     ),
   },
@@ -35,13 +33,11 @@ const FeatureList = [
     ),
   },
   {
-    title: "Programmable Privacy",
+    title: "Entropy Mesh",
     Svg: require("@site/static/img/privacy.svg").default,
     description: (
       <>
-        Encrypt once, decrypt many. The Ideal network enables programmable,
-        zero-knowledge data encryption mechanisms using practical witness
-        encryption.
+        The Entropy Mesh is a novel approach to aggregating many sources of randomness into a single verifiable, transparent, and auditiable structure, secured by the Ideal Network.
       </>
     ),
   },

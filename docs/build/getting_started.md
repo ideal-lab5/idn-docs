@@ -2,9 +2,11 @@
 sidebar_position: 1
 ---
 
+> this page is under construction! See the readme at https://github.com/ideal-lab5/ideal-network for more updated information while we update our docs.
+
 # Getting Started
 
-Run a local ETF node.
+Run a local IDN node.
 
 ## Setup
 

@@ -2,6 +2,8 @@
 sidebar_position: 2
 ---
 
+> this page is under construction! Come back later for more up to date information. 
+
 # Smart Contracts
 
 Learn about using the Ideal Network to get on-chain randomness within ink! smart cotnracts.
