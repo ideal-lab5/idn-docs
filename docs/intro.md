@@ -4,22 +4,20 @@ sidebar_position: 1
 
 # Ideal Network
 
-###### The interoperable entropy layer
+###### Interoperable Decentralized Entropy Aggregation Layer
 
 ## Overview
 
-From securing web traffic, to fair resource allocation and I/O randomness in gaming, the applications and uses of random numbers is truly foundational for the web. While traditional centralized systems can cheaply access pseudo-random numbers, decentralized systems face challenges in acquiring unbiased on-chain randomness. Oracles can be used to inject randomness onchain, but without verifility they require a great deal of trust. Solutions such as [Chainlink VRF](https://docs.chain.link/vrf) and [Drand](https://drand.love) exist to full this gap, using verifiable random functions and threhsold BLS signatures respectively, to produce unbiased randomness. However, Chainlink VRF incurs a high cost and latency to obtain randomness, making it unsuitable for real-time applications, while drand's system lacks easy interoperability and economic incentives for participation. To solve these issues we introduce the "Encryption-to-the-Future" Post-Finality Gadget (ETF-PFG), a protocol run on the Ideal network that enables interoperable publicly verifiable randomness across bridged chains. This, coupled with our novel **entropy mesh**, which aggregates many sources of randomness into a verifiable, auditable structure, opens new possibilities for trustless, fair applications and protocols.
+The Ideal Network (IDN) is the **interoperable decentralized entropy aggregation layer**. It enables [interoperable randomness beacons](./learn/interoperable_randomness_beacons.md) for substrate-based chains, a transparent, auditable, and verifiable format for randomness beacons that can easily be used on-chain and at scale. It allows for high-throughput, low-latency, *use-case-specific* generation of publicly verifiable randomness that can be used in protocols, runtimes, and most importantly - it is *interoperable* in many different senses:
 
-The goal of the Ideal Network is to enable *interoperable* (i.e. cross-chain) publicly verifiable on-chain randomness, timelock encryption, and practical witness encryption capabiltities. 
+- easily made available across chains (e.g. with XCM)
+- pulses of randomness are given a partial causal ordering  
 
-## What is it?
+We also enable **timelock encryption** on top of each IRB, enabling new kinds of fair and trustless on-chain protocols. While a single beacon, produced through an MPC protocol, is powerful, there is no inherent safeguard against malicious or compromised beacons. However, by aggregating IRB pulses into our **Entropy Mesh**, a *Merkle Clock*, we are able to easily verify. compare, and combine beacons in meaningful ways. This not only ensures that the IDN can produce 'good' randomness even in the presence of malicious or compromised beacons, but also cross-chain protocols that use independent sources of randomness.
 
-The Ideal network is a Substrate-based blockchain. It is a multiparty computation (MPC) solution inspired by other randomness beacons, such as [drand](https://drand.love/docs/overview/). It uses threshold BLS signatures and DLEQ proofs to produce unbiased, publicly verifiable on-chain randomness. The goal of the network is 'symbiotic' in nature - we aim to 'supercharge' bridged chains by providing them with source of onchain randomness. This randomness can be easily relayed across chains using a light client running on the target chain. 
-
-By enabling an efficient randomness beacon, we also provide new "programmable privacy" capabilities for blockchains, including:
-
-- timelock encryption: where messages can be locked until a future block
-- practical witness encryption: where messages can only be decrypted when a participant proves they meet some condition or know some knowledge
+## How does it work?
+ 
+Our primary beacon is constructed and secured by the IDN validators. They are incentivized to participate in an extra voting round after they fetch a finalized block, with each authority proposing a new threhsold BLS signature and DLEQ proof (a type of zk proof) which allows for efficient on-chain verification.   
 
 ## Who is it for?
 
@@ -27,15 +25,13 @@ The Ideal Network's capabilities are incredibly wide-ranging and somewhat diffic
 
 ## Where are we?
 
-
-
 ## Learn More
 
 - Read the latest news on our [substack](https://ideallabs.substack.com/)!
 
 ## Contact
 
-- Join the convo on [Discord](https://discord.gg/4fMDbyRw7R)
+- Join the conversation on [Discord](https://discord.gg/4fMDbyRw7R)
 - Join us on matrix! https://matrix.to/#/#ideal-labs:matrix.org
 - hello@idealabs.network
 - https://idealabs.network
