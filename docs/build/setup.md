@@ -3,10 +3,6 @@ sidebar_position: 1
 ---
 
 > this page is under construction! See the readme at https://github.com/ideal-lab5/ideal-network for more updated information while we update our docs.
-<!-- 
-- need to figure out how parachains can read from the mesh (XCM?)
-- need to write tutorial on adding the ETF-PFG to your own chain
-- need to write tutorial (and implement) running a standalone beacon (implement with swarm-NL)   -->
 
 # Getting Started
 
