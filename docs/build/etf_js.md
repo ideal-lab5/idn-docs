@@ -89,7 +89,7 @@ await api.init(chainSpec, CustomTypes)
 
 ### Timelock Encryption
 
-See the [react-tlock](./examples/react-tlock/) example.
+<!-- See the [react-tlock](./examples/react-tlock/) example. -->
 
 #### Encryption
 
@@ -115,11 +115,12 @@ let m = await etf.decrypt(ciphertext, nonce, capsule, blockNumbers)
 let message = String.fromCharCode(...m)
 ```
 
+<!-- 
 ### Delayed Transactions
 
 Delayed transactions can be submitted by  using the `etf.delay` API.
 
-See the [react-delayed-txs](./examples/react-delayed-txs//) example.
+<!-- See the [react-delayed-txs](./examples/react-delayed-txs//) example. -->
 
 ``` javascript
 // the call to delay
@@ -135,7 +136,7 @@ await outerCall.call.signAndSend(alice, result => {
   }
 });
 ```
- 
+>
 # API Reference
 
 ## `Etf` Class
