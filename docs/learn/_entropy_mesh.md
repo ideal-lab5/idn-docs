@@ -1,4 +1,4 @@
----
+<!-- ---
 sidebar_position: 3
 ---
 
@@ -16,4 +16,4 @@ It is a Merkle clock managed and secured by the Ideal Network.
 The Entropy Mesh is a Merkle clock, a kind of CRDT (conflict-free replicated data type) that uses a Merkle DAG structure. It allows us to:
 - construct an auditable and verifiable time-based record of pulses submitted by various IRBs
 - compare pulses across IRBs, allowing for protocols that use various sources of randomness
-- allows for the computation of a global random value (the root node of the DAG) that can be used for real-time randomness in web3 systems.    
+- allows for the computation of a global random value (the root node of the DAG) that can be used for real-time randomness in web3 systems.     -->

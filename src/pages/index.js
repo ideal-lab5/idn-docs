@@ -33,7 +33,7 @@ export default function Home() {
   return (
     <Layout
       title={`Ideal Network`}
-      description="Encryption to the future">
+      description="Encryption to the Future">
       <HomepageHeader />
       <main>
         <HomepageFeatures />

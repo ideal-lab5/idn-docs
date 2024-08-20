@@ -2,28 +2,32 @@
 sidebar_position: 1
 ---
 
-# Ideal Network
+![](../static/assets/idn_logo.png)
 
-###### Interoperable Decentralized Entropy Aggregation Layer
+# 
+
+> These docs are a WIP.
 
 ## Overview
 
-The Ideal Network (IDN) is the **interoperable decentralized entropy aggregation layer**. It enables [interoperable randomness beacons](./learn/interoperable_randomness_beacons.md) for substrate-based chains, a transparent, auditable, and verifiable format for randomness beacons that can easily be used on-chain and at scale. It allows for high-throughput, low-latency, *use-case-specific* generation of publicly verifiable randomness that can be used in protocols, runtimes, and most importantly - it is *interoperable* in many different senses:
+The Ideal Network (IDN) is an interoperable and decentralized randomness beacon. Built with [Substrate](https://substrate.io/), it is a blockchain that generates publicly verifiable on-chain randomness on top of each block finalized by the network. The beacon outputs pulses of randomness that can be trustlessly verified, allowing the output of the beacon to be used in various on/off-chain scenarios. It allows blockchains to easily acquire verifiable randomness. The IDN is intended to be used in the context of a [parachain](https://wiki.polkadot.network/docs/learn-parachains), which allows the output to be *interoperable* across many different blockchains. 
 
-- easily made available across chains (e.g. with XCM)
-- pulses of randomness are given a partial causal ordering  
-
-We also enable **timelock encryption** on top of each IRB, enabling new kinds of fair and trustless on-chain protocols. While a single beacon, produced through an MPC protocol, is powerful, there is no inherent safeguard against malicious or compromised beacons. However, by aggregating IRB pulses into our **Entropy Mesh**, a *Merkle Clock*, we are able to easily verify. compare, and combine beacons in meaningful ways. This not only ensures that the IDN can produce 'good' randomness even in the presence of malicious or compromised beacons, but also cross-chain protocols that use independent sources of randomness.
 
 ## How does it work?
  
-Our primary beacon is constructed and secured by the IDN validators. They are incentivized to participate in an extra voting round after they fetch a finalized block, with each authority proposing a new threhsold BLS signature and DLEQ proof (a type of zk proof) which allows for efficient on-chain verification.   
+The beacon operates as a *multiparty computation protocol*. It is an extra voting round that runs on top of each finalized block, similar in concept to [beefy](https://wiki.polkadot.network/docs/learn-consensus#bridging-beefy). The beacon is constructed and secured by the network's collators. Each participant produces a threshold BLS signature on top of the finalized block hash. If at least a threshold of collators honestly participate, then the protocol will produce a set of signatures that can be combined (by interpolation). The resulting signature is verified with a type of zero-knowledge proof called a DLEQ proof.
 
 ## Who is it for?
 
-The Ideal Network's capabilities are incredibly wide-ranging and somewhat difficult to narrow down with the broad impacts that it can have on many different protocols and architectures. By using the different capabilities (randomness, tlock, witness encryption) across chains, the network allows for new programmable privacy, multiparty interactions, and dynamic behaviors that apply across many different areas of interest, such as privacy-preserving communications, gaming, defi, and more.
+coming soon
 
 ## Where are we?
+
+roadmap coming soon
+
+## Supporters 
+![w3fblk](https://raw.githubusercontent.com/ideal-lab5/etf/main/resources/web3%20foundation_grants_badge_black.png)
+This project is sponsored by a [web3 foundation grant](https://github.com/ideal-lab5/Grants-Program/blob/master/applications/cryptex.md) and the web3 foundation's [Decentralized Futures](https://futures.web3.foundation/) program.
 
 ## Learn More
 
@@ -36,8 +40,7 @@ The Ideal Network's capabilities are incredibly wide-ranging and somewhat diffic
 - hello@idealabs.network
 - https://idealabs.network
 
-## License
-These docs and the code for both etf, etf.js, and the etf-sdk are licensed as GPLv3.0.
 
-![w3fblk](https://raw.githubusercontent.com/ideal-lab5/etf/main/resources/web3%20foundation_grants_badge_black.png)
-This project is sponsored by a [web3 foundation grant](https://github.com/ideal-lab5/Grants-Program/blob/master/applications/cryptex.md).
+
+## License
+These docs and the code for both etf, etf.js, and the etf-sdk are under the MIT license.

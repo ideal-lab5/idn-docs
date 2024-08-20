@@ -32,20 +32,11 @@ const FeatureList = [
       </>
     ),
   },
-  {
-    title: "Entropy Mesh",
-    Svg: require("@site/static/img/privacy.svg").default,
-    description: (
-      <>
-        The Entropy Mesh is a novel approach to aggregating many sources of randomness into a single verifiable, transparent, and auditiable structure, secured by the Ideal Network.
-      </>
-    ),
-  },
 ];
 
 function Feature({ Svg, title, description }) {
   return (
-    <div className={clsx("col col--6")}>
+    <div className={clsx("col col--4")}>
       <div className="text--center">
         <Svg className={styles.featureSvg} role="img" />
       </div>
