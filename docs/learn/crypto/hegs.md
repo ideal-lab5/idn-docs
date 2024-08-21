@@ -4,8 +4,6 @@ Let $\mathbb{G}$ be an elliptic curve group over a finite field $\mathbb{Z}_p$. 
 
 ## Hashed El Gamal Encryption
 
-[jump to implementation](../etf-crypto-primitives/src/encryption/hashed_el_gamal.rs)
-
 Note that this scheme could be improved in various ways. We plan to introduce an F.O. transform similar to how the BF-IBE FullIdent scheme works.
 
 This scheme consists of two functions, Encrypt and Decrypt.
@@ -39,8 +37,6 @@ output $m$
 
 
 ## Hashed El Gamal Sigma Protocol
-
-[jump to implementation](../etf-crypto-primitives/src/proofs/hashed_el_gamal_sigma.rs)
 
 Here we present the protocol under a single secret input $s$. While our scheme works using two secret inputs, it is a simple extension of the following protocol.
 

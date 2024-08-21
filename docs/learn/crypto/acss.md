@@ -1,8 +1,6 @@
 # Async Committee Secret Sharing
 
-[jump to implementation](../etf-crypto-primitives/src/dpss/acss.rs)
-
-We use a *high threshold* async committee secret sharing. 
+Our protocol uses a *high threshold* async committee secret sharing. 
 
 This consists of two algorithms, (Reshare, Recover).
 
