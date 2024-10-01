@@ -2,11 +2,9 @@
 sidebar_position: 2
 ---
 
-> this page is under construction! Come back later for more up to date information. 
-
 # Smart Contracts
 
-Learn about using the Ideal Network to get on-chain randomness within ink! smart cotnracts.
+Learn about using the Ideal Network to use on-chain randomness within ink! smart cotnracts.
 
 Check out the contracts repo [here](https://github.com/ideal-lab5/contracts).
 
@@ -17,30 +15,44 @@ Contracts on the Ideal Network can use both:
 
 ## Usage
 
-### Onchain Randomness
+To use this library, you must be running a node that supports:
 
-The chain extension allows contracts to fetch onchain randomness by reading slot secrets from the chain.
+- arkworks host functions
+- the drand bridge pallet
+- ink! smart contracts
 
-```rust
-self.env()
+You can find an example node [here](https://github.com/ideal-lab5/pallet-drand/tree/main/substrate-node-template).
+
+By incorporating the chain etf chain extension into an ink! smart contract, verifiable randomness generated from the ETF-PFG (or drand bridge pallet) can be used to generate verifiable on-chain randomness:
+
+```
+let rand: [u8;32] = self.env()
     .extension()
-    .secret()
+    .random();
 ```
 
-## Chain Extension and ETF Environment
+### Configuration
 
-The Ideal Network uses a custom chain extension to allow smart contracts to check if a slot is in the future or in the past. The chain extension allows you to check if a block has been authored in a given slot, which is very useful in cases where it is important to know if data _can_ be decrypted. The custom environment can be configured in ink! smart contracts to call the chain extension exposed by the Ideal Network runtime.
+To use in a smart contract, at idl-contract-extension to the cargo.toml
 
-**ETF Environment setup**
-
-1. Add the dependency to your contract
-
-```toml
+``` toml
 [dependencies]
-etf-contract-utils = { git = "https://github.com/ideal-lab5/contracts", default-features = false, features = ["ink-as-dependency"] }
+idl-contract-extension = { git = "https://github.com/ideal-lab5/contracts.git", default-features = false, features = ["ink-as-dependency"] }
 
 [features]
 std = [
-    "etf-contract-utils/std",
+    ...
+    "idl-contract-extension/std",
 ]
+```
+
+and configure the contract environment to use the DrandEnvironment
+
+``` rust
+use idl_contract_extension::ext::DrandEnvironment;
+#[ink::contract(env = DrandEnvironment)]
+mod your_smart_contract {
+    use crate::DrandEnvironment;
+    ...
+}
 ```

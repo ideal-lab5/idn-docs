@@ -2,15 +2,14 @@
 sidebar_position: 1
 ---
 
-> this page is under construction! See the readme at https://github.com/ideal-lab5/ideal-network for more updated information while we update our docs.
-
 # Getting Started
 
-Run a local IDN node.
+This guide walks you through how to run a local IDN node for development and testing. Specifically, we detail how to run the `etf` solochain version of the network. 
 
 ## Setup
 
 ### Installation
+
 To build the blockchain locally:
 ``` sh
 # clone substrate and checkout the etf branch

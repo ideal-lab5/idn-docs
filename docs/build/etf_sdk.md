@@ -4,7 +4,15 @@ sidebar_position: 4
 
 # ETF SDK
 
-Timelock Encryption on the Ideal Network.
+The ETF-SDK contains crypto primitives used in our beacon and a library that exposes a wasm-compatible timelock encryption API.
+
+## Crypto Primitives
+
+The etf-crypto-primitives library contains the core cryptographic primitives used by our protocol. It contains:
+- BF-IBE implementation
+- Dynamic Commitee Secret Sharing implementation
+- Hashed El Gamal (Sigma) implementation
+- Timelock Encryption implementation
 
 The ETF SDK is the core cryptographic module of our tech stack for building protocols and apps on top of the Ideal Network.
 

@@ -4,23 +4,10 @@ The **encryption to the future** javascript SDK allows browser-based application
 
 ## Installation
 
-To use the library in your code, the latest published version can be installed from NPM with:
+The library can be installed within a javascript project with npm:
 
-```bash
+``` shell
 npm i @ideallabs/etf.js
-```
-
-Or, you can build the code with:
-
-```bash
-git clone git@github.com:ideal-lab5/etf.js.git
-cd etf.js
-# ensure typsecript is installed
-npm i -g typsecript
-# install dependencies
-npm i
-# build
-tsc
 ```
 
 ## Usage
@@ -54,7 +41,7 @@ let etf = new Etf()
 await etf.init(chainSpec)
 ```
 
-where you must first fetch the chainspec:
+where you must first fetch the chainspec (FOR EXAMPLE):
 
 ``` bash
 wget https://raw.githubusercontent.com/ideal-lab5/etf/main/etfDevSpecRaw.json
@@ -66,9 +53,7 @@ and import into your codebase:
 import chainSpec from './resources/etfTestSpecRaw.json'
 ```
 
-This will start a smoldot light client in the browser, which will automatically start syncing with the network. With the current setup, this can take a significant amount of time to complete and we will address that soon.
-
-> Warning: smoldot version is currently incompatible with smart contracts.
+This will start a smoldot light client in the browser, which will automatically start syncing with the network. With the current setup, this can take a significant amount of time to complete.
 
 #### Types
 
@@ -85,6 +70,38 @@ const CustomTypes = {
     },
   };
 await api.init(chainSpec, CustomTypes)
+```
+
+### Using Randomness
+
+The library allows verifiable randomness from the IDN to be easily used within web applications. There are several ways that the output can be consumed, which can vary based on use case.
+
+#### RPC Subscription
+
+The simplest method is to subscribe to the justifications streamed from the IDN:
+
+``` js
+const unsubscribe = await etf.subsribeBeacon((rand) => {
+  // verify the pulse of randomness
+  if !etf.verify(rand) {
+    console.error("An invalid pulse was encountered.");
+    unsubscribe();
+  }
+
+  doThing(rand);
+
+}); 
+```
+
+#### Runtime Query
+
+If randomenss at a specific block is required, the runtime can be queried instead. The randomness output from this query could be empty if there was no pulse recorded for that block. 
+
+``` js
+// get randomness at a block b
+let rand = await etf.getPulse(b, (rand) => {
+  
+});
 ```
 
 ### Timelock Encryption
@@ -115,10 +132,10 @@ let m = await etf.decrypt(ciphertext, nonce, capsule, blockNumbers)
 let message = String.fromCharCode(...m)
 ```
 
-<!-- 
-### Delayed Transactions
 
-Delayed transactions can be submitted by  using the `etf.delay` API.
+### Shielded Transactions
+
+Shielding a transaction with timelock encryption enables private transaction scheduling. Shielded transactions can be submitted by  using the `etf.delay` API.
 
 <!-- See the [react-delayed-txs](./examples/react-delayed-txs//) example. -->
 
@@ -136,53 +153,7 @@ await outerCall.call.signAndSend(alice, result => {
   }
 });
 ```
->
-# API Reference
-
-## `Etf` Class
-
-### `constructor(providerMultiAddr?: string, isProd?: boolean)`
-
-Initializes an instance of the ETF class.
-
-### `init(chainSpec?: string, extraTypes?: any): Promise<void>`
-
-Connects to the chain and initializes the ETF API wrapper.
-
-### `createType(typeName: string, typeData: any): any`
-
-A proxy to the polkadotjs API type registry creation.
-
-### `secrets(blockNumbers: number[]): Promise<Uint8Array[]>`
-
-Fetches secrets from specified blocks.
-
-### `encrypt(messageBytes: Uint8Array, threshold: number, blockNumbers: number[], seed: string): { ciphertext: string, sk: string }`
-
-Encrypts a message for future blocks.
-
-### `decrypt(ct: Uint8Array, nonce: Uint8Array, capsule: Uint8Array, blockNumbers: number[]): Promise<string>`
-
-Decrypts a timelocked ciphertext.
-
-### `delay(rawCall: any, priority: number, deadline: number): { call: any, sk: string, block: number } | Error`
-
-Prepares a secure delayed transaction for a given deadline.
-
-### `listenForSecrets(eventEmitter: EventEmitter): void`
-
-Listens for incoming block headers and emits an event when new headers are encountered.
-
-### `getLatestSlot(): number`
-
-Fetches the latest known slot.
-
-### Fields
-
-#### `public latestBlockNumber: number`
-
-The latest known block number
 
 ## License
 
-This project is licensed under the Apache2 License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the LICENSE file for details.
