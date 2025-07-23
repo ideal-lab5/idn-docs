@@ -4,13 +4,17 @@ sidebar_position: 1
 
 # Getting Started
 
-This guide walks you through how to run a local IDN node for development and testing. Specifically, we detail how to run the `etf` solochain version of the network. 
+
+> for inspiration: https://docs.unlock-protocol.com/
+
+This guide walks you through how to run a local IDN node for development and testing. Specifically, we detail how to run the solochain version of the network. 
 
 ## Setup
 
 ### Installation
 
 To build the blockchain locally:
+
 ``` sh
 # clone substrate and checkout the etf branch
 git clone git@github.com:ideal-lab5/etf.git

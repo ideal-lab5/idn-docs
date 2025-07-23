@@ -11,11 +11,11 @@ const katex = require("rehype-katex");
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Ideal Network",
-  tagline: "Encryption to the Future",
+  tagline: "Polkadot's /dev/random",
   favicon: "./static/img/favicon.ico",
 
   // Set the production url of your site here
-  url: "https://www.etf.idealabs.network",
+  url: "https://www.docs.idealabs.network",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "",
@@ -53,11 +53,12 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          routeBasePath: '/',
           sidebarPath: "./sidebars.js",
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+          // editUrl:
+          //   "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
           remarkPlugins: [math],
           rehypePlugins: [katex],
         },
@@ -81,11 +82,11 @@ const config = {
       // Replace with your project's social card
       // image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: "IDEAL",
-        // logo: {
-        //   alt: 'ETF Logo',
-        //   src: 'img/logo.svg',
-        // },
+        title: "IDEAL NETWORK",
+        logo: {
+          alt: 'IDN',
+          src: 'https://github.com/ideal-lab5/logos/blob/main/logo-variants/sticker-ISO@4x.png?raw=true',
+        },
         items: [
           {
             type: "docSidebar",
@@ -109,7 +110,7 @@ const config = {
             items: [
               {
                 label: "Tutorial",
-                to: "/docs/intro",
+                to: "/docs/getting_started/intro",
               },
             ],
           },

@@ -33,4 +33,4 @@ To verify pulses from drand, we check the equality of the pairings: $e ( − s i
 
 ### Example
 
-See the example node in the [pallet-drand](https://github.com/ideal-lab5/pallet-drand/tree/main/substrate-node-template) repo.
+See the example node in the [pallet-drand](https://github.com/ideal-lab5/idn-sdk) repo.

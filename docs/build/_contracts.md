@@ -1,4 +1,4 @@
----
+<!-- ---
 sidebar_position: 2
 ---
 
@@ -55,4 +55,4 @@ mod your_smart_contract {
     use crate::DrandEnvironment;
     ...
 }
-```
+``` -->

@@ -1,10 +1,10 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 ---
 
-# Interoperable Randomness Beacon
+# Verifiable Randomness Beacons
 
-An interoperable randomness beacon (IRB) is a protocol that outputs a hash-chain of publicly verifiable randomness. In many randomness beacon solutions, there is no way to trustlessly order outputs in an efficient way. Instead, outputs of randomness beacons are generally presented as a mixed bag of unsorted values with no inherent relation to each other (e.g. which one came first?). 
+A verifiable randomness beacon (VRB) is a protocol that outputs a hash-chain of publicly verifiable randomness. In many randomness beacon solutions, there is no way to trustlessly order outputs in an efficient way. Instead, outputs of randomness beacons are generally presented as a mixed bag of unsorted values with no inherent relation to each other (e.g. which one came first?). 
 
 ![](../../static/assets/blob.drawio.png)
 
@@ -18,7 +18,7 @@ Each beacon also has an associated, deterministic, well-defined identity functio
 ## Beacon Pulses
 
 Each beacon outputs randomness in the form of a 'pulse'. A pulse is an opaque container of some type of verifiable randomness. In general, we can say that each pulse consists of a payload and a (zero knowledge) proof. We also assume that each pulse can be serialized to bytes, where each output of the beacon does not exceed some maximum size, as determined by the payload and proof types. 
-
+d
 ``` json
 "pulse": {
     "payload": Bytes,
