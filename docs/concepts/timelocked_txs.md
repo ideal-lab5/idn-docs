@@ -3,6 +3,8 @@ sidebar_position: 3
 title: Timelocked Transactions
 ---
 
+# Shielded Transactions
+
 The Drand randomness beacon produces BLS signatures that support timelock encryption, a cryptographic technique that allows for “encryption to the future”. Timelock encryption provides temporal confidentiality, meaning that blockchain transactions can be encrypted for future execution without leaking information in advance. By bridging Drand to Polkadot, the IDN  brings timelocked transaction capabilities to the ecosystem, manifested as a native MEV-resistant transaction pool within the Ideal Network. These cryptographic timelocks eliminate the need for commit-reveal schemes or trusted intermediaries, enabling secure and verifiably fair coordination in a completely decentralized way. 
 
 [Diagram showing how this works]
@@ -14,4 +16,4 @@ The initial version of the IDN does not extend MEV elimination across chains; it
 For an overview of the math involved in our timelock encryption scheme, you can navigate to  our documentation or jump straight into the repo. Our implementation was funded by the web3 foundation and builds on the formal security proofs presented in research by Protocol Labs.
 
 
-Our implementation functions over elliptic curves and uses the Boneh-Franklin Identity Based Encryption scheme and AES-GCM to perform a ‘key exchange to the future’. Long messages are encrypted with AES for performance and size, while short secret keys are encrypted with IBE. The BLS signatures (on curve BLS12-381) output by the Drand randomness beacon (every 3s) are each signatures on a unique message that increases monotonically with each round of the protocol (e.g. Sha256(1), Sha256(2), Sha256(3), and so on). By encrypting with a random secret to this message as an identity, we produce a ciphertext that can be decrypted by the signature output from the randomness beacon during the given future round. This enables a non-interactive, verifiable, time-gated encryption mechanism with short ciphertexts and no trusted setup.
+Our implementation is a hybrid encryption scheme using the Boneh-Franklin Identity Based Encryption scheme to perform a key exchange with a future output of a randomness beacon, while messages are encrypted under AES-GCM for performance and size. The BLS signatures (on curve BLS12-381) output by the Drand randomness beacon (every 3s) are each signatures on a unique message that increases monotonically with each round of the protocol (e.g. Sha256(1), Sha256(2), Sha256(3), and so on). By encrypting with a random secret to this message as an identity, we produce a ciphertext that can be decrypted by the signature output from the randomness beacon during the given future round. This enables a non-interactive, verifiable, time-gated encryption mechanism with short ciphertexts and no trusted setup.

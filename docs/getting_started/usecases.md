@@ -3,8 +3,6 @@ sidebar_position: 3
 title: Use Cases
 ---
 
-### Why It Matters
-
 The Ideal Network provides new capabilities to Polkadot parachains that previously required centralized workarounds, hand-waving, or relied on trust in authority or a process rather than actual cryptography.
 
 | **Problem Today**                                                              | **Without IDN**                                                                  | **What IDN Enables**                                                                    | **Example Use Cases**                                                    |

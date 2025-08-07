@@ -25,6 +25,21 @@ The Ideal Network (IDN) solves this by providing two core capabilities:
 - **Verifiable Randomness-as-a-Service (VRaaS)**: The output of each beacon is *publicly* verifiable, allowing for cost-effective and trustless verification of beacon outputs. By introducing a **subscription**-based system, the IDN allows parachains to use DOT to secure a stream of randomness directly injected to their pallets or contracts. 
 - **Timelocked Transactions and Covert Coordination**: [Timelock encryption](./learn/crypto/timelock_encryption.md) is a cryptographic scheme that allows for messages to be encrypted to the future. By instantiating timelock encryption against the underlying randomness beacon, the IDN enables cryptographically verifiable MEV protection and provides the framing for new kinds of non-interactive and asynchronous multiparty coordination protocols.
 
+# Comparison to Existing Solutions
+
+| Feature / Property                            | Commit-Reveal | VRF (Chainlink, BABE) | Shutter | Fairblock        | Drand (alone) | IDN               |
+| --------------------------------------------- | ------------- | --------------------- | ------- | ---------------- | ------------- | ----------------- |
+| **MEV resistance**                            | ❌             | ❌                     | ✅       | ✅                | ❌             | ✅                 |
+| **On-chain VRaaS**                            | ❌             | ✅                     | ❌       | ❌                | ❌             | ✅                 |
+| **Cryptographic Timelock Support**            | ❌             | ❌                     | ✅ (TSS) | ⚠️ (IBE)          | ✅             | ✅                 |
+| **On-chain verifiability**                    | ⚠️             | ✅                     | ❌       | ⚠️ (via relayers) | ✅             | ✅                 |
+| **Built-in Cross-Chain Support**              | ❌             | ❌                     | ❌       | ❌                | ❌             | ✅                 |
+| **Integration into Polkadot**                 | ✅             | ⚠️ (BABE)              | ❌       | ❌                | ⚠️ (IDN)       | ✅                 |
+| **Enables Non-interactive & async Protocols** | ❌             | ✅                     | ❌       | ❌                | ✅             | ✅                 |
+| **Requires trusted hardware or setup**        | ❌             | ⚠️ (DKG in Chainlink)  | ⚠️ (DKG) | ⚠️ (DKG)          | ⚠️ (DKG)       | ⚠️ (PoA consensus) |
+
+
+
 ## Who is it for?
 
 ### Blockchain Developers and Dapp Builders

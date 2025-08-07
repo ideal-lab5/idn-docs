@@ -48,13 +48,12 @@ If you are using GitHub pages for hosting, this command is a convenient way to b
 # Root Sidebar
 
 Ideal Network
-├── Introduction
-│   ├── What is the Ideal Network?
-│   ├── Architecture Overview 
-│   ├── Compare to Existing Solutions
-│   └── Design Philosophy
+├── Getting Started
+│   ├── What is IDN?
+│   ├── How It Works
+│   ├── Choose Your Integration Path
+│   └── Quickstart
 ├── Integrate with IDN
-│   ├── Quickstart
 │   ├── Parachains (Polkadot/Kusama)
 │   │   ├── Runtime Integration Guide
 │   │   ├── Using XCM
@@ -64,7 +63,7 @@ Ideal Network
 │   ├── Smart Contracts
 │   │   └── ink! Smart Contracts
 │   └── SDKs & APIs (optional)
-├── Core Technologies
+├── Concepts & Technologies
 │   ├── Drand Quicknet Randomness Beacon
 │   ├── Verifiable Randomness as a Service (VRaaS)
 │   ├── Timelock Encryption
@@ -73,16 +72,16 @@ Ideal Network
 │   ├── Runtime Pallets
 │   ├── Offchain Workers
 │   └── Pulse Format Specification
-├── Build & Tutorials
-│   ├── Use Verifiable Randomness in an Auction
-│   ├── Build a Timelocked Voting Protocol
-│   └── Encrypt Data to the Future
-├── Ecosystem
+├── Build with IDN
+│   ├── VRaaS Auction (Beginner)
+│   ├── Timelocked Voting Protocol (Intermediate)
+│   └── Encrypt to the Future (Advanced)
+├── Ecosystem & Community
 │   ├── Funded by Polkadot Treasury
 │   ├── Web3 Foundation Grants
 │   ├── Network Status (optional)
 │   └── Join the IDN Community
-├── Resources
+├── Reference
 │   ├── Litepaper
 │   ├── GitHub
 │   ├── Glossary
