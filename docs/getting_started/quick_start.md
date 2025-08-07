@@ -2,7 +2,7 @@
 sidebar_position: 4
 title: Quickstart
 ---
-# Quickstart
+# 🏁 Quickstart
 
 This guide will point you to the tools, libraries, and documentation you need to get started.
 
@@ -27,12 +27,13 @@ Use the explorer to manage VRaaS subscription and to view recent randomness puls
 
 ---
 
-## ⏳ Timelock Encryption SDK
+## ⏳ Timelock Encryption
 
 Use timelock encryption for sealed-bid auctions, commitment schemes, multiplayer games, and more, backed by the Ideal Network. Our library supports multiple language bindings, including Rust, Python, Typescript, and C/C++ soon.
 
-- [Timelock SDK (Rust)](https://github.com/ideal-lab5/timelock)
-- [→ Learn about ](../concepts/timelock_encryption.md)
+[Timelock SDK (Rust)](https://github.com/ideal-lab5/timelock)
+
+[→ Learn about using timelocked transactions in a dApp](../concepts/timelock_encryption.md)
 
 ---
 
@@ -40,7 +41,7 @@ Use timelock encryption for sealed-bid auctions, commitment schemes, multiplayer
 
 ### For Parachain Developers
 
-Use our lightweight integration to inject verifiable randomness into your Polkadot/Substrate runtime. Your chain can use this for:
+Use our lightweight integration to manage VRaas subscription that inject verifiable randomness into your Polkadot/Substrate runtime. Your chain can use this for:
 
 - Leader election
 - Verifiable shuffling
