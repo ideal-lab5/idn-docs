@@ -64,8 +64,7 @@ Read the latest news on our [substack](https://ideallabs.substack.com/)!
 ## Contact
 
 - Join the conversation on [Discord](https://discord.gg/4fMDbyRw7R)
-- Join us on [matrix](https://matrix.to/#/#ideal-labs:matrix.org)
-- Reach out directly to [hello@idealabs.network](hello@idealabs.network)
+- Reach out directly to hello@idealabs.network
 - Learn more about Ideal Labs: https://idealabs.network
 
 ## License
