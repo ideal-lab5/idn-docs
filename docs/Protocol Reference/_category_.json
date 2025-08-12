@@ -1,0 +1,8 @@
+{
+  "label": "Protocol Reference",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "description": "Learn about how the IDN runtime works."
+  }
+}

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Parachain Integration Guide
+title: Parachain Runtime Integration Guide
 ---
 
 # Parachain Integration Guide: IDN Consumer Pallet

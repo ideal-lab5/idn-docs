@@ -3,8 +3,6 @@ sidebar_position: 2
 title: VRaaS Subscription Management
 ---
 
-## VRaaS Subscription Guide
-
 ### Creating a Subscription
 
 To create a subscription, use the `create_subscription` function:
@@ -218,23 +216,6 @@ The pallet may return the following errors:
   * `ConsumeSubInfoError`: Failed to consume subscription info.
   * `PalletIndexConversionError`: Failed to convert the pallet index.
   * `XcmSendError`: Failed to send an XCM message.
-
------
-
-## Benchmarking
-
-To benchmark the pallet, run the following commands:
-
-```sh
-cargo build -p pallet-idn-consumer --release --features runtime-benchmarks
-./target/release/idn-consumer-node benchmark pallet \
-    --chain dev \
-    --pallet "pallet-idn-consumer" \
-    --extrinsic "*" \
-    --steps 50 \
-    --repeat 20 \
-    --output ./weights.rs
-```
 
 -----
 

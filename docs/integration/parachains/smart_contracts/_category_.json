@@ -1,0 +1,8 @@
+{
+  "label": "ink! Smart Contract Integration",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "Learn how to integrate the IDN's randomness using an ink! Smart contract"
+  }
+}

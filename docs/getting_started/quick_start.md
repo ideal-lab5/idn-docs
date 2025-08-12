@@ -48,7 +48,7 @@ Use our lightweight integration to manage VRaas subscription that inject verifia
 - Cross-chain fair games
 - Much more
 
-[→ Integration Guide](../integration/parachains/parachains.md)
+[→ Integration Guide](../integration/parachains/runtime_integration/parachain_runtime_integration.md)
 
 ---
 
@@ -56,10 +56,8 @@ Use our lightweight integration to manage VRaas subscription that inject verifia
 
 You can access fresh randomness **inside ink! smart contracts**, either via:
 
-1. Cross-chain access via XCM or off-chain workers  
-2. Deploying contracts **directly on the IDN**
-
-[→ ink! Quickstart](../integration/ink.md)
+1. Cross-chain access [via XCM](../integration/parachains/smart_contracts/ink.md)
+2. Deploying contracts [directly on the IDN](../integration/ink.md)
 
 ---
 
