@@ -7,7 +7,7 @@ title: What is the Ideal Network?
 
 #  What time is it?
 
-The Ideal Network (IDN) is a cross-chain **entropy** and **coordination** layer that enables on-chain verifiable randomness and timelock encryption. It introduces cryptographically enforced fairness, timelock encryption, and on-demand randomness delivery into Web3 ecosystems, beginning with Polkadot. 
+The Ideal Network (IDN) is a cross-chain **entropy** and **coordination** layer that enables on-chain verifiable randomness and timelock encryption. It introduces cryptographically enforced fairness, timelock encryption, and on-demand randomness delivery into Web3 ecosystems, beginning with Polkadot.
 
 ## Overview
 
@@ -17,13 +17,13 @@ Further, blockchains lack native mechanisms to **delay information disclosure** 
 
 The Ideal Network (IDN) solves this by providing two core capabilities:
 
-1. **Verifiable randomness**, delivered trustlessly via XCM
-2. **Timelock encryption**, enabling "encryption to the future"
+1. **Verifiable randomness**, delivered trustlessly via XCM.
+2. **Timelock encryption**, enabling "encryption to the future", MEV & front-running resistance, timelocked transaction pools, covert coordination, and more.
 
 ### Key Features
 
 - **Verifiable Randomness-as-a-Service (VRaaS)**: The output of each beacon is *publicly* verifiable, allowing for cost-effective and trustless verification of beacon outputs. By introducing a **subscription**-based system, the IDN allows parachains to use DOT to secure a stream of randomness directly injected to their pallets or contracts. 
-- **Timelocked Transactions and Covert Coordination**: [Timelock encryption](./learn/crypto/timelock_encryption.md) is a cryptographic scheme that allows for messages to be encrypted to the future. By instantiating timelock encryption against the underlying randomness beacon, the IDN enables cryptographically verifiable MEV protection and provides the framing for new kinds of non-interactive and asynchronous multiparty coordination protocols.
+- **Timelocked Transactions and Covert Coordination**: [Timelock encryption](../concepts/timelock_encryption.md) is a cryptographic scheme that allows for messages to be encrypted to the future. By instantiating timelock encryption against the underlying randomness beacon, the IDN enables cryptographically verifiable MEV protection and provides the framing for new kinds of non-interactive and asynchronous multiparty coordination protocols.
 
 # Comparison to Existing Solutions
 

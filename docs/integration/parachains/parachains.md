@@ -39,11 +39,22 @@ You can configure the pallet using the following runtime parameters:
 
 ---
 
-### 1. The `pallet_idn_consumer::Config` Implementation
+### 0. Add the `pallet_idn_consumer` as a Dependency
+
+Add the pallet to your cargo.toml with `default-features = false`:
+
+``` shell
+cargo add pallet-idn-manager
+```
+
+The latest version is `0.0.1-dev`
 
 ``` toml
 pallet-idn-manager = { version = "0.0.1-dev", default-features = false }
 ```
+
+
+### 1. The `pallet_idn_consumer::Config` Implementation
 
 The first step is to implement the `Config` trait for your runtime. This defines how the pallet interacts with the rest of your parachain.
 
@@ -139,7 +150,3 @@ type Xcm = PolkadotXcm;
 
 Ensure your runtime includes the necessary dependencies, such as `ParachainInfo`, `Balances`, and the XCM-related pallets. The `WeightInfo` is also a standard parameter and should be generated via benchmarking for accurate extrinsic weights.
 
-
-## License
-
-This project is licensed under the [suspicious link removed].

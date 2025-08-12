@@ -20,6 +20,7 @@ The IDN blockchain aggregates randomness from Drand Quicknet and delivers it usi
 
 Use the explorer to manage VRaaS subscription and to view recent randomness pulses.
 
+- [Repository](https://github.com/ideal-lab5/idn-explorer/)
 - [Explorer URL](https://idealabs.network)
 - Guide TODO
 
@@ -29,11 +30,10 @@ Use the explorer to manage VRaaS subscription and to view recent randomness puls
 
 ## ⏳ Timelock Encryption
 
-Use timelock encryption for sealed-bid auctions, commitment schemes, multiplayer games, and more, backed by the Ideal Network. Our library supports multiple language bindings, including Rust, Python, Typescript, and C/C++ soon.
+Use timelock encryption for sealed-bid auctions, commitment schemes, multiplayer games, and more, backed by the Ideal Network. Our library supports multiple language bindings, including Rust, Python, Typescript, and C/C++.
 
-[Timelock SDK (Rust)](https://github.com/ideal-lab5/timelock)
-
-[→ Learn about using timelocked transactions in a dApp](../concepts/timelock_encryption.md)
+- [Timelock SDK Repo (Rust)](https://github.com/ideal-lab5/timelock)
+- [Learn how to integrate timelocked transactions in a dApp](../concepts/timelock_encryption.md)
 
 ---
 
