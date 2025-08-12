@@ -43,3 +43,99 @@ body {
   line-height: 1.6;
   color: var(--ifm-font-color-base);
 }
+
+.hero {
+  text-align: center;
+  padding: 4rem 1.5rem 3rem;
+  max-width: 900px;
+  margin: 0 auto 3rem;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #00bfff, #ff9800);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: #cbd5e1;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+.whySection {
+  max-width: 700px;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+.whySection h2 {
+  font-size: 2rem;
+  color: #00bfff;
+  margin-bottom: 0.75rem;
+}
+
+.whyText {
+  font-size: 1.125rem;
+  color: #dbdbdb;
+  line-height: 1.6;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+  max-width: 960px;
+  margin: 0 auto 4rem;
+  padding: 0 1rem;
+}
+
+.featureCard {
+  background: rgba(255 255 255 / 0.05);
+  border-radius: 1rem;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 0 10px rgb(0 191 255 / 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: default;
+}
+
+.featureCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgb(255 152 0 / 0.25);
+}
+
+.featureIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  user-select: none;
+}
+
+.featureCard h3 {
+  font-size: 1.5rem;
+  color: #ff9800;
+  margin-bottom: 0.75rem;
+}
+
+.featureCard p {
+  font-size: 1rem;
+  color: #cbd5e1;
+  line-height: 1.5;
+}
+
+.bigPicture {
+  max-width: 700px;
+  margin: 0 auto 4rem;
+  text-align: center;
+  font-size: 1.125rem;
+  color: #e2e8f0;
+}
+
+.bigPicture h2 {
+  color: #00bfff;
+  margin-bottom: 0.75rem;
+}

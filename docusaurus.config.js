@@ -94,7 +94,6 @@ const config = {
             position: "left",
             label: "Docs",
           },
-          { to: "/blog", label: "Blog", position: "left" },
           {
             href: "https://github.com/ideal-lab5",
             label: "GitHub",
@@ -109,8 +108,8 @@ const config = {
             title: "Docs",
             items: [
               {
-                label: "Tutorial",
-                to: "/docs/getting_started/intro",
+                label: "Litepaper",
+                to: "https://docs.google.com/document/d/1MGNRLJ754t-VuF7Ufy9jXV0QJRAieMOSfpWhrqVUuMI/edit?usp=sharing",
               },
             ],
           },
@@ -122,10 +121,6 @@ const config = {
                 href: "https://discord.gg/TheXVBdbbu",
               },
               {
-                label: "Matrix",
-                href: "https://matrix.to/#/#ideal-labs:matrix.org",
-              },
-              {
                 label: "Substack",
                 href: "https://ideallabs.substack.com/",
               },
@@ -134,10 +129,6 @@ const config = {
           {
             title: "More",
             items: [
-              {
-                label: "Blog",
-                to: "/blog",
-              },
               {
                 label: "GitHub",
                 href: "https://github.com/ideal-lab5",
@@ -152,6 +143,11 @@ const config = {
         darkTheme: prismThemes.dracula,
       },
     }),
+  markdown: {
+    mermaid: true,
+  },
+  themes: ['@docusaurus/theme-mermaid'],
 };
+
 
 export default config;

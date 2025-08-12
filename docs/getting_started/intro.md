@@ -13,7 +13,7 @@ The Ideal Network (IDN) is a cross-chain **entropy** and **coordination** layer 
 
 Many blockchain protocols depend on secure randomness for critical functions such as leader election, validator shuffling, bid sequencing, and cross-chain coordination. However, current randomness solutions are often either centralized, expensive, or context-bound and difficult to integrate across chains, limiting the trustworthiness and composability of decentralized applications.
 
-Further, blockchains lack native mechanisms to **delay information disclosure** or **coordinate time-sensitive events** across chains in the absence of centralized relayers. Without the ability to securely reveal secrets only in the future, developers face challenges building fair auctions, games, and economic systems that are resistant to frontrunning, Miner Extractable Value (MEV), and early leakage. These limitations create a significant barrier to innovation in decentralized protocols requiring unbiased randomness and precise time coordination.
+Further, blockchains lack native mechanisms to **delay information disclosure** or **coordinate time-sensitive events** across chains in the absence of centralized relayers. Without the ability to securely reveal secrets only in the future, developers face challenges building fair auctions, games, and economic systems that are resistant to frontrunning, Miner Extractable Value (MEV), and early leakage. These limitations create a significant barrier to innovation in decentralized protocols   requiring unbiased randomness and precise time coordination.
 
 The Ideal Network (IDN) solves this by providing two core capabilities:
 
