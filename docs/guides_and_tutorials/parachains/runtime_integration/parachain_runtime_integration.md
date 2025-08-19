@@ -3,11 +3,15 @@ sidebar_position: 1
 title: Parachain Runtime Integration Guide
 ---
 
-# Parachain Integration Guide: IDN Consumer Pallet
+# First Step to Parachain Integration: IDN Consumer Pallet
 
 The **`pallet-idn-consumer`** provides a way for parachains to become a "consumer" of the Ideal Network (IDN). This pallet enables you to subscribe to randomness pulses, request subscription quotes, and manage your subscription state through XCM (Cross-Consensus Message Format).
 
 This guide explains how to integrate the `pallet-idn-consumer` into your parachain's runtime. The core of the integration involves configuring the pallet and its dependencies to allow your parachain to interact with the Ideal Network (IDN) via XCM.
+
+## What's next?
+
+After you have integrated the pallet in your runtime, learn about how to [create and manage](./subscription_mgmt.md) subscriptions.
 
 ---
 

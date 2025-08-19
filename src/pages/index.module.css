@@ -1,7 +1,7 @@
 /* Scoped CSS for hero + button section */
 
 .heroBanner {
-  padding: 4rem 1rem;
+  /* padding: 4rem 1rem; */
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -21,7 +21,7 @@
   margin-top: 2rem;
 }
 
-.buttons > a {
+.buttons>a {
   background-color: var(--ifm-color-primary);
   color: #fff;
   padding: 0.6rem 1.2rem;
@@ -32,7 +32,7 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
-.buttons > a:hover {
+.buttons>a:hover {
   background-color: var(--ifm-color-primary-dark);
 }
 
@@ -62,10 +62,20 @@ body {
 
 .subtitle {
   font-size: 1.25rem;
-  color: #cbd5e1;
+  color: #9c9c9c;
   max-width: 700px;
   margin: 0 auto;
   line-height: 1.5;
+}
+
+[data-theme='dark'] {
+  .subtitle {
+    color: #cbd5e1;
+  }
+
+  .bigPicture {
+    color: #e2e8f0;
+  }
 }
 
 .whySection {
@@ -80,10 +90,23 @@ body {
   margin-bottom: 0.75rem;
 }
 
-.whyText {
-  font-size: 1.125rem;
-  color: #dbdbdb;
-  line-height: 1.6;
+:root {
+  .whyText {
+    font-size: 1.125rem;
+    color: #000000;
+    line-height: 1.6;
+  }
+}
+
+[data-theme='dark'] {
+  .whyText {
+    color: #dbdbdb;
+  }
+
+  .featureCard p {
+    font-size: 1rem;
+    color: #cbd5e1;
+  }
 }
 
 .featuresGrid {
@@ -123,7 +146,7 @@ body {
 
 .featureCard p {
   font-size: 1rem;
-  color: #cbd5e1;
+  color: #000000;
   line-height: 1.5;
 }
 
@@ -132,10 +155,95 @@ body {
   margin: 0 auto 4rem;
   text-align: center;
   font-size: 1.125rem;
-  color: #e2e8f0;
+  color: #000000;
 }
 
 .bigPicture h2 {
   color: #00bfff;
   margin-bottom: 0.75rem;
+}
+
+.linkBtn {
+  text-align: center;
+  margin-top: '30px';
+}
+
+.linkBtn > a { 
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+
+/* Core Capabilities Page-Specific CSS */
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  font-size: 1.125rem;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+}
+
+.service-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.unlocks-list {
+  list-style: none; /* Remove default bullets */
+  padding-left: 0;
+}
+
+.unlocks-list li {
+  position: relative;
+  padding-left: 28px; /* Space for the custom icon */
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+/* Custom checkmark or bullet icon */
+.unlocks-list li::before {
+  content: '✓'; /* Or any other character/icon */
+  position: absolute;
+  left: 0;
+  color: var(--ifm-color-primary);
+  font-weight: bold;
+}
+
+.components-list {
+  list-style: none;
+  padding-left: 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.components-list li {
+  background: var(--ifm-color-emphasis-100);
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.note-box {
+  background: var(--ifm-color-emphasis-200);
+  border-left: 4px solid var(--ifm-color-primary);
+  padding: 1rem 1.5rem;
+  border-radius: 4px;
+  max-width: 800px;
+  margin: 2rem auto;
 }

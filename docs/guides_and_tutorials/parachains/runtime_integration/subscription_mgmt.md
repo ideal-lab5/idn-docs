@@ -3,6 +3,12 @@ sidebar_position: 2
 title: VRaaS Subscription Management
 ---
 
+## Overview
+
+The IDN's Verifiable-Randomness-as-a-Service is subscription based, allowing parachains and smart contracts to subscribe to the IDN as a cross-chain 'pipe' that injects verifiable randomness directly into another chain's runtime. Keep reading to understand how subscriptions can be created, updated, paused, or terminated from the idn-consumer pallet.
+
+&rarr; See the [cost model overview](../../../getting_started/subscriptions_and_cost_model.md) to explore pricing.
+
 ### Creating a Subscription
 
 To create a subscription, use the `create_subscription` function:
@@ -26,7 +32,7 @@ let sub_id = IdnConsumer::<T>::create_subscription(
 **Notes**
 
   * This function immediately starts the subscription in the next IDN block. Randomness will be received via the `consume_pulse` dispatchable.
-  * This function uses a "fire and forget" XCM call. For more details on verifying success, see the [notes section](https://www.google.com/search?q=%23notes).
+  * This function uses a "fire and forget" XCM call.
 
 ### Managing Subscriptions
 
@@ -41,7 +47,7 @@ IdnConsumer::<T>::pause_subscription(sub_id)?;
 **Notes**
 
   * Pausing a subscription will cause it to skip pulses. Note that skipping pulses still consumes a small number of credits.
-  * This is a "fire and forget" XCM call. See the [notes section](https://www.google.com/search?q=%23notes) for more details.
+  * This is a "fire and forget" XCM call.
 
 #### Reactivate a Paused Subscription
 
@@ -53,7 +59,7 @@ IdnConsumer::<T>::reactivate_subscription(sub_id)?;
 
 **Notes**
 
-  * This is a "fire and forget" XCM call. See the [notes section](https://www.google.com/search?q=%23notes) for more details.
+  * This is a "fire and forget" XCM call.
 
 #### Update a Subscription
 
@@ -79,7 +85,7 @@ Only the fields you provide will be updated.
 
 **Notes**
 
-  * This is a "fire and forget" XCM call. See the [notes section](https://www.google.com/search?q=%23notes) for more details.
+  * This is a "fire and forget" XCM call.
 
 #### Terminate a Subscription
 
@@ -93,7 +99,6 @@ IdnConsumer::<T>::kill_subscription(sub_id)?;
 
   * Terminating a subscription removes it from storage, making it unavailable for future operations.
   * The storage deposit and any remaining held balance will be returned to the user.
-  * This is a "fire and forget" XCM call. See the [notes section](https://www.google.com/search?q=%23notes) for more details.
 
 -----
 

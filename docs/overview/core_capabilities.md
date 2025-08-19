@@ -1,10 +1,59 @@
 ---
 sidebar_position: 2
-title: How it Works
+title: Core Capabilities
 ---
 
-# How it Works
+The Ideal Network (IDN) is a cryptographic coordination layer designed to bring verifiable randomness, timelock encryption, and fair coordination protocols to decentralized systems, starting with the Polkadot ecosystem.
 
+We're starting with a powerful randomness oracle, but our long-term vision is to support practical witness encryption and scalable, privacy-preserving threshold encryption.
+
+---
+
+### Key Services
+
+The Ideal Network is built to offer two primary services to developers: **VRaaS** and **Timelock Encryption**.
+
+#### 🎲 Verifiable Randomness-as-a-Service (VRaaS)
+
+VRaaS is a subscription-based 'entropy daemon' for parachains and smart contracts.
+
+* **How it Works:** The IDN manages subscriptions and dispatches provably fair randomness to subscribers using XCM-based adapters. This enables a fine-grained, automated, trustless, and on-chain randomness solution without manual intervention.
+* **What it unlocks:** This gives developers randomness that is not just usable but **actionable**. Subscribed randomness can trigger smart contract logic, gate access to critical operations, or drive state changes, enabling:
+    * Provably fair games and lotteries
+    * Verifiable shuffling for NFT drops
+    * Decentralized leader election
+    * Randomness-based governance
+* **Integration:** We offer an SDK and XCM adapter library to simplify integration for both FRAME pallets and smart contracts. Delivery via XCM is trustless and executed on the destination using standard cross-chain proof validation, with no trust assumptions beyond finality.
+
+* _**[Diagram of VRaaS flow here]**_
+
+---
+
+#### ⏲️ Timelock Encryption
+
+The Ideal Network brings cryptographic timelock capabilities to the ecosystem, manifested as a native MEV-resistant transaction pool.
+
+* **How it Works:** By bridging the Drand randomness beacon, we enable a form of "encryption to the future." Transactions can be encrypted for future execution without leaking information in advance.
+* **What it unlocks:** These cryptographic timelocks eliminate the need for commit-reveal schemes or trusted intermediaries, enabling:
+    * MEV-resistant transactions
+    * Verifiably fair sealed-bid auctions
+    * Decentralized commitment schemes
+    * Secure, non-interactive coordination in a decentralized way
+
+---
+
+### Core Components
+
+The Ideal Network is powered by a set of robust, interoperable primitives.
+
+* **Randomness Subscription Management:** Allows external systems (parachains and smart contracts) to subscribe to future randomness.
+* **Offchain Pulse Aggregation:** Our network authorities consume pulses from Drand through a gossipsub topic, aggregating signatures off-chain for constant-time verification.
+* **Onchain Verification:** Aggregated signatures are trustlessly and efficiently verified on-chain. This system is designed to mitigate withholding, forgery, and replay attacks.
+* **Timelock Encrypted Transactions Mechanism:** A core feature that supports asynchronous and non-interactive coordination.
+
+> **Note:** For a deep technical breakdown of these components, see the **How it Works** page in the **Concepts & Technologies** section.
+
+<!-- 
 The Ideal Network (IDN) is designed as a cryptographic coordination layer for decentralized systems, starting with the Polkadot ecosystem. It enables verifiable randomness, timelock encryption, and fair coordination protocols, all powered by interoperable cryptographic primitives.
 
 While the initial version of IDN functions as a randomness oracle bridging Drand’s Quicknet to Polkadot, this is only the beginning. Our long-term vision is to support practical witness encryption and scalable, privacy-preserving threshold encryption networks, overcoming the limitations of existing MPC networks.
@@ -60,4 +109,4 @@ For a technical overview of Drand, refer to: https://hackmd.io/@cryptoecon/SyLzs
 Note: While the IDN currently relies on Drand as a source of verifiable randomness,  this is an intermediate step. Moving forward, future versions of the protocol will adopt a new cryptographic scheme based on “silent” threshold encryption (STE), removing reliance on Drand as a driver of the solution. This innovation will expand the capabilities of the IDN, which we elaborate on in the future work section.
 
 ### Polkadot
-Polkadot supports efficient on-chain verification of BLS signatures (via bilinear pairings) without needing precompiles. As a result, we are able to efficiently ingest, aggregate, and verify pulses from Drand without expensive cryptographic overhead or offchain verification. In addition to being particularly well suited to efficiently compute pairings, Polkadot’s architecture also provides cross-chain support through cross-chain messages (XCM) to any parachain, enabling a decentralized, cheap and trustless channel through which the IDN can disseminate pulses across the ecosystem. Using DOT as our native currency ensures we can offer a fair and universal price for our system.
+Polkadot supports efficient on-chain verification of BLS signatures (via bilinear pairings) without needing precompiles. As a result, we are able to efficiently ingest, aggregate, and verify pulses from Drand without expensive cryptographic overhead or offchain verification. In addition to being particularly well suited to efficiently compute pairings, Polkadot’s architecture also provides cross-chain support through cross-chain messages (XCM) to any parachain, enabling a decentralized, cheap and trustless channel through which the IDN can disseminate pulses across the ecosystem. Using DOT as our native currency ensures we can offer a fair and universal price for our system. -->

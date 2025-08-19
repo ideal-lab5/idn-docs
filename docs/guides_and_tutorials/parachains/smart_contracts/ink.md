@@ -2,15 +2,12 @@
 sidebar_position: 2
 title: ink! Smart Contract Integration
 ---
-
-## Current Contracts
-
-- **idn-client-contract-lib**: A client library for interacting with the Ideal Network services via XCM, focusing on randomness subscriptions.
-- **idn-example-consumer-contract**: An example contract that demonstrates how to use the idn-client-contract-lib library to subscribe to and receive randomness.
-
+ 
 ## IDN Client Library
 
 The `idn-client-contract-lib` library provides functionality for interacting with the Ideal Network's IDN Manager pallet through XCM. This allows contracts on other parachains to subscribe to and receive randomness from the Ideal Network.
+
+&rarr; Repository for the [idn-client-contract-lib](https://github.com/ideal-lab5/idn-sdk/tree/main/contracts/idn-client-contract-lib)
 
 ### Features
 
