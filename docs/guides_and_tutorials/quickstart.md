@@ -2,28 +2,32 @@
 sidebar_position: 0
 title: Quickstart
 ---
+---
 
-# IDN Integration Quickstart
+## **Introduction**
 
-This page is your shortest path to building with the **Ideal Network**. You’ll see exactly what to run or copy–paste to get randomness or timelocks working in minutes.
+Welcome to the Ideal Network integration hub. This guide will help you understand the three primary ways to integrate with our network. Choose the path that best suits your project and development needs.
 
 ---
 
-## Verifiable Randomness as a Service (VRaaS)
+## **Choose Your Path**
 
-The Ideal Network delivers secure, verifiable randomness directly to your application.  
-Choose your integration path:
+### **Path 1: Parachain Runtime Integration**
+* **Who it's for:** A team building their own blockchain on Polkadot.
+* **What it is:** This is the most powerful and trustless integration. You'll use our pallet to bake randomness and timelock logic directly into your runtime. This provides native, on-chain functionality with minimal trust assumptions.
+* **[Go to the Parachain Integration Guide](../guides_and_tutorials/parachains/runtime_integration/parachain_runtime_integration.md)**
 
-### 1. Parachain Pallet — Runtime Integration
+### **Path 2: Smart Contract Integration**
+* **Who it's for:** A developer building a dApp on a smart contract parachain like Moonbeam or Astar.
+* **What it is:** This integration uses a simple `XCM` call to request services from the Ideal Network. It's permissionless, easy to use, and allows you to build powerful dApps without needing your own runtime.
+* **[Go to Smart Contract Integration Guide]**
 
-### 2. ink! Smart Contract integration
-- Get randomness from a contract on the IDN
+### **Path 3: Native ink! Smart Contract Integration**
+* **Who it's for:** A developer building a dApp on the Ideal Network.
+* **What it is:** The quickest way to use the IDN, this integration let's native smart contracts fetch verifiable randomness at no cost directly from the IDN runtime through a chain extension.
+* **[Go to Smart Contract Integration Guide]**
 
-### 3. How to verify randomness - Randomness Verification
-
-### 4. Develop IDNnative applications with Timelocked Transactions
-- use timelocked transactions on the ideal network
-
-Examples
-- something later
-
+### **Path 4: Frontend SDK Integration**
+* **Who it's for:** A frontend or web developer building a user-facing application.
+* **What it is:** Our SDK allows your application to handle timelocked transactions and randomness requests directly from the frontend. This is the fastest way to get started and is ideal for games or web apps.
+* **[Go to Frontend SDK Guide]**

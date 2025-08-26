@@ -49,6 +49,7 @@ body {
   padding: 4rem 1.5rem 3rem;
   max-width: 900px;
   margin: 0 auto 3rem;
+  margin-bottom: 0 !important;
 }
 
 .title {
@@ -80,7 +81,7 @@ body {
 
 .whySection {
   max-width: 700px;
-  margin: 0 auto 3rem;
+  margin: 0 auto 2rem;
   text-align: center;
 }
 

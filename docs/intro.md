@@ -9,7 +9,7 @@ import styles from '/src/pages/index.module.css';
 
 <div className={styles.hero}>
   <h1 className={styles.title}>
-    The Coordination Layer Web3 Has Been Waiting For
+    The Randomness & Time Layer Web3 Has Been Waiting For
   </h1>
   <p className={styles.subtitle}>
     The Ideal Network is like <strong>/dev/random</strong> for blockchains: a decentralized entropy daemon powering randomness, secrecy, and time-based logic across the multichain world.
