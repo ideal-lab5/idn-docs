@@ -20,7 +20,7 @@ let sub_id = IdnConsumer::<T>::create_subscription(
     metadata,
     sub_id,
 )?;
-````
+```
 
 **Parameters**
 

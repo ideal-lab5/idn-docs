@@ -25,7 +25,16 @@ After you have integrated the pallet in your runtime, learn about how to [create
 
 ---
 
-## Configuration
+## 📋 Prerequisites
+- The Target chain which manages the subscription should be a Sibling chain (share the same Relay Chain with IDN, but not be IDN)
+- The Target chain has an RPC node exposed on PolkadotJS
+- IDN and the Target chain should have a [bidirectional HRMP channel open](https://substrate.stackexchange.com/questions/5445/how-to-open-hrmp-channels-between-parachains )
+- The Sibling chain’s sovereign account on IDN should have enough funds. See:
+  - [How to calculate the sovereign account](https://substrate.stackexchange.com/a/1210/3994). TL;DR use [Shawn’s Para ID to account utility](https://www.shawntabrizi.com/substrate-js-utilities/), making sure to select “sibling” in the dropdown
+  - [How to get tokens on IDN (Paseo)](../../testnet/faucet.md)
+
+---
+## 🛠️ Configuration
 
 You can configure the pallet using the following runtime parameters:
 

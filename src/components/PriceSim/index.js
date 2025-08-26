@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import styles from './styles.module.css';
 
@@ -8,7 +8,6 @@ const feeUnitsToDOT = (feeUnits, conversionRate = 0.001) => {
 };
 
 const blocksPerDay = 14400;
-const dotToUSD = 4;
 
 // A single object to hold all your tiered messages and headings
 const wittyContent = {
@@ -78,7 +77,6 @@ function PriceSimulator() {
   const [feeConversionRate, setFeeConversionRate] = useState(0.0000000001);
   const [frequency, setFrequency] = useState(0);
   const [numPulses, setNumPulses] = useState(0);
-
   const [tiers, setTiers] = useState([
     { start: 1, discount: 0 },
     { start: 10001, discount: 5 },
@@ -86,6 +84,8 @@ function PriceSimulator() {
     { start: 1000001, discount: 20 },
     { start: 10000001, discount: 30 }
   ]);
+  const [dotToUSD, setDotToUsd] = useState(4); // Initial value
+  const [error, setError] = useState(null);
 
   const baseFee = 2900000;
 
@@ -192,8 +192,8 @@ function PriceSimulator() {
           <p>Duration: <strong>{durationInHours.toLocaleString()} hours</strong></p>
           <p>Credits: <strong>{creditsRequired.toLocaleString()}</strong></p>
           <p>Fee units: <strong>{feeUnits.toLocaleString()}</strong></p>
-          <p>DOT: <strong>{dotRequired.toFixed(6)}</strong></p>
-          <p>USD: <strong>${usd.toFixed(2)}</strong></p>
+          <p>DOT: <strong>{dotRequired.toFixed(8)}</strong></p>
+          <p>USD: <strong>${usd.toFixed(4)}</strong></p>
           <details className={clsx("margin-top--md", styles.tierBreakdown)}>
             <summary>Tier Breakdown</summary>
             <div className="margin-top--sm">
@@ -211,6 +211,15 @@ function PriceSimulator() {
       </div>
     );
   };
+
+  if (error) {
+    return (
+      <div className="container padding-top--md padding-bottom--md">
+        <h2 className="text--center margin-bottom--lg">VRaaS Pricing Simulator</h2>
+        <div className="text--center">Error fetching Polkadot price: {error}</div>
+      </div>
+    );
+  }
 
   return (
     <div className="container padding-top--md padding-bottom--md">
@@ -259,6 +268,20 @@ function PriceSimulator() {
         <div className={styles.calculatorInputs}>
           <h4>Calculate Custom Rate</h4>
           <div className={styles.inputGroup}>
+
+            <label className={styles.formLabel} htmlFor='dotPrice'>
+              DOT to USD
+            </label>
+            <input
+              id="dotPrice"
+              type="number"
+              step="0.0000000001"
+              value={dotToUSD}
+              className={styles.formInput}
+              onChange={(e) => setDotToUsd(e.target.value)}
+              placeholder='Enter DOT to USD price'
+            />
+
             <label className={styles.formLabel} htmlFor='num-pulses'>
               Number of Pulses
             </label>
