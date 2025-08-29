@@ -120,6 +120,7 @@ pub mod MyContract {
 ```
 
 3. Fetch the latest random value from the runtime
+
 ``` rust
 let random = self.env().extension().random();
 ```
@@ -127,7 +128,6 @@ let random = self.env().extension().random();
 <div className={styles.linkBtn}>
     <a href="../guides_and_tutorials/parachains/smart_contracts/ink">Use randomness in ink! Smart Contracts on the IDN</a>
 </div>
-
 
 ---
 

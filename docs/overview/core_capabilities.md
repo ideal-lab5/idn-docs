@@ -3,183 +3,122 @@ sidebar_position: 2
 title: Core Capabilities
 ---
 
-import styles from '../../src/pages/index.module.css';
+# Core Capabilities
 
-<!-- 
-The Ideal Network (IDN) is a cryptographic coordination layer designed to bring verifiable randomness, timelock encryption, and fair coordination protocols to decentralized systems, starting with the Polkadot ecosystem.
+The **Ideal Network (IDN)** provides two core services to developers:  
+- **Verifiable Randomness-as-a-Service (VRaaS)**  
+- **Timelocked Transactions**
 
-We're starting with a powerful randomness oracle, but our long-term vision is to support practical witness encryption and scalable, privacy-preserving threshold encryption.
+Together, these unlock new functionalities for parachains and smart contracts across the Polkadot ecosystem, allowing for protocols and dApps to:
+- receive verifiable random values on-demand
+- reason about time across protocols and parachains
+- power verifiably fair, automatic on-chain processes
+- enable non-interactive and asynchronous multiparty protocols
+---
+
+## 1. Key Services
+
+### 🎲 Verifiable Randomness-as-a-Service (VRaaS)
+
+**VRaaS** acts as an **"entropy daemon"** that delivers cryptographically secure randomness to your chain or contract.
+
+#### How It Works
+- The IDN manages **subscriptions** for developers.  
+- Randomness is **delivered using XCM**, ensuring automated, trustless, and verifiable randomness injection with no manual steps beyond [initial integration](../guides_and_tutorials/quickstart.md).
+
+#### What It Unlocks
+With VRaaS, randomness is not only secure but **actionable**, enabling:
+- Provably fair games and lotteries
+- Verifiable NFT shuffling
+- Decentralized leader election
+- Autonomous, randomness-driven state changes
+
+#### Integration
+- The [idn-sdk](https://github.com/ideal-lab5/idn-sdk) enables parachains to integrate with the IDN's VRaaS:
+  - For parachain runtimes, [integrate the idn-consumer pallet](../guides_and_tutorials/parachains/runtime_integration/parachain_runtime_integration.md).
+  - For ink! smart contracts (version $\geq 5.1.1$), [integrate the idn-client-consumer-lib](../guides_and_tutorials/parachains/smart_contracts/ink.md).
+- Received randomness can be [trustlessly verified on-chain](../guides_and_tutorials/rand_verification.md).
 
 ---
 
-### Key Services
+### ⏲️ Timelocked Transactions
 
-The Ideal Network is built to offer two primary services to developers: **VRaaS** and **Timelocked Transactions**.
+**Timelocked Transactions** enable cryptographic "encryption to the future," bringing MEV-resistant execution to Web3.
 
-#### 🎲 Verifiable Randomness-as-a-Service (VRaaS)
+#### How It Works
+- IDN leverages the **Drand randomness beacon** to create cryptographic timelocks.  
+- Transactions are **encrypted for future execution** without leaking sensitive information ahead of time.
 
-VRaaS is a subscription-based 'entropy daemon' for parachains and smart contracts.
+#### What It Unlocks
+Timelocks eliminate the need for commit-reveal schemes or trusted intermediaries, enabling:
+- MEV-resistant transactions
+- Verifiably fair sealed-bid auctions
+- Secure, decentralized commitment schemes
+- Non-interactive coordination protocols
 
-##### **How it Works:** 
-The IDN manages subscriptions and dispatches verifiable randomness to subscribers using XCM-based adapters. This enables a fine-grained, automated, trustless, and on-chain randomness solution without manual intervention.
-
-##### **What it unlocks**
-
-This gives developers randomness that is not just usable but **actionable**. Subscribed randomness can fairly select leaders, trigger smart contract logic, gate access to critical operations, or even drive state changes, enabling:
-* Provably fair games and lotteries
-* Verifiable shuffling for NFT drops
-* Decentralized leader election
-* Autonomous on-chain runtime
-
-##### **Integration**
-
- We offer an SDK and XCM adapter library to simplify integration for both FRAME pallets and smart contracts. Delivery via XCM is trustless and executed on the destination using standard cross-chain proof validation, with no trust assumptions beyond finality.
-
-* _**[Diagram of VRaaS flow here]**_
+#### Limitations
+The IDN v0's infrastructure limits the number of timelocked transactions per block to `300`.
 
 ---
 
-#### ⏲️ Timelocked Transactions
+## 2. Core Components
 
-The Ideal Network brings cryptographic timelock capabilities to the ecosystem, manifested as a native MEV-resistant transaction pool.
+The Ideal Network is powered by **robust, interoperable primitives**:
 
-##### **How it Works**
-
-By bridging the Drand randomness beacon, we enable a form of "encryption to the future." Transactions can be encrypted for future execution without leaking information in advance.
-
-##### **What it unlocks**
-
-These cryptographic timelocks eliminate the need for commit-reveal schemes or trusted intermediaries, enabling:
-* MEV-resistant transactions
-* Verifiably fair sealed-bid auctions
-* Decentralized commitment schemes
-* Secure, non-interactive coordination in a decentralized way
-
+| Component | Description |
+|------------|-------------|
+| **Randomness Subscription Management** | Allows external systems (parachains or smart contracts) to subscribe to future randomness. |
+| **Offchain Pulse Aggregation** | Network authorities subscribe to Drand’s gossipsub feed, aggregating signatures off-chain for **constant-time** verification. |
+| **Onchain Verification & Dispatch** | Aggregated randomness is **trustlessly verified on-chain**, mitigating withholding, forgery, or replay attacks. |
+| **Timelock Encryption Mechanism** | Provides asynchronous and non-interactive coordination while protecting against front-running. |
 ---
 
-### Core Components
+## 3. Supporting Technologies
 
-The Ideal Network is powered by a set of robust, interoperable primitives.
+The Ideal Network leverages **Drand** and **Polkadot** for its current architecture.
 
-* **Randomness Subscription Management:** Allows external systems (parachains and smart contracts) to subscribe to future randomness.
-* **Offchain Pulse Aggregation:** Our network authorities consume pulses from Drand through a gossipsub topic, aggregating signatures off-chain for constant-time verification.
-* **Onchain Verification:** Aggregated signatures are trustlessly and efficiently verified on-chain. This system is designed to mitigate withholding, forgery, and replay attacks.
-* **Timelock Encrypted Transactions Mechanism:** A core feature that supports asynchronous and non-interactive coordination.
+### Drand
 
-> **Note:** For a deep technical breakdown of these components, see the **How it Works** page in the **Concepts & Technologies** section.
+[Drand](https://drand.love/) is a **distributed randomness beacon (DRB)** run by the **League of Entropy**, a consortium of incentivized node operators.
 
-<!-- 
-The Ideal Network (IDN) is designed as a cryptographic coordination layer for decentralized systems, starting with the Polkadot ecosystem. It enables verifiable randomness, timelock encryption, and fair coordination protocols, all powered by interoperable cryptographic primitives.
+- Uses **threshold BLS signatures** on curve **BLS12-381** with type III pairings.  
+- Outputs a **verifiable randomness pulse every 3 seconds**.  
+- Each pulse includes:
+  - Round number  
+  - Signature  
+  - Hash of the signature (the "randomness")
 
-While the initial version of IDN functions as a randomness oracle bridging Drand’s Quicknet to Polkadot, this is only the beginning. Our long-term vision is to support practical witness encryption and scalable, privacy-preserving threshold encryption networks, overcoming the limitations of existing MPC networks.
+For a deep technical overview, see the [Drand Quicknet documentation](https://hackmd.io/@cryptoecon/SyLzsm862).
 
-<p align="center">
-  <img src="/img/overview.png" width="500"/>
-</p>
+> **Note:**  
+> Drand is currently the backbone of IDN randomness. Future upgrades will replace Drand with our **Silent Threshold Encryption (STE)** protocol, removing reliance on external randomness sources while expanding IDN's capabilities.
 
-<br></br>
-
-<div style={{
-  border: '1px solid #ccc',
-  padding: '10px',
-  borderRadius: '4px'
-}}>
-    <span>
-        <span style={{fontSize: '25px'}}>📄</span> For a detailed technical breakdown of the IDN v0 architecture, see:
-    https://hackmd.io/@Y5vcBYL4SyeRG_CqQq0DoQ/HktrQXI2A
-    </span>
-</div>
-
-## Core Components
-
-- **Randomness Subscription Management**: Allows external systems (like parachains and smart contracts) to subscribe to guaranteed future randomness.
-- **Offchain Pulse Ingestion and Aggregation**: Network authorities (collators) consume pulses from Drand through a gossipsub topic maintained by the League of Entropy. Rather than verifying every pulse on-chain (which can be expensive), collators aggregate signatures off-chain, ensuring constant time verification on-chain.
-- **Onchain Randomness Verification and Dispatch**: Aggregated signatures are trustlessly and efficiently verified on-chain. The system is careful to mitigate withholding, forgery, and replay attacks. Verified aggregated signatures are dispatched to consumers, who can also efficiently verify correctness.
-- **Timelock Encrypted Transactions Mechanism**: The IDN supports timelock encrypted transactions for future Drand rounds, enabling asynchronous and non-interactive coordination capabilities, front-running protection, and temporal privacy-preserving protocols.
-
-
-### 🎲 VRaaS: Randomness Subscription Mechanism
-
-Verifiable-Randomness-as-a-Service (VRaaS) is a subscription-based 'entropy daemon' for parachains and smart contracts. The IDN manages subscriptions and dispatches pulses of verifiable randomness to subscribers, allowing parachains and smart contracts to subscribe to and receive injected randomness using XCM-based adapters. Subscriptions determine when and where randomness should be delivered, enabling fine-grained, automated, trustless, and on-chain randomness without manual intervention.
-
-[diagram]
-
-For parachain and smart contract developers, this unlocks a new capability, as they acquire randomness that is actionable, not just usable. Subscribed randomness can drive state changes, trigger smart contract logic, or gate access to critical operations, enabling provably fair games, lotteries, auctions, randomness-based governance, and many more protocols requiring fairness or covert coordination.
-
-We offer an SDK and XCM adapter library to simplify integration with the IDN for both FRAME pallets and smart contracts. Developers can easily subscribe to and receive verifiable randomness from the comfort of their own runtime. Delivery via XCM follows finality of the IDN, and messages are trustlessly executed on the destination using standard cross-chain proof validation. No trust assumptions beyond finality and proof verification are required. 
-TODO [links?]
-
-### ⏲️ Timelocked Transactions Support
-The Drand randomness beacon produces BLS signatures that support timelock encryption, a cryptographic technique that allows for “encryption to the future”. Timelock encryption provides temporal confidentiality, meaning that blockchain transactions can be encrypted for future execution without leaking information in advance. By bridging Drand to Polkadot, the IDN  brings timelocked transaction capabilities to the ecosystem, manifested as a native MEV-resistant transaction pool within the Ideal Network. These cryptographic timelocks eliminate the need for commit-reveal schemes or trusted intermediaries, enabling secure and verifiably fair coordination in a completely decentralized way. 
-
-
-## Supporting Technologies 
-
-The IDN relies on the Drand distributed randomness beacon as a source of verifiable randomness and leverages the Polkadot relay chain for its efficient BLS signature verification, shared security and easy delivery of cross-chain messages.
-
-### Drand 
-Drand is a battle-tested distributed randomness beacon (DRB) operated by a consortium of mutually incentivized node operators called the League of Entropy. More specifically, Drand’s “Quicknet” is a DRB that uses threshold BLS signatures (on curve BLS12-377) using type III pairings. Every three seconds, it outputs unpredictable and unbiased verifiable randomness in the form  of a “pulse”, which contains the current round, signature, and hash of the signature, referred to as randomness. We can efficiently verify the signature by knowing the public key of the beacon and the corresponding round number. 
-
-For a technical overview of Drand, refer to: https://hackmd.io/@cryptoecon/SyLzsm862.
-Note: While the IDN currently relies on Drand as a source of verifiable randomness,  this is an intermediate step. Moving forward, future versions of the protocol will adopt a new cryptographic scheme based on “silent” threshold encryption (STE), removing reliance on Drand as a driver of the solution. This innovation will expand the capabilities of the IDN, which we elaborate on in the future work section.
+---
 
 ### Polkadot
-Polkadot supports efficient on-chain verification of BLS signatures (via bilinear pairings) without needing precompiles. As a result, we are able to efficiently ingest, aggregate, and verify pulses from Drand without expensive cryptographic overhead or offchain verification. In addition to being particularly well suited to efficiently compute pairings, Polkadot’s architecture also provides cross-chain support through cross-chain messages (XCM) to any parachain, enabling a decentralized, cheap and trustless channel through which the IDN can disseminate pulses across the ecosystem. Using DOT as our native currency ensures we can offer a fair and universal price for our system. --> -->
 
-## Key Services
+Polkadot provides the **ideal environment** for IDN:
 
-The Ideal Network is built to offer two primary services to developers: **VRaaS** and **Timelocked Transactions**.
-
-<section className={styles.featuresGrid}>
-  <article className={styles.featureCard}>
-    <div className={styles.featureIcon}>🎲</div>
-    <h3>Verifiable Randomness-as-a-Service (VRaaS)</h3>
-    <p>VRaaS is a subscription-based 'entropy daemon' for parachains and smart contracts.</p>
-    <div className={styles.featureCard}>
-      <h5>How it Works</h5>
-      <p>The IDN manages subscriptions and dispatches verifiable randomness to subscribers using XCM-based adapters. This enables a fine-grained, automated, trustless, and on-chain randomness solution without manual intervention.</p>
-      <h5>What it Unlocks</h5>
-      <p>This gives developers randomness that is not just usable but **actionable**. Subscribed randomness can fairly select leaders, trigger smart contract logic, gate access to critical operations, or even drive state changes, enabling:</p>
-      <ul className={styles.unlocks}>
-        <li>Provably fair games and lotteries</li>
-        <li>Verifiable shuffling for NFT drops</li>
-        <li>Decentralized leader election</li>
-        <li>Autonomous on-chain runtime</li>
-      </ul>
-      <h5>Integration</h5>
-      <p>We offer an SDK and XCM adapter library to simplify integration for both FRAME pallets and smart contracts. Delivery via XCM is trustless and executed on the destination using standard cross-chain proof validation, with no trust assumptions beyond finality.</p>
-    </div>
-  </article>
-
-  <article className={styles.featureCard}>
-    <div className={styles.featureIcon}>⏲️</div>
-    <h3>Timelocked Transactions</h3>
-    <p>The Ideal Network brings cryptographic timelock capabilities to the ecosystem, manifested as a native MEV-resistant transaction pool.</p>
-    <div className={styles.featureCard}>
-      <h5>How it Works</h5>
-      <p>By bridging the Drand randomness beacon, we enable a form of "encryption to the future." Transactions can be encrypted for future execution without leaking information in advance.</p>
-      <h5>What it Unlocks</h5>
-      <p>These cryptographic timelocks eliminate the need for commit-reveal schemes or trusted intermediaries, enabling:</p>
-      <ul className={styles.unlocks}>
-        <li>MEV-resistant transactions</li>
-        <li>Verifiably fair sealed-bid auctions</li>
-        <li>Decentralized commitment schemes</li>
-        <li>Secure, non-interactive coordination</li>
-      </ul>
-    </div>
-  </article>
-</section>
+- Efficient **on-chain BLS signature verification** (via bilinear pairings).  
+- Secure **cross-chain messaging (XCM)** to deliver randomness to any parachain.  
+- Shared security and interoperability, ensuring consistent randomness availability.  
+- DOT as the native currency, ensuring a fair, universal pricing model across chains.
 
 ---
 
-## Core Components
+## 4. At a Glance
 
-The Ideal Network is powered by a set of robust, interoperable primitives.
-* **Randomness Subscription Management:** Allows external systems (parachains and smart contracts) to subscribe to future randomness.
-* **Offchain Pulse Aggregation:** Network authorities consume pulses from Drand through a gossipsub topic, aggregating signatures off-chain for constant-time on-chain verification.
-* **Onchain Verification & Dispatch:** Aggregated signatures are trustlessly and efficiently verified on-chain. This system is designed to mitigate withholding, forgery, and replay attacks.
-* **Timelock Encrypted Transactions Mechanism:** A core feature that supports asynchronous and non-interactive coordination capabilities and front-running protection.
+| Feature | VRaaS | Timelocked Transactions |
+|----------|-------|------------------------|
+| **Delivery** | XCM-based adapters | Cryptographically timelocked transaction pool |
+| **Use Cases** | Games, lotteries, leader election, NFT shuffles | MEV protection, sealed-bid auctions, private coordination |
+| **Integration** | SDK + FRAME pallets + contracts | SDK + contract libraries |
+| **Trust Model** | Verifiable randomness | Semi-trusted with cryptographic guarantees |
 
-<p align="center">
-  <img src="/img/overview.png" width="500"/>
-</p>
+---
+
+## Next Steps
+- [Quickstart Integration Guide](../guides_and_tutorials/quickstart.md)  
+- [VRaaS Subscription Overview](../getting_started/subscriptions_and_cost_model.md)  
+- [Timelocked Transaction Guide](../guides_and_tutorials/timelocked_txs.md)
+ 

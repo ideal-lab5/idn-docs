@@ -1,104 +1,86 @@
-/**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
- */
-
-/* Color Palette extracted from existing styles:
-   Primary: #00bfff (Cyan Blue)
-   Secondary: #ff9800 (Orange)
-   Supporting colors derived from these two main colors
-*/
-
 :root {
-  /* Primary color family - Cyan Blue (#00bfff) */
-  --ifm-color-primary: #00bfff;
-  --ifm-color-primary-dark: #00a6e6;
-  --ifm-color-primary-darker: #009dd9;
-  --ifm-color-primary-darkest: #0081b3;
-  --ifm-color-primary-light: #1ac6ff;
-  --ifm-color-primary-lighter: #26c9ff;
-  --ifm-color-primary-lightest: #4dd2ff;
-  
-  /* Secondary color - Orange (#ff9800) */
-  --ifm-color-secondary: #ff9800;
-  --ifm-color-secondary-dark: #e6890e;
-  --ifm-color-secondary-darker: #d9820d;
-  --ifm-color-secondary-darkest: #b36b0a;
-  --ifm-color-secondary-light: #ffa21a;
-  --ifm-color-secondary-lighter: #ffa526;
-  --ifm-color-secondary-lightest: #ffb84d;
-  
-  /* Success color derived from cyan-green */
-  --ifm-color-success: #00d4aa;
-  --ifm-color-success-dark: #00be99;
-  --ifm-color-success-darker: #00b491;
-  --ifm-color-success-darkest: #009477;
-  --ifm-color-success-light: #1adebb;
-  --ifm-color-success-lighter: #26e1c0;
-  --ifm-color-success-lightest: #4de6c7;
-  
-  /* Info color - lighter cyan */
-  --ifm-color-info: #54c7ec;
-  --ifm-color-info-dark: #29b5e8;
-  --ifm-color-info-darker: #1eade6;
-  --ifm-color-info-darkest: #1690bf;
-  --ifm-color-info-light: #7fd3f0;
-  --ifm-color-info-lighter: #8dd8f2;
-  --ifm-color-info-lightest: #ade3f7;
-  
-  /* Warning color - amber/orange */
-  --ifm-color-warning: #ffb02e;
-  --ifm-color-warning-dark: #ff9d00;
-  --ifm-color-warning-darker: #f29500;
-  --ifm-color-warning-darkest: #c77700;
-  --ifm-color-warning-light: #ffc445;
-  --ifm-color-warning-lighter: #ffca52;
-  --ifm-color-warning-lightest: #ffd76f;
-  
-  /* Danger color - coral red */
-  --ifm-color-danger: #ff6b6b;
-  --ifm-color-danger-dark: #ff5252;
-  --ifm-color-danger-darker: #ff4444;
-  --ifm-color-danger-darkest: #d32f2f;
-  --ifm-color-danger-light: #ff8a80;
-  --ifm-color-danger-lighter: #ff9999;
-  --ifm-color-danger-lightest: #ffb3ba;
-  
+  /* Primary color family - Deep Electric Indigo */
+  --ifm-color-primary: #4d41c8;
+  --ifm-color-primary-dark: #3f36a8;
+  --ifm-color-primary-darker: #352d90;
+  --ifm-color-primary-darkest: #2b2577;
+  --ifm-color-primary-light: #6a5de0;
+  --ifm-color-primary-lighter: #7a6ef2;
+  --ifm-color-primary-lightest: #9588ff;
+
+  /* Secondary color - Cool Teal */
+  --ifm-color-secondary: #008b8b;
+  --ifm-color-secondary-dark: #007575;
+  --ifm-color-secondary-darker: #006666;
+  --ifm-color-secondary-darkest: #004d4d;
+  --ifm-color-secondary-light: #00a0a0;
+  --ifm-color-secondary-lighter: #00b3b3;
+  --ifm-color-secondary-lightest: #33cccc;
+
+  /* Success - vivid teal-green */
+  --ifm-color-success: #1adb9f;
+  --ifm-color-success-dark: #16b788;
+  --ifm-color-success-darker: #14a87c;
+  --ifm-color-success-darkest: #108764;
+  --ifm-color-success-light: #33e3ad;
+  --ifm-color-success-lighter: #40e6b5;
+  --ifm-color-success-lightest: #5cebcb;
+
+  /* Info - lighter cyan for status highlights */
+  --ifm-color-info: #3cb7e8;
+  --ifm-color-info-dark: #219ed0;
+  --ifm-color-info-darker: #1c8bb8;
+  --ifm-color-info-darkest: #166f95;
+  --ifm-color-info-light: #60c6ed;
+  --ifm-color-info-lighter: #7dd3f3;
+  --ifm-color-info-lightest: #a2e5fb;
+
+  /* Warning - toned down violet accent */
+  --ifm-color-warning: #8a5de3;
+  --ifm-color-warning-dark: #744ac8;
+  --ifm-color-warning-darker: #623da9;
+  --ifm-color-warning-darkest: #4e2f85;
+  --ifm-color-warning-light: #a580f0;
+  --ifm-color-warning-lighter: #b99ef5;
+  --ifm-color-warning-lightest: #d8c8fa;
+
+  /* Danger - bold but balanced pink-red */
+  --ifm-color-danger: #e23b7b;
+  --ifm-color-danger-dark: #c43269;
+  --ifm-color-danger-darker: #b82e63;
+  --ifm-color-danger-darkest: #942550;
+  --ifm-color-danger-light: #f06292;
+  --ifm-color-danger-lighter: #f78dae;
+  --ifm-color-danger-lightest: #fcbcd2;
+
   /* Font and code settings */
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 191, 255, 0.1);
+  --docusaurus-highlighted-code-line-bg: rgba(77, 65, 200, 0.1);
 }
 
-/* Dark mode color adjustments */
+/* Dark theme adjustments */
 [data-theme='dark'] {
-  /* Primary color family - brighter for dark mode */
-  --ifm-color-primary: #1ac6ff;
-  --ifm-color-primary-dark: #00bfff;
-  --ifm-color-primary-darker: #00b3f0;
-  --ifm-color-primary-darkest: #0094c7;
-  --ifm-color-primary-light: #33ccff;
-  --ifm-color-primary-lighter: #40cfff;
-  --ifm-color-primary-lightest: #5cd6ff;
-  
-  /* Secondary color - slightly muted for dark mode */
-  --ifm-color-secondary: #ffab40;
-  --ifm-color-secondary-dark: #ff9800;
-  --ifm-color-secondary-darker: #f57c00;
-  --ifm-color-secondary-darkest: #e65100;
-  --ifm-color-secondary-light: #ffb74d;
-  --ifm-color-secondary-lighter: #ffcc02;
-  --ifm-color-secondary-lightest: #ffd54f;
-  
-  /* Success color for dark mode */
-  --ifm-color-success: #4caf50;
-  --ifm-color-success-dark: #388e3c;
-  --ifm-color-success-darker: #2e7d32;
-  --ifm-color-success-darkest: #1b5e20;
-  --ifm-color-success-light: #66bb6a;
-  --ifm-color-success-lighter: #81c784;
-  --ifm-color-success-lightest: #a5d6a7;
-  
-  /* Enhanced highlight color for dark mode */
-  --docusaurus-highlighted-code-line-bg: rgba(0, 191, 255, 0.15);
+  --ifm-background-color: #121826; /* Slightly softer than black */
+  --ifm-background-surface-color: #1a2333; /* Dark cards */
+  --ifm-color-primary: #4da6ff; /* Brighter but still cool primary */
+  --ifm-color-primary-dark: #3b86d6;
+  --ifm-color-primary-darker: #2f6ab3;
+  --ifm-color-primary-light: #6fb7ff;
+  --ifm-color-primary-lighter: #92ccff;
+  --ifm-color-primary-lightest: #c2e0ff;
+
+  /* Secondary - balanced teal for dark theme */
+  --ifm-color-secondary: #00bfbf;
+  --ifm-color-secondary-dark: #009f9f;
+  --ifm-color-secondary-darker: #008080;
+  --ifm-color-secondary-light: #26dada;
+  --ifm-color-secondary-lighter: #4de5e5;
+  --ifm-color-secondary-lightest: #99f0f0;
+
+  /* Font adjustments for readability */
+  --ifm-font-color-base: #e2e8f0;
+  --ifm-font-color-secondary: #a0aec0;
+
+  /* Code highlight */
+  --docusaurus-highlighted-code-line-bg: rgba(77, 166, 255, 0.15);
 }

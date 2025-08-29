@@ -1,13 +1,13 @@
 ---
 sidebar_position: 2
-title: ink! Smart Contract Integration
+title: Cross-Chain ink! Smart Contract Integration
 ---
  
 ## IDN Client Library
 
-The `idn-client-contract-lib` library provides functionality for interacting with the Ideal Network's IDN Manager pallet through XCM. This allows contracts on other parachains to subscribe to and receive randomness from the Ideal Network.
+The `idn-client-contract-lib` library provides functionality for interacting with the Ideal Network's IDN Manager pallet through XCM. This allows **contracts on other parachains** to subscribe to and receive randomness from the Ideal Network.
 
-&rarr; Repository for the [idn-client-contract-lib](https://github.com/ideal-lab5/idn-sdk/tree/main/contracts/idn-client-contract-lib)
+➜ Repository for the [idn-client-contract-lib](https://github.com/ideal-lab5/idn-sdk/tree/main/contracts/idn-client-contract-lib).
 
 ### Features
 
@@ -23,9 +23,10 @@ To use the IDN Client library in your contract:
 
 1. Add the dependency to your `Cargo.toml`:
 
+TODO later: versioning
 ```toml
 [dependencies]
-idn-client-contract-lib = { path = "../idn-client-contract-lib", default-features = false }
+idn-client-contract-lib = { version = "0.0.0", default-features = false }
 
 [features]
 default = ["std"]
@@ -51,13 +52,9 @@ impl RandomnessReceiver for YourContract {
         pulse: ContractPulse,
         subscription_id: SubscriptionId
     ) -> Result<()> {
-        // Access the raw randomness
+        // Read the randomenss from a received pulse
         let randomness = pulse.rand();
-        
-        // Optionally, store the full pulse for verification purposes
-        // self.last_pulse = Some(pulse);
-        
-        // Handle the received randomness
+        // Handle the randomness
         Ok(())
     }
 }
@@ -107,9 +104,9 @@ self.idn_client.update_subscription(UpdateSubParams {
 
 ## Example Consumer
 
-The `idn-example-consumer-contract` contract demonstrates a complete implementation of a contract that uses the IDN Client library to create randomness subscriptions and handle received randomness.
+The [idn-example-consumer-contract](https://github.com/ideal-lab5/idn-sdk/tree/main/contracts/idn-example-consumer-contract) contract demonstrates a complete implementation of a contract that uses the IDN Client library to create randomness subscriptions and handle received randomness.
 
-See the `idn-example-consumer-contract/lib.rs` file for details on how to:
+See the [idn-example-consumer-contract/lib.rs](https://github.com/ideal-lab5/idn-sdk/blob/main/contracts/idn-example-consumer-contract/lib.rs) file for details on how to:
 - Initialize a contract with IDN Client capabilities
 - Create and manage randomness subscriptions
 - Process received randomness with the Pulse trait

@@ -55,7 +55,7 @@ body {
 .title {
   font-size: 3rem;
   font-weight: 700;
-  background: linear-gradient(90deg, #00bfff, #ff9800);
+  background: linear-gradient(90deg, var(--ifm-color-primary), var(--ifm-color-secondary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 1rem;
@@ -71,11 +71,11 @@ body {
 
 [data-theme='dark'] {
   .subtitle {
-    color: #cbd5e1;
+    color: var(--ifm-color-secondary-lightest); /* Using silver for dark mode */
   }
 
   .bigPicture {
-    color: #e2e8f0;
+    color: var(--ifm-color-secondary-lightest); /* Using silver for dark mode */
   }
 }
 
@@ -87,26 +87,26 @@ body {
 
 .whySection h2 {
   font-size: 2rem;
-  color: #00bfff;
+  color: var(--ifm-color-primary);
   margin-bottom: 0.75rem;
 }
 
 :root {
   .whyText {
     font-size: 1.125rem;
-    color: #000000;
+    color: var(--ifm-font-color-base);
     line-height: 1.6;
   }
 }
 
 [data-theme='dark'] {
   .whyText {
-    color: #dbdbdb;
+    color: var(--ifm-font-color-base);
   }
 
   .featureCard p {
     font-size: 1rem;
-    color: #cbd5e1;
+    color: var(--ifm-font-color-base);
   }
 }
 
@@ -130,7 +130,7 @@ body {
 
 .featureCard:hover {
   transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgb(255 152 0 / 0.25);
+  box-shadow: 0 8px 20px rgb(0 119 200 / 0.25); /* Adjusted to new secondary color */
 }
 
 .featureIcon {
@@ -141,13 +141,13 @@ body {
 
 .featureCard h3 {
   font-size: 1.5rem;
-  color: #ff9800;
+  color: var(--ifm-color-secondary);
   margin-bottom: 0.75rem;
 }
 
 .featureCard p {
   font-size: 1rem;
-  color: #000000;
+  color: var(--ifm-font-color-base);
   line-height: 1.5;
 }
 
@@ -156,28 +156,37 @@ body {
   margin: 0 auto 4rem;
   text-align: center;
   font-size: 1.125rem;
-  color: #000000;
+  color: var(--ifm-font-color-base);
 }
 
 .bigPicture h2 {
-  color: #00bfff;
+  color: var(--ifm-color-primary);
   margin-bottom: 0.75rem;
 }
 
+/* Better Button Styling */
 .linkBtn {
   text-align: center;
-  margin-top: '30px';
+  margin-top: 30px;
 }
 
-.linkBtn > a { 
-  background-color: #007bff;
+.linkBtn > a {
+  background-color: var(--ifm-color-secondary);
   color: white;
-  padding: 10px 20px;
+  padding: 12px 24px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  border-radius: 5px;
-  margin-top: 15px;
+  border-radius: 8px; /* Slightly more rounded */
+  font-weight: 600;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.linkBtn > a:hover {
+  background-color: var(--ifm-color-secondary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
 /* Core Capabilities Page-Specific CSS */
@@ -247,4 +256,119 @@ body {
   border-radius: 4px;
   max-width: 800px;
   margin: 2rem auto;
+}
+
+
+/*
+  Component Styling
+*/
+.component-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.component-card {
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  box-shadow: 0 4px 12px var(--box-shadow-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.component-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px var(--box-shadow-color);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.card-header .emoji {
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.card-header h3 {
+  color: var(--heading-color);
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.card-summary {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.85;
+}
+
+.card-details h5 {
+  color: var(--accent-light);
+  font-size: 1.2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+.card-details h5::before {
+  content: ' ';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent-color);
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.card-details p {
+  margin-bottom: 1rem;
+}
+
+.card-details ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+}
+
+.card-details ul li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-details ul li::before {
+  content: '✓';
+  color: var(--accent-color);
+  position: absolute;
+  left: 0;
+}
+
+.strong-text {
+  font-weight: 600;
+  color: var(--accent-light);
+}
+
+/*
+  Responsive adjustments
+*/
+@media (min-width: 768px) {
+  .component-section {
+    flex-direction: row;
+    gap: 2rem;
+  }
+  .component-card {
+    flex: 1;
+  }
 }

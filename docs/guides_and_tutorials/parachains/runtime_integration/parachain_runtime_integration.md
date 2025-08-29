@@ -57,13 +57,14 @@ You can configure the pallet using the following runtime parameters:
 Add the pallet to your cargo.toml with `default-features = false`:
 
 ``` shell
-cargo add pallet-idn-manager
+cargo add pallet-idn-consumer
 ```
 
+TODO later: versioning
 The latest version is `0.0.1-dev`
 
 ``` toml
-pallet-idn-manager = { version = "0.0.1-dev", default-features = false }
+pallet-idn-consumer = { version = "0.0.1-dev", default-features = false }
 ```
 
 
@@ -103,17 +104,42 @@ The `pallet-idn-consumer` requires three custom trait implementations to define 
   * **`QuoteConsumer`**: This trait handles subscription fee quotes.
   * **`SubInfoConsumer`**: This trait processes subscription information.
 
-**Example Implementation (`PulseConsumer`):**
+**Example Implementation:**
 
 ```rust
+
+/// Dummy implementation of the ['PulseConsumer'] trait.
 pub struct PulseConsumerImpl;
-impl pallet_idn_consumer::PulseConsumer<Runtime> for PulseConsumerImpl {
-    fn consume_pulse(_pulse: Pulse, _sub_id: SubscriptionId) {
-        // Your custom logic to handle the randomness pulse.
-        // For example, use it to seed a random number generator or store it for a contract.
-    }
+impl PulseConsumer<Pulse, SubscriptionId, (), ()> for PulseConsumerImpl {
+	fn consume_pulse(pulse: Pulse, sub_id: SubscriptionId) -> Result<(), ()> {
+		// Randomness consumption logic goes here.
+		log::info!("IDN Consumer: Consuming pulse: {:?} with sub id: {:?}", pulse, sub_id);
+		Ok(())
+	}
+}
+
+/// Dummy implementation of the ['QuoteConsumer'] trait.
+pub struct QuoteConsumerImpl;
+impl QuoteConsumer<Quote, (), ()> for QuoteConsumerImpl {
+	fn consume_quote(quote: Quote) -> Result<(), ()> {
+		// Quote consumption logic goes here.
+		log::info!("IDN Consumer: Consuming quote: {:?}", quote);
+		Ok(())
+	}
+}
+
+/// Dummy implementation of the ['SubInfoConsumer'] trait.
+pub struct SubInfoConsumerImpl;
+impl SubInfoConsumer<SubInfoResponse, (), ()> for SubInfoConsumerImpl {
+	fn consume_sub_info(sub_info: SubInfoResponse) -> Result<(), ()> {
+		// Subscription info consumption logic goes here.
+		log::info!("IDN Consumer: Consuming subscription info: {:?}", sub_info);
+		Ok(())
+	}
 }
 ```
+
+➜ Checkout out the [randomness verification](../../rand_verification.md) guide to see how to verify incoming pulses in the PulseConsumerImpl.
 
 -----
 

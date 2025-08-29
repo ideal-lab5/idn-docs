@@ -54,8 +54,7 @@ The Ideal Network (IDN) solves this by providing two core capabilities:
 
 | [![Polkadot Treasury Logo](../image.png)](https://polkadot.polkassembly.io/referenda/1383) | [![Web3 Foundation Grant](https://raw.githubusercontent.com/ideal-lab5/etf/main/resources/web3%20foundation_grants_badge_black.png)](https://github.com/ideal-lab5/Grants-Program/blob/master/applications/cryptex.md) |
 |---|---|
-| Funded by the Polkadot Treasury with [99.8% on-chain approval](https://polkadot.polkassembly.io/referenda/1383) | Supported by a [Web3 Foundation Grant](https://github.com/ideal-lab5/Grants-Program/blob/master/applications/cryptex.md) and the [Decentralized Futures program](https://futures.web3.foundation/) |
-
+| Funded by the Polkadot Treasury with [99.8% on-chain approval](https://polkadot.polkassembly.io/referenda/1383) | Supported by the [Web3 Foundation Grant Program](https://github.com/ideal-lab5/Grants-Program/blob/master/applications/cryptex.md) and the [Decentralized Futures program](https://futures.web3.foundation/) |
 
 ## Learn More
 
@@ -68,4 +67,4 @@ Read the latest news on our [substack](https://ideallabs.substack.com/)!
 - Learn more about Ideal Labs: https://idealabs.network
 
 ## License
-This documentation and code is licensed under Apache-2.0. -->
+This documentation and code is licensed under Apache-2.0.

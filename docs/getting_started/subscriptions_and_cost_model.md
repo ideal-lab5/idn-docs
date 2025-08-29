@@ -5,75 +5,92 @@ title: Subscription Overview and Cost Model for VRaaS
 
 # The VRaaS Credit System
 
-Our Verifiable Randomness-as-a-Service (VRaaS) is a live 'pipe' that **injects** cryptographically secure randomness directly to its target via XCM. To access this service, you must create a subscription on the Ideal Network.
+**Verifiable Randomness-as-a-Service (VRaaS)** provides a live pipe that **injects cryptographically verifiable randomness** directly to a target location using [cross-consensus messaging](https://docs.polkadot.com/develop/interoperability/intro-to-xcm/) (XCM).
 
-Each subscription is defined with a **frequency** (how often randomness is delivered) and a number of **credits** that power it.
+**To start using VRaaS:**
+1. [Integrate with the Ideal Network](../guides_and_tutorials/quickstart.md)
+2. [Create a subscription](../guides_and_tutorials/parachains/subscription_mgmt.md) powered by *credits*.
 
----
-
-### How Credits Work
-
-A **credit** is an abstract unit that represents one block of computation for a subscription. Each active subscription consumes exactly **one credit per block**. When you create a new subscription, you specify an initial number of credits to power it.
-
-The credits are converted to an amount of DOT, which is subject to the latest [pricing tier](#pricing-tiers). You can retrieve these current pricing tiers by querying the runtime. This ensures transparent, real-time pricing and removes the need for manual publication.
-
-This simple model ensures a predictable and transparent cost for your application's access to randomness.
+Each subscription is defined by:
+- **Frequency** – how often randomness is delivered (i.e. the number of blocks between pulses, where you do not receive a pulse)
+- **Credits** – an abstract "token" that powers the subscription.  
 
 ---
 
-### Estimating Costs
+## How Credits Work
 
-Before creating a subscription, you can use the [interactive pricing simulator](../price_simulator.md#vraas-pricing-simulator) to estimate the amount of credits (and corresponding DOT) needed to power your subscription, given a desired frequency and number of pulses.
+A **credit** represents one block of computation for a subscription:  
+- Each active subscription **consumes 1 credit per block**.  
+- When creating a subscription, you set the **initial number of credits** to fund it.  
 
-This tool provides a solid starting point for your cost analysis.
-
-### Getting a Real-Time Quote
-
-#### Pricing Tiers
-
-We provide discounts based on the quantity of credits purchased at any single time using a tiered pricing model. 
-
-**Current Pricing Tiers**
-<details>
-|tier|discount|
-|--|--|
-|Tier 1 (1-10_000 credits) | 0% |
-|Tier 2 (10_001-100_000 credits) | 5% |
-|Tier 3 (101-1000 credits) | 10%  |
-|Tier 4 (1001-10000 credits) | 20% |
-|Tier 5 (10001+ credits) |30% |
----
-</details>
-
-For precise, real-time pricing, you can directly query the Ideal Network runtime. This is the most accurate way to understand your costs before committing to a subscription.
-
-* **Runtime Extrinsic:** If your parachain or smart contract is already integrated, you can call the `request_quote` extrinsic to get a real-time quote, otherwise call the `quote_subscription` extrinsic in the Ideal Network runtime.
-* **Explorer UI:** You can also get a quote through the Ideal Network Explorer, which pulls the latest data directly from the runtime.
+The DOT cost of credits is based on the current [pricing tier](#pricing-tiers).
+<!-- TODO -->
+<!-- which can be **queried in real time** from the runtime.   -->
+This ensures **predictable and transparent pricing** without manual updates.
 
 ---
 
-### Creating a Subscription
+## Estimating Costs
 
-Subscriptions can be created:
-- within parachains who have [integrated the idn-consumer-pallet](../guides_and_tutorials/parachains/runtime_integration/parachain_runtime_integration.md) into their runtime
-- by ink! smart contracts that have [integrated the idn-client-contract-lib](../guides_and_tutorials/parachains/smart_contracts/ink.md)
+Before creating a subscription, use the [interactive pricing simulator](../price_simulator.md#vraas-pricing-simulator) to estimate:  
+- How many credits you’ll need (based on frequency and pulses).  
+- The corresponding DOT required.
 
-
-
----
-
-### Managing Your Subscription
-
-Once a subscription is created, you can manage its lifecycle through three states:
-
-* **Active:** The subscription is running and consuming 1 credit per block.
-* **Paused:** The subscription is temporarily inactive and does not consume credits. This is useful for testing or for dApps with seasonal usage.
-* **Terminated:** The subscription has been permanently closed. Remaining credits can be returned to the owner's wallet.
+> **Tip:** Use the simulator for quick planning, then confirm exact costs by querying the runtime for real-time data.
 
 ---
 
-### Next Steps
+## Getting a Real-Time Quote
 
-* [Integrate with the Ideal Network](#)
-* [Create a Subscription](#)
-* [Monitor Your Subscription](#)
+### Pricing Tiers
+
+VRaaS uses a **tiered pricing model** with discounts for bulk credit purchases.
+
+| **Tier** | **Credits Purchased**       | **Discount** |
+|-----------|----------------------------|--------------|
+| Tier 1    | 1 – 10,000                 | 0%           |
+| Tier 2    | 10,001 – 100,000           | 5%           |
+| Tier 3    | 101,000 – 1,000,000        | 10%          |
+| Tier 4    | 1,001,000 – 10,000,000     | 20%          |
+| Tier 5    | 10,000,001+                | 30%          |
+
+---
+
+### How to Request a Quote
+
+There are three ways to retrieve a **real-time quote** from the Ideal Network:
+
+- **From a parachain runtime**  
+  Use the [`idn-consumer-pallet`](../guides_and_tutorials/parachains/runtime_integration/subscription_mgmt.md#request-a-quote) extrinsic.
+  
+- **From an ink! smart contract**  
+  Use the [`idn-client-contract-lib`](../guides_and_tutorials/parachains/smart_contracts/subscription_mgmt.md).
+
+- **Directly from the IDN runtime**  
+  Call the `quote_subscription` extrinsic manually.
+
+- **From the Explorer UI**  
+  Use the [Ideal Network Explorer](https://app.idealabs.network) to get up-to-date quotes without coding.
+
+---
+
+## Subscription Creation and Management
+
+You can create and manage subscriptions through any of the following methods:
+
+- **From a parachain runtime**  
+  Integrated with the [`idn-consumer-pallet`](../guides_and_tutorials/parachains/runtime_integration/subscription_mgmt.md#creating-a-subscription).
+
+- **From an ink! smart contract**  
+  Using the [`idn-client-contract-lib`](../guides_and_tutorials/parachains/smart_contracts/subscription_mgmt.md).
+
+- **From the Explorer UI**  
+  [Launch the app](https://app.idealabs.network) and manage subscriptions visually.
+
+---
+
+## Next Steps
+
+- [Integrate with the Ideal Network](../guides_and_tutorials/quickstart.md)
+- [Create Your First Subscription](../guides_and_tutorials/parachains/runtime_integration/subscription_mgmt.md)
+- [Monitor Your Subscription on the Explorer - TODO](#)

@@ -7,7 +7,7 @@ title: VRaaS Subscription Management
 
 The IDN's Verifiable-Randomness-as-a-Service is subscription based, allowing parachains and smart contracts to subscribe to the IDN as a cross-chain 'pipe' that injects verifiable randomness directly into another chain's runtime. Keep reading to understand how subscriptions can be created, updated, paused, or terminated from the idn-consumer pallet.
 
-&rarr; See the [cost model overview](../../../getting_started/subscriptions_and_cost_model.md) to explore pricing.
+➜ See the [cost model overview](../../../getting_started/subscriptions_and_cost_model.md) to explore pricing.
 
 ### Creating a Subscription
 

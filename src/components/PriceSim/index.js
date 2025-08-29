@@ -150,9 +150,9 @@ function PriceSimulator() {
     const durationInYears = durationInHours / 8760;
 
     // Easter Egg Condition
-    if (isCalculator && durationInYears > 1000) {
+    if (isCalculator && durationInYears > 100) {
       let tier;
-      if (durationInYears > 10000000) {
+      if (durationInYears > 1000000000) {
         tier = wittyContent.billions;
       } else if (durationInYears > 100000) {
         tier = wittyContent.millions;
