@@ -10,11 +10,11 @@ This guide provides a conceptual overview and technical preview of the Ideal Net
 
 ---
 
-### Integrate with VRaaS
+## Integrate with VRaaS
 
 Our APIs are designed to be elegant and straightforward, regardless of your integration method. These code examples are for illustrative purposes to show you what your final integration might look like. For a detailed guide, select your path below.
 
-#### **1. Parachain Runtime Developers**
+### **For Parachain Runtime Developers**
 
 **Best for teams building core runtime features requiring verifiable on-chain randomness.**
 
@@ -36,7 +36,7 @@ impl PulseConsumer<Pulse, SubscriptionId, (), ()> for PulseConsumerImpl {
 
 -----
 
-#### **2. Cross-Chain ink! Smart Contracts**
+### **For Cross-Chain ink! Smart Contracts**
 
 **Best for dApp developers on smart contract parachains or on the IDN itself.**
 You can call Ideal Network services using cross-chain messaging (XCM) on smart contract parachains, or directly on the IDN without needing a VRaaS subscription.
@@ -86,7 +86,7 @@ impl RandomnessReceiver for YourContract {
 
 ---
 
-#### **3. ink! Smart Contracts on the Ideal Network**
+### **For native ink! Smart Contracts on the Ideal Network**
 
 The Ideal Network support ink! smart contracts that can fetch verifiable randomness directly from the IDN runtime through a chain extension (add link). This makes it free to consume 
 and cheap to verify, allowing developers to easily acquire verifiably random values for the dApps and protocols.
@@ -131,26 +131,51 @@ let random = self.env().extension().random();
 
 ---
 
-#### **4. Frontend Developers**
+### **For Frontend Developers Sending Timelocked Transactions**
 
 **Best for web developers who want to easily interact with the network's timelock capabilities.**
-Our SDK provides a clean interface for interacting with our network's capabilities from a web application. This is the fastest way to get started.
+Our SDK provides a clean interface for interacting with our network's capabilities from a web application. The fastest way to get started is through the [etf.js](https://github.com/ideal-lab5/etf.js) library. To get start, install the latest version:
 
-> Coming Soon!
+``` shell
+# with yarn
+yard add @ideallabs/etf.js
+# or npm
+npm i @ideallabs/etf.js
+```
+
+The library can be used to build timelocked transactions that can be submitted to the Ideal Network's encrypted transaction pool.
+
+``` js
+// Schedule for round number 123123123123
+const executionRound = 123123123123
+// Encrypt the transaction with a secret seed.
+let secretSeed = new TextEncoder().encode('my-secret-seed')
+const delayedTx = await etf.delay(innerCall, executionRound, secretSeed)
+// zeroize your seed!
+secretSeed.fill(0)
+// Sign and submit the delayed transaction (using @polkadotjs/api)
+await delayedTx.signAndSend(alice, (result) => {
+  if (result.status.isInBlock) {
+    console.log(`Delayed transaction submitted in block ${result.status.asInBlock}`);
+  }
+});
+```
 
 <div className={styles.linkBtn}>
-    <a href="../guides_and_tutorials/ink">Securely lock and schedule MEV resistant transactions</a>
+    <a href="../guides_and_tutorials/ink">Learn how to build timelocked transactions</a>
 </div>
 
 -----
 
-### What's Next?
+## What's Next?
 
 Now that you've seen what's possible, choose your development path to find detailed setup instructions and examples.
 
-  * **For Parachain Developers:** [Go to the Parachain Integration Guide]
-  * **For Smart Contract Developers:** [Go to the Smart Contract Guide]
-  * **For Frontend Developers:** [Go to the Frontend SDK Guide]
+  * **For Parachain Developers:** [Go to the Parachain Integration Guide](../guides_and_tutorials/parachains/runtime_integration/parachain_runtime_integration.md)
+  * **For ink! Smart Contract Developers:**
+    * [Learn how to create a VRaaS from a contract](../guides_and_tutorials/parachains/smart_contracts/ink.md)
+    * [Deploy contracts on the IDN to get randomness for free](../guides_and_tutorials/ink.md)
+  * **For Frontend Developers:** [Go to the Frontend SDK Guide](../guides_and_tutorials/timelocked_txs.md)
 
 
 
