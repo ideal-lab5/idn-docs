@@ -27,15 +27,17 @@ To independently verify an aggregated pulse, you can recompute the expected mess
 
 🔢 For those interested in the underlying cryptographic principles, you can review the [mathematical details](https://hackmd.io/@Y5vcBYL4SyeRG_CqQq0DoQ/HJTsbJ-Nyx).
 
-1. Add the IDN 'bridge' crate as a dependency
+1. Add the dependencies:
 
 TODO later: versioning
 ```toml
 [dependencies]
-bp-idn = { version = "0.0.0", default-features = false }
+sp-idn-crypto = { version = "0.0.0", default-features = false }
+sp-idn-traits = { version = "0.0.0", default-features = false }
 
 std = [
-    "bp-idn/std"
+    "sp-idn-crypto/std",
+    "sp-idn-traits/std"
 ]
 
 ```
@@ -43,7 +45,8 @@ std = [
 2. Import the deps
 
 ``` rust
-use bp_idn::{CryptoPrelude::*, TPulse};
+use sp_idn_cryptp::prelude::*;
+use sp_idn_traits::pulse::Pulse;
 ```
 
 3. Reconstruct the expected Drand round number
@@ -92,7 +95,8 @@ if let Ok(()) = QuicknetVerifier::verify(
 The [`RuntimePulse`](#) 'authenticate' function encapsulates the logic above, making it straightforward to authenticate:
 
 ```rust
-use bp_idn::{CryptoPrelude::*, TPulse};
+use sp_idn_cryptp::prelude::*;
+use sp_idn_traits::pulse::Pulse;
 
 /// the drand quicknet public key
 pub const BEACON_PUBKEY: &[u8] = b"83cf0f2896adee7eb8b5f01fcad3912212c437e0073e911fb90022d3e760183c8c4b450b6a0a6c3ac6a5776a2d1064510d1fec758c921cc22b0e17e63aaf4bcb5ed66304de9cf809bd274ca73bab4af5a6e9c76a4bc09e76eae8991ef5ece45a";
