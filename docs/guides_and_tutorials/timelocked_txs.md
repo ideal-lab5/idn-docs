@@ -24,7 +24,7 @@ npm install @ideallabs/etf.js
 
 The `Etf` class is the main entry point for the SDK. It requires an instance of `@polkadot/api`'s `ApiPromise` to communicate with the Ideal Network. The library assumes you have already established this connection, by using [@polkadotjs/api](https://github.com/polkadot-js/api) (optionally with a [smoldot](https://github.com/smol-dot/smoldot) light client).
 
-See the [examples](./examples/) directory for demonstrations on using the library in a browser.
+See the [examples](../guides_and_tutorials/timelocked_txs.md) for demonstrations on using the library in a browser.
 
 #### Initializing the SDK
 
