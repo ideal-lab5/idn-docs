@@ -9,7 +9,7 @@ import styles from '/src/pages/index.module.css';
 
 <div className={styles.hero}>
   <h1 className={styles.title}>
-    Verifiable Randomness & Trustless Coordination Infrastructure for Multichain Web3
+    Verifiable Randomness & Timelocked Transactions for Multichain Web3
     <!-- The Randomness & Time Layer Web3 Has Been Waiting For -->
   </h1>
   <p className={styles.subtitle}>
