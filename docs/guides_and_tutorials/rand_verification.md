@@ -29,12 +29,12 @@ To independently verify an aggregated pulse, you can recompute the expected mess
 
 1. Add the dependencies:
 
-TODO later: versioning
+> ⚠️ This library has not yet been published.
 ```toml
 [dependencies]
+hex = { version = "0.4", default-features = false }
 sp-idn-crypto = { version = "0.0.0", default-features = false }
 sp-idn-traits = { version = "0.0.0", default-features = false }
-hex = { version = "0.4", default-features = false }
 # other deps
 
 std = [
@@ -49,7 +49,7 @@ std = [
 2. Import the deps
 
 ``` rust
-use sp_idn_cryptp::prelude::*;
+use sp_idn_crypto::prelude::*;
 use sp_idn_traits::pulse::Pulse;
 ```
 
@@ -100,7 +100,7 @@ if let Ok(()) = QuicknetVerifier::verify(
 The [`RuntimePulse`](#) 'authenticate' function encapsulates the logic above, making it straightforward to authenticate:
 
 ```rust
-use sp_idn_cryptp::prelude::*;
+use sp_idn_crypto::prelude::*;
 use sp_idn_traits::pulse::Pulse;
 
 /// the drand quicknet public key

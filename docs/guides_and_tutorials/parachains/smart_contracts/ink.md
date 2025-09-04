@@ -9,6 +9,8 @@ The `idn-client-contract-lib` library provides functionality for interacting wit
 
 ➜ Repository for the [idn-client-contract-lib](https://github.com/ideal-lab5/idn-sdk/tree/main/contracts/idn-client-contract-lib).
 
+> ⚠️ This library has not yet been published.
+
 ### Features
 
 - Create, pause, reactivate, update, and kill randomness subscriptions
@@ -23,7 +25,8 @@ To use the IDN Client library in your contract:
 
 1. Add the dependency to your `Cargo.toml`:
 
-TODO later: versioning
+> ⚠️ This library has not yet been published. Installation instructions are placeholders.
+> 
 ```toml
 [dependencies]
 idn-client-contract-lib = { version = "0.0.0", default-features = false }

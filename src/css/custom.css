@@ -138,3 +138,17 @@
   --ifm-table-stripe-background: rgba(30, 26, 46, 0.5);
   --ifm-card-background-color: #1e1a2e;
 }
+
+/* Make the announcement bar fixed */
+div[class*="announcementBar_"] {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2000; /* keep it above navbar */
+}
+
+/* Push the navbar down so it’s not hidden behind the bar */
+.navbar {
+  margin-top: var(--ifm-announcement-bar-height, 2.5rem);
+}

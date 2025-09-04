@@ -78,7 +78,16 @@ const config = {
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-    ({
+    (
+      {
+      announcementBar: {
+        id: 'support_us', // unique id
+        content:
+          '🛠️ We’re building! These docs are still evolving. Not all features are usable or stable yet.',
+        backgroundColor: '#ef4444',
+        textColor: '#000000ff',
+        isCloseable: false,
+      },
       // Replace with your project's social card
       // image: 'img/docusaurus-social-card.jpg',
       navbar: {

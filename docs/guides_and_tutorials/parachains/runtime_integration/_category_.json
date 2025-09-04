@@ -3,6 +3,7 @@
   "position": 2,
   "link": {
     "type": "generated-index",
-    "description": "Learn how to integrate the IDN's randomness using a FRAME pallet"
+    "title": "Integrating IDN Randomness in Parachains",
+    "description": "Learn step by step how to integrate the Ideal Network's randomness beacon into your parachain runtime using a FRAME pallet."
   }
 }
