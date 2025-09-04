@@ -1,86 +1,140 @@
 :root {
-  /* Primary color family - Deep Electric Indigo */
-  --ifm-color-primary: #4d41c8;
-  --ifm-color-primary-dark: #3f36a8;
-  --ifm-color-primary-darker: #352d90;
-  --ifm-color-primary-darkest: #2b2577;
-  --ifm-color-primary-light: #6a5de0;
-  --ifm-color-primary-lighter: #7a6ef2;
-  --ifm-color-primary-lightest: #9588ff;
-
-  /* Secondary color - Cool Teal */
-  --ifm-color-secondary: #008b8b;
-  --ifm-color-secondary-dark: #007575;
-  --ifm-color-secondary-darker: #006666;
-  --ifm-color-secondary-darkest: #004d4d;
-  --ifm-color-secondary-light: #00a0a0;
-  --ifm-color-secondary-lighter: #00b3b3;
-  --ifm-color-secondary-lightest: #33cccc;
-
-  /* Success - vivid teal-green */
-  --ifm-color-success: #1adb9f;
-  --ifm-color-success-dark: #16b788;
-  --ifm-color-success-darker: #14a87c;
-  --ifm-color-success-darkest: #108764;
-  --ifm-color-success-light: #33e3ad;
-  --ifm-color-success-lighter: #40e6b5;
-  --ifm-color-success-lightest: #5cebcb;
-
-  /* Info - lighter cyan for status highlights */
-  --ifm-color-info: #3cb7e8;
-  --ifm-color-info-dark: #219ed0;
-  --ifm-color-info-darker: #1c8bb8;
-  --ifm-color-info-darkest: #166f95;
-  --ifm-color-info-light: #60c6ed;
-  --ifm-color-info-lighter: #7dd3f3;
-  --ifm-color-info-lightest: #a2e5fb;
-
-  /* Warning - toned down violet accent */
-  --ifm-color-warning: #8a5de3;
-  --ifm-color-warning-dark: #744ac8;
-  --ifm-color-warning-darker: #623da9;
-  --ifm-color-warning-darkest: #4e2f85;
-  --ifm-color-warning-light: #a580f0;
-  --ifm-color-warning-lighter: #b99ef5;
-  --ifm-color-warning-lightest: #d8c8fa;
-
-  /* Danger - bold but balanced pink-red */
-  --ifm-color-danger: #e23b7b;
-  --ifm-color-danger-dark: #c43269;
-  --ifm-color-danger-darker: #b82e63;
-  --ifm-color-danger-darkest: #942550;
-  --ifm-color-danger-light: #f06292;
-  --ifm-color-danger-lighter: #f78dae;
-  --ifm-color-danger-lightest: #fcbcd2;
-
+  /* Primary color family - Deep Electric Indigo with more purple */
+  --ifm-color-primary: #5a4fcf;
+  --ifm-color-primary-dark: #4a3fb8;
+  --ifm-color-primary-darker: #3d349a;
+  --ifm-color-primary-darkest: #2f2980;
+  --ifm-color-primary-light: #7166e8;
+  --ifm-color-primary-lighter: #857af5;
+  --ifm-color-primary-lightest: #a396ff;
+  
+  /* Secondary color - Enhanced Deep Blue-Teal */
+  --ifm-color-secondary: #1e3a8a;
+  --ifm-color-secondary-dark: #1e40af;
+  --ifm-color-secondary-darker: #1d4ed8;
+  --ifm-color-secondary-darkest: #1e3a8a;
+  --ifm-color-secondary-light: #3b82f6;
+  --ifm-color-secondary-lighter: #60a5fa;
+  --ifm-color-secondary-lightest: #93c5fd;
+  
+  /* Success - Enhanced teal-green */
+  --ifm-color-success: #059669;
+  --ifm-color-success-dark: #047857;
+  --ifm-color-success-darker: #065f46;
+  --ifm-color-success-darkest: #064e3b;
+  --ifm-color-success-light: #10b981;
+  --ifm-color-success-lighter: #34d399;
+  --ifm-color-success-lightest: #6ee7b7;
+  
+  /* Info - Deeper blue for status highlights */
+  --ifm-color-info: #2563eb;
+  --ifm-color-info-dark: #1d4ed8;
+  --ifm-color-info-darker: #1e40af;
+  --ifm-color-info-darkest: #1e3a8a;
+  --ifm-color-info-light: #3b82f6;
+  --ifm-color-info-lighter: #60a5fa;
+  --ifm-color-info-lightest: #93c5fd;
+  
+  /* Warning - Rich purple accent */
+  --ifm-color-warning: #7c3aed;
+  --ifm-color-warning-dark: #6d28d9;
+  --ifm-color-warning-darker: #5b21b6;
+  --ifm-color-warning-darkest: #4c1d95;
+  --ifm-color-warning-light: #8b5cf6;
+  --ifm-color-warning-lighter: #a78bfa;
+  --ifm-color-warning-lightest: #c4b5fd;
+  
+  /* Danger - Deep magenta-red */
+  --ifm-color-danger: #dc2626;
+  --ifm-color-danger-dark: #b91c1c;
+  --ifm-color-danger-darker: #991b1b;
+  --ifm-color-danger-darkest: #7f1d1d;
+  --ifm-color-danger-light: #ef4444;
+  --ifm-color-danger-lighter: #f87171;
+  --ifm-color-danger-lightest: #fca5a5;
+  
   /* Font and code settings */
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(77, 65, 200, 0.1);
+  --docusaurus-highlighted-code-line-bg: rgba(90, 79, 207, 0.12);
 }
 
-/* Dark theme adjustments */
+/* Dark theme adjustments - Much darker blacks with purple undertones */
 [data-theme='dark'] {
-  --ifm-background-color: #121826; /* Slightly softer than black */
-  --ifm-background-surface-color: #1a2333; /* Dark cards */
-  --ifm-color-primary: #4da6ff; /* Brighter but still cool primary */
-  --ifm-color-primary-dark: #3b86d6;
-  --ifm-color-primary-darker: #2f6ab3;
-  --ifm-color-primary-light: #6fb7ff;
-  --ifm-color-primary-lighter: #92ccff;
-  --ifm-color-primary-lightest: #c2e0ff;
-
-  /* Secondary - balanced teal for dark theme */
-  --ifm-color-secondary: #00bfbf;
-  --ifm-color-secondary-dark: #009f9f;
-  --ifm-color-secondary-darker: #008080;
-  --ifm-color-secondary-light: #26dada;
-  --ifm-color-secondary-lighter: #4de5e5;
-  --ifm-color-secondary-lightest: #99f0f0;
-
-  /* Font adjustments for readability */
-  --ifm-font-color-base: #e2e8f0;
-  --ifm-font-color-secondary: #a0aec0;
-
-  /* Code highlight */
-  --docusaurus-highlighted-code-line-bg: rgba(77, 166, 255, 0.15);
+  --ifm-background-color: #0a0a0f; /* Nearly black with subtle purple undertone */
+  --ifm-background-surface-color: #1a1a2e; /* Dark purple-tinged cards */
+  --ifm-background-color-transparent: rgba(10, 10, 15, 0.8);
+  
+  /* Primary - Brighter purple-blue for dark theme */
+  --ifm-color-primary: #6366f1;
+  --ifm-color-primary-dark: #4f46e5;
+  --ifm-color-primary-darker: #4338ca;
+  --ifm-color-primary-darkest: #3730a3;
+  --ifm-color-primary-light: #818cf8;
+  --ifm-color-primary-lighter: #a5b4fc;
+  --ifm-color-primary-lightest: #c7d2fe;
+  
+  /* Secondary - Enhanced blue for dark theme */
+  --ifm-color-secondary: #3b82f6;
+  --ifm-color-secondary-dark: #2563eb;
+  --ifm-color-secondary-darker: #1d4ed8;
+  --ifm-color-secondary-darkest: #1e40af;
+  --ifm-color-secondary-light: #60a5fa;
+  --ifm-color-secondary-lighter: #93c5fd;
+  --ifm-color-secondary-lightest: #bfdbfe;
+  
+  /* Success - Brighter for dark background */
+  --ifm-color-success: #10b981;
+  --ifm-color-success-dark: #059669;
+  --ifm-color-success-darker: #047857;
+  --ifm-color-success-light: #34d399;
+  --ifm-color-success-lighter: #6ee7b7;
+  --ifm-color-success-lightest: #a7f3d0;
+  
+  /* Info - Bright blue for dark theme */
+  --ifm-color-info: #60a5fa;
+  --ifm-color-info-dark: #3b82f6;
+  --ifm-color-info-darker: #2563eb;
+  --ifm-color-info-light: #93c5fd;
+  --ifm-color-info-lighter: #bfdbfe;
+  --ifm-color-info-lightest: #dbeafe;
+  
+  /* Warning - Vibrant purple for visibility */
+  --ifm-color-warning: #a855f7;
+  --ifm-color-warning-dark: #9333ea;
+  --ifm-color-warning-darker: #7c3aed;
+  --ifm-color-warning-light: #c084fc;
+  --ifm-color-warning-lighter: #d8b4fe;
+  --ifm-color-warning-lightest: #e9d5ff;
+  
+  /* Danger - Bright red for dark theme */
+  --ifm-color-danger: #f87171;
+  --ifm-color-danger-dark: #ef4444;
+  --ifm-color-danger-darker: #dc2626;
+  --ifm-color-danger-light: #fca5a5;
+  --ifm-color-danger-lighter: #fecaca;
+  --ifm-color-danger-lightest: #fee2e2;
+  
+  /* Font adjustments for better contrast on darker background */
+  --ifm-font-color-base: #f1f5f9;
+  --ifm-font-color-secondary: #cbd5e1;
+  --ifm-font-color-base-inverse: #0f172a;
+  
+  /* Additional dark theme elements */
+  --ifm-navbar-background-color: #16213e;
+  --ifm-footer-background-color: #0f1729;
+  --ifm-menu-color-background-active: rgba(99, 102, 241, 0.15);
+  --ifm-menu-color-background-hover: rgba(99, 102, 241, 0.08);
+  
+  /* Code highlight with purple-blue tint */
+  --docusaurus-highlighted-code-line-bg: rgba(99, 102, 241, 0.2);
+  
+  /* Border colors for dark theme */
+  --ifm-color-emphasis-200: #374151;
+  --ifm-color-emphasis-300: #4b5563;
+  --ifm-color-emphasis-500: #6b7280;
+  --ifm-color-emphasis-700: #9ca3af;
+  
+  /* Table and card backgrounds */
+  --ifm-table-stripe-background: rgba(30, 26, 46, 0.5);
+  --ifm-card-background-color: #1e1a2e;
 }

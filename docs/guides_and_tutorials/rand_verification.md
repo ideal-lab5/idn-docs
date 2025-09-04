@@ -34,10 +34,14 @@ TODO later: versioning
 [dependencies]
 sp-idn-crypto = { version = "0.0.0", default-features = false }
 sp-idn-traits = { version = "0.0.0", default-features = false }
+hex = { version = "0.4", default-features = false }
+# other deps
 
 std = [
+    "hex/std",
     "sp-idn-crypto/std",
-    "sp-idn-traits/std"
+    "sp-idn-traits/std",
+    ...
 ]
 
 ```
@@ -71,9 +75,10 @@ Finally, use the `QuicknetVerifier` to check the pulse's signature against the r
 ```rust
 /// the drand quicknet public key
 pub const BEACON_PUBKEY: &[u8] = b"83cf0f2896adee7eb8b5f01fcad3912212c437e0073e911fb90022d3e760183c8c4b450b6a0a6c3ac6a5776a2d1064510d1fec758c921cc22b0e17e63aaf4bcb5ed66304de9cf809bd274ca73bab4af5a6e9c76a4bc09e76eae8991ef5ece45a";
+let pk = hex::decode(pk_bytes).unwrap();
 // verify the (signature, message) combo against the pubkey
 if let Ok(()) = QuicknetVerifier::verify(
-    BEACON_PUBKEY.to_vec(),
+    pk.to_vec(),
     pulse.sig().to_vec(),
     msg_bytes,
 ) {
@@ -105,8 +110,9 @@ pub const BEACON_PUBKEY: &[u8] = b"83cf0f2896adee7eb8b5f01fcad3912212c437e0073e9
 pub struct PulseConsumerImpl;
 impl PulseConsumer<Pulse, SubscriptionId, (), ()> for PulseConsumerImpl {
     fn consume_pulse(pulse: Pulse, sub_id: SubscriptionId) -> Result<(), ()> {
+        let pk = hex::decode(BEACON_PUBKEY).unwrap();
         if pulse
-            .authenticate(BEACON_PUBKEY.try_into().expect("The public key is well-defined; qed."))
+            .authenticate(pk.try_into().expect("The public key is well-defined; qed."))
         {
             // Randomness consumption logic goes here.
             log::info!("IDN Consumer: Verified pulse: {:?} with sub id: {:?}", pulse, sub_id);

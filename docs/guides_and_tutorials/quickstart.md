@@ -15,7 +15,7 @@ Welcome to the Ideal Network integration hub. This guide outlines the three prim
 
 **What it is:** This is the most powerful and trustless integration. By using our **pallet**, you can bake randomness and timelock logic directly into your runtime. This provides native, on-chain functionality with minimal trust assumptions.
 
-[Go to Parachain Integration Guide](./parachains/runtime_integration/parachain_runtime_integration.md)
+➜ [Go to Parachain Integration Guide](./parachains/runtime_integration/parachain_runtime_integration.md)
 
 -----
 
@@ -25,7 +25,7 @@ Welcome to the Ideal Network integration hub. This guide outlines the three prim
 
 **What it is:** This integration uses a simple **XCM call** to request services from the Ideal Network. It's a permissionless, easy-to-use method that lets you build powerful dApps without needing your own runtime.
 
-[Go to Smart Contract Integration Guide](./parachains/smart_contracts/ink.md)
+➜ [Go to cross-chain ink! Smart Contract Integration Guide](./parachains/smart_contracts/ink.md)
 
 -----
 
@@ -35,7 +35,7 @@ Welcome to the Ideal Network integration hub. This guide outlines the three prim
 
 **What it is:** The quickest way to use IDN, this integration allows native smart contracts to fetch verifiable randomness at no cost directly from the IDN runtime through a **chain extension**.
 
-[Go to Smart Contract Integration Guide](./ink.md)
+➜ [Go to native ink! Smart Contract Integration Guide](./ink.md)
 
 -----
 
@@ -43,6 +43,6 @@ Welcome to the Ideal Network integration hub. This guide outlines the three prim
 
 **Who it's for:** **Frontend or web developers** building user-facing applications.
 
-**What it is:** Our **SDK** allows your application to handle timelocked transactions and randomness requests directly from the frontend. This is the fastest way to get started and is ideal for games or web applications.
+**What it is:** The [etf.js](https://github.com/ideal-lab5/etf.js) SDK allows your application to build timelocked transactions directly from the frontend. This is the fastest way to get started and is ideal for web3 games.
 
-[Go to Frontend SDK Guide](./timelocked_txs.md)
+➜ [Go to Frontend SDK Guide](./timelocked_txs.md)
