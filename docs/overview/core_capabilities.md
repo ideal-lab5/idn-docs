@@ -79,14 +79,14 @@ The Ideal Network leverages **Drand** and **Polkadot** for its current architect
 
 ### Drand
 
-[Drand](https://drand.love/) is a **distributed randomness beacon (DRB)** run by the **League of Entropy**, a consortium of incentivized node operators.
+[Drand](https://drand.love/) is a **distributed randomness beacon (DRB)** run by the **League of Entropy**, a consortium of incentivized node operators. It:
 
 - Uses **threshold BLS signatures** on curve **BLS12-381** with type III pairings.  
 - Outputs a **verifiable randomness pulse every 3 seconds**.  
-- Each pulse includes:
-  - Round number  
-  - Signature  
-  - Hash of the signature (the "randomness")
+  - Each pulse includes:
+    - Round number  
+    - Signature  
+    - Hash of the signature (the "randomness")
 
 For a deep technical overview, see the [Drand Quicknet documentation](https://hackmd.io/@cryptoecon/SyLzsm862).
 

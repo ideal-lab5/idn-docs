@@ -5,13 +5,13 @@ title: ink! Smart Contracts on the Ideal Network
 
 import styles from '/src/pages/index.module.css';
 
-The Ideal Network support ink! smart contracts that can fetch verifiable randomness directly from the IDN runtime through a chain extension (add link). This makes it free to consume and cheap to verify, allowing developers to easily acquire verifiably random values for the dApps and protocols. While it is the easiest path to get started on the IDN, it is not without limitations, discussed below. 
+The Ideal Network support ink! smart contracts that can fetch verifiable randomness directly from the IDN runtime through a chain extension (add link). This makes it free to consume and cheap to verify, allowing developers to easily acquire verifiably random values for their dApps and protocols. While it is the easiest path to get started on the IDN, it is not without limitations, discussed below. 
 
 ### How it Works
 
-Ink! smart contracts on the Ideal Network can consume the latest randomness from the runtime **for free** by calling a chain extension that exposes the latest aggregated signature encoded in the IDN runtime. It exposes our implementation of the [Randomness trait](https://paritytech.github.io/polkadot-sdk/master/frame_support/traits/trait.Randomness.html), allowing contracts to get context-bound randomness.Unlike parachain runtimes that that must open a subscription, native contracts:
+Ink! smart contracts on the Ideal Network can consume the latest randomness from the runtime **for free** by calling a chain extension that exposes the latest aggregated signature encoded in the IDN runtime. It exposes our implementation of the [Randomness trait](https://paritytech.github.io/polkadot-sdk/master/frame_support/traits/trait.Randomness.html), allowing contracts to get context-bound randomness. Unlike parachain runtimes that must open a subscription, native contracts:
 - can only 'pull' randomness, whereas the IDN 'pushes' to parachain runtimes
-- usage of the chain extension assumes trust in the values from the runtime, with no further verification (i.e. they do no verify the randomness received).
+- usage of the chain extension assumes trust in the values from the runtime, with no further verification (i.e. they do not verify the randomness received).
 
 <div className={styles.linkBtn}>
     <a href="https://github.com/ideal-lab5/idn-sdk/tree/main/contracts/idn-contract-lib/examples/rand-extension-example" target="#">Check out the examples to get started!</a>

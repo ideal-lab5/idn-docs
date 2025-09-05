@@ -53,5 +53,5 @@ When the Randomness Beacon pallet verifies and commits a new pulse, the Delivery
 3. **Message Dispatch:** The XCM message is sent to the target with the specified call index
 4. **Credit Accounting:** Upon successful delivery:
     - One credit is consumed per delivery
-    - The subscription's last_delivered timestamp is updated
+    - The subscription's `last_delivered` timestamp is updated
     - The subscription is automatically terminated when credits reach zero

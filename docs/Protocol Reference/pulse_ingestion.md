@@ -15,17 +15,18 @@ The network is foundationally a proof-of-authority blockchain using Aura consens
 
 ## Background
 
-### Terminology and Notation
+### Terminology
 
 - **Collator** - Similar to a network validator, except in the context of a parachain. This is a special authority node who can produce blocks.
-- **extrinsics and inherent** - Extrinsics are transactions within the network (applied to the runtime). Inherents are a special kind of *unsigned* extrinsic that can only be made by a block author. 
+- **Extrinsics and inherents** - Extrinsics are transactions within the network (applied to the runtime). Inherents are a special kind of *unsigned* extrinsic that can only be made by a block author. 
 - **Verifiable Randomness Beacon** - A probabilistic machine that outputs **pulses** of randomness in periodic **rounds**. Each pulse contains the *round number*, *signature* and *randomness* for the round.  There is an efficient algorithm $V$ that can be used to publicly verify each pulse.
 - **Multiparty Computation (MPC) Protocol** is a protocol that involves two or more parties that each individually compute *something* and share it amongst each other in order to compute a final output. The drand beacon protocol is a secure MPC protocol.
 - **Gossipsub** [4] is a an extensible baseline pubsub protocol, based on randomized topic meshes and gossip. It is a general purpose pubsub protocol with moderate amplification factors and good scaling properties.
 - **Listening** means that you can accept incoming connections from other peers, using whatever facility is provided by the transport implementation.
 - **Dialing** is the process of opening an outgoing connection to a listening peer.
-- **on-chain/off-chain**: An on-chain computations happens within the blockchain runtime. Anything else is called an off-chain computation.
+- **On-chain/off-chain**: An on-chain computations happens within the blockchain runtime. Anything else is called an off-chain computation.
 ---
+### Notation
 - For numbers $0 < m < n$, $[m, n]$ denotes the closed interval from $m$ to $n$. When $m = 1$, we write $[n]$ to denote the interval $[1, n]$.
 -  When we are choosing an element $x$ of a set $X$ subject to a probability distribution $\mu$, we write $x \xleftarrow{\mu} X$. We write $x \xleftarrow{R} X$ to represent a uniform distribution. 
 ---
@@ -50,7 +51,7 @@ There are several flavors of drand beacons, however, we use the Drand "Quicknet"
 
 #### Setup Phase: Shamir's Secret Sharing
 
-The protocol setup phases relies threshold secret sharing techniques to produce shares known to League of Entropy nodes such that, given at least a threshold of signatures on some message $M$, we can obtain a signature on $M$ that can be verified with the beacon's master public key. Here, we present a simplified version of the Drand DKG ceremony as basic Shamir's secret sharing. The goal of the DKG is to ensure that an adversary must corrupt above some threshold of nodes in order to corrupt the system. In our case, as long as there are $0 < t \leq n$ uncorrupted nodes, then the protocol can continue successfully.w
+The protocol setup phases relies threshold secret sharing techniques to produce shares known to League of Entropy nodes such that, given at least a threshold of signatures on some message $M$, we can obtain a signature on $M$ that can be verified with the beacon's master public key. Here, we present a simplified version of the Drand DKG ceremony as basic Shamir's secret sharing. The goal of the DKG is to ensure that an adversary must corrupt above some threshold of nodes in order to corrupt the system. In our case, as long as there are $0 < t \leq n$ uncorrupted nodes, then the protocol can continue successfully.
 
 1. A trusted dealer chooses some $sk \xleftarrow{R} \mathbb{Z}_p^*$ and $f(x) = sk + a_1 x + ... + a_tx^t$ where $0 < t \leq n$, $a_i \xleftarrow{R} \mathbb{Z}_p$
 2. The dealer computes $u_i := f(i) \in \mathbb{Z}_p$ for $i = 1, ..., n$ and distributes a share $u_i$ to worker $W_i$.
@@ -99,7 +100,7 @@ On startup, each collator $P_i$:
 
 ### Genesis Round
 
-The genesis round from which we will begin bridging drand. Authorties must wait until this pulse before publishing signatures. The value can only be set once by the root  user.
+The genesis round from which we will begin bridging drand. Authorities must wait until this pulse before publishing signatures. The value can only be set once by the root  user.
 
 
 ### Block Production
@@ -111,11 +112,11 @@ Block producers execute an *inherent* when authoring blocks, where they publish 
 2. When a block author $A_i$ attempts to build block $b$, they first include the inherent call. Offchain, this aggregates the signatures to produce a single 48-byte asig that can be verified onchain: $asig = \sum_{i \in [b_k]} \sigma_i$. The inherent is then invoked with $(asig, b_k)$. 
     - If it is the genesis round, the block author also extracts the smallest round number (the genesis round: $r_G$) from the initial set of observed pulses and submits: $(asig, b_k, r_G)$.
 
-3. The runtime constructs the message that it expects to have been signed by the associated asigs and uses it to verify them. That is, it computes $Q = \sum_{i \in [b_k]} Q_i$ $b \leftarrow \mathcal{V}(\sigma, Q, pk)$. If $b = 1$ then the signature is valid, otherwise it is rejected.
+3. The runtime constructs the message that it expects to have been signed by the associated asigs and uses it to verify them. That is, it computes $Q = \sum_{i \in [b_k]} Q_i$ and $b \leftarrow \mathcal{V}(\sigma, Q, pk)$. If $b = 1$ then the signature is valid, otherwise it is rejected.
     
     On the genesis submission we have no historic signatures committed to on-chain, so the extrinsic adds the pair $(Q, \sigma)$ to the runtime, along with the genesis round.
  
-     On subsequent calls, it computes new round numbers and then appends the new signature and new round number to the previous ones stored on chain and verifies the entire construction. This constructs a sparse accumulator that allows us to prove that we have continuously observed pulse from a genesis to the latest round. To be explicit, if during block $b$ we observed $\{(r_i, \sigma_i)\}_{i \in [b_k]}$, then  on successful verification we store the pair $(Q = \sum_{b_k} H_1(r_i), \sigma = \sum_i \sigma_i$. In the next block $b+1$, if we observed  $\{(r_i, \sigma_i)\}_{i \in [b_{k+1}]}$, then we first compute the pair $(Q' = \sum_{b_{k+1}} H_1(r_i), \sigma' = \sum \sigma_i)$, then aggregate it with the existing one to get $Q'' = Q + Q'$, $\sigma'' = \sigma + sigma'$ and we verify this final aggregated value. This is our sparse accumulation that proves we have observed a continuous range of pulses from Drand.
+     On subsequent calls, it computes new round numbers and then appends the new signature and new round number to the previous ones stored on chain and verifies the entire construction. This constructs a sparse accumulator that allows us to prove that we have continuously observed pulse from a genesis to the latest round. To be explicit, if during block $b$ we observed $\{(r_i, \sigma_i)\}_{i \in [b_k]}$, then  on successful verification we store the pair $(Q = \sum_{b_k} H_1(r_i), \sigma = \sum_i \sigma_i)$. In the next block $b+1$, if we observed  $\{(r_i, \sigma_i)\}_{i \in [b_{k+1}]}$, then we first compute the pair $(Q' = \sum_{b_{k+1}} H_1(r_i), \sigma' = \sum \sigma_i)$, then aggregate it with the existing one to get $Q'' = Q + Q'$, $\sigma'' = \sigma + \sigma'$ and we verify this final aggregated value. This is our sparse accumulation that proves we have observed a continuous range of pulses from Drand.
 
 ### Pallet-Randomness-Beacon
 
@@ -130,9 +131,9 @@ The randomness beacon pallet contains the core logic for aggregating, verifying,
 
 #### try_submit_asig 
 The `write_pulses` extrinsic executes, where it:
-    a. aggregates pulses by computing $(Q, \sigma) = (\sum_{i \in [k]} Q_{ID_i}, \sum_{i \in [k]} \sigma_i)$
-    b. Verifies the aggregated signature by checking if $e(\sigma, g_2) == e(Q, pk)$
-    c. If not, the call fails. Otherwise, write the aggregated signature to storage.
+1. aggregates pulses by computing $(Q, \sigma) = (\sum_{i \in [k]} Q_{ID_i}, \sum_{i \in [k]} \sigma_i)$
+2. Verifies the aggregated signature by checking if $e(\sigma, g_2) == e(Q, pk)$
+3. If not, the call fails. Otherwise, write the aggregated signature to storage.
 
 The current block randomness is the hash of the aggregated signatures. That is, $rand(b) = Hash(\sigma_b || ctx)$, where $ctx$ can be any unbounded u8 slice and $\sigma_b$ is the aggregated signature of the sigs observed and written to the runtime when an authority proposed block b.
 

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 0
-title: Quickstart
+title: Choose Your Path
 ---
 
 ## 📜 **Ideal Network Integration Paths**
@@ -11,9 +11,9 @@ Welcome to the Ideal Network integration hub. This guide outlines the three prim
 
 ### ⛓️ **Path 1: Parachain Runtime Integration**
 
-**Who it's for:** Teams building their own **blockchain on Polkadot**.
+**Who's it for?** Teams building their own **blockchain on Polkadot**.
 
-**What it is:** This is the most powerful and trustless integration. By using our **pallet**, you can bake randomness and timelock logic directly into your runtime. This provides native, on-chain functionality with minimal trust assumptions.
+**What is it?** This is the most powerful and trustless integration. By using our **pallet**, you can bake randomness and timelock logic directly into your runtime. This provides native, on-chain functionality with minimal trust assumptions.
 
 ➜ [Go to Parachain Integration Guide](./parachains/runtime_integration/parachain_runtime_integration.md)
 
@@ -21,9 +21,9 @@ Welcome to the Ideal Network integration hub. This guide outlines the three prim
 
 ### 💻 **Path 2: Smart Contract Integration**
 
-**Who it's for:** Developers building a **dApp on a smart contract parachain** (e.g., Moonbeam or Astar).
+**Who's it for?** Developers building a **dApp on a smart contract parachain** (e.g., Moonbeam or Astar).
 
-**What it is:** This integration uses a simple **XCM call** to request services from the Ideal Network. It's a permissionless, easy-to-use method that lets you build powerful dApps without needing your own runtime.
+**What is it?** This integration uses a simple **XCM call** to request services from the Ideal Network. It's a permissionless, easy-to-use method that lets you build powerful dApps without needing your own runtime.
 
 ➜ [Go to cross-chain ink! Smart Contract Integration Guide](./parachains/smart_contracts/ink.md)
 
@@ -31,18 +31,18 @@ Welcome to the Ideal Network integration hub. This guide outlines the three prim
 
 ### ✍️ **Path 3: Native `ink!` Smart Contract Integration**
 
-**Who it's for:** Developers building a **dApp directly on the Ideal Network**.
+**Who's it for?** Developers building a **dApp directly on the Ideal Network**.
 
-**What it is:** The quickest way to use IDN, this integration allows native smart contracts to fetch verifiable randomness at no cost directly from the IDN runtime through a **chain extension**.
+**What is it?** The quickest way to use IDN, this integration allows native smart contracts to fetch verifiable randomness at no cost directly from the IDN runtime through a **chain extension**.
 
 ➜ [Go to native ink! Smart Contract Integration Guide](./ink.md)
 
 -----
 
-### 🌐 **Path 4: Frontend SDK Integration**
+### 🌐 **Path 4: Timelocked Transactions Integration**
 
-**Who it's for:** **Frontend or web developers** building user-facing applications.
+**Who's it for?** **Frontend or web developers** building user-facing applications.
 
-**What it is:** The [etf.js](https://github.com/ideal-lab5/etf.js) SDK allows your application to build timelocked transactions directly from the frontend. This is the fastest way to get started and is ideal for web3 games.
+**What is it?** The [etf.js](https://github.com/ideal-lab5/etf.js) SDK allows your application to build timelocked transactions directly from the frontend. This is the fastest way to get started and is ideal for web3 games.
 
 ➜ [Go to Frontend SDK Guide](./timelocked_txs.md)

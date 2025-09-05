@@ -43,7 +43,7 @@ The Ideal Network (IDN) solves this by providing two core capabilities:
 ## Who is it for?
 
 ### Blockchain Developers and Dapp Builders
-- Implement protocols using timelock encryption, enabling new kinds of protocols such conditional access control, fair auctions, lotteries, and more.
+- Implement protocols using timelock encryption, enabling new kinds of protocols such as conditional access control, fair auctions, lotteries, and more.
 - Teams building web3 games, NFTs, prediction markets, auctions, or voting and governance platforms often require access to a tamper-proof and trustless source of randomness. 
 - For builders engaging in cross-chain applications, the IDN's universal source of verifiable randomness can facilitate synchronization between chains, enabling mechanisms like cross-chain auctions, trustless and uncheatable asset swaps, and more.
 
