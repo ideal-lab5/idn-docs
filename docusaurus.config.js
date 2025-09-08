@@ -53,6 +53,7 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          exclude: ['**/concepts/**'],
           routeBasePath: '/',
           sidebarPath: "./sidebars.js",
           // Please change this to your repo.

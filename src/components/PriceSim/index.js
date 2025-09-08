@@ -259,7 +259,6 @@ function PriceSimulator() {
           14400 blocks ≈ 1 day<br />
           432000 blocks ≈ 1 month<br />
           5184000 blocks ≈ 1 year<br />
-          1 DOT ≈ ${dotToUSD} USD<br />
           "Unit" ≈ {feeConversionRate} DOT
         </p>
       </div>

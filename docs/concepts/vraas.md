@@ -3,6 +3,9 @@ sidebar_position: 1
 title: Verifiable-Randomness-as-a-Service (VRaaS)
 ---
 
+> 🚧 This page is under construction. Come back later!
+
+<!-- 
 # Verifiable Randomness as a Service
 
 The Ideal Network enables Verifiable-Randomness-as-a-Service (VRaaS), where the network manages subscriptions and dispatches pulses of verifiable randomness to subscribers. In the initial version, the IDN allows parachains and smart contracts to subscribe to randomness using XCM-based adapters. Subscriptions determine when and where randomness should be delivered, enabling fine-grained, automated, trustless, and on-chain randomness without manual intervention. 
@@ -15,4 +18,4 @@ We offer an SDK and XCM adapter library to simplify integration with the IDN for
 TODO [links?]
 
 [CODE SNIPPETS?]
-[LINK TO INTG GUIDE]
+[LINK TO INTG GUIDE] -->

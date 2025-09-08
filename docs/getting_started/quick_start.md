@@ -162,7 +162,7 @@ await delayedTx.signAndSend(alice, (result) => {
 ```
 
 <div className={styles.linkBtn}>
-    <a href="../guides_and_tutorials/timelocked_txs">Sned MEV-resistant timelocked transactions on the IDN</a>
+    <a href="../guides_and_tutorials/timelocked_txs">Send MEV-resistant timelocked transactions with the IDN</a>
 </div>
 
 -----

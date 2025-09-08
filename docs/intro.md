@@ -13,7 +13,7 @@ import styles from '/src/pages/index.module.css';
     <!-- The Randomness & Time Layer Web3 Has Been Waiting For -->
   </h1>
   <p className={styles.subtitle}>
-    The Ideal Network is the <strong>/dev/random</strong> for blockchains; a decentralized entropy daemon powering randomness, secrecy, and time-based logic across the multichain world.
+    The Ideal Network is like <strong>/dev/random</strong> for blockchains; a decentralized entropy daemon powering randomness, secrecy, and time-based logic across the multichain world.
   </p>
 </div>
 
@@ -57,6 +57,6 @@ import styles from '/src/pages/index.module.css';
 <section className={styles.bigPicture}>
   <h2>🔮 The Big Picture</h2>
   <p>
-    The Ideal Network is the shared infrastructure for fair outcomes. When protocols need randomness that no one can manipulate, secrets that unlock at specific times, or coordination across different chains, we provide the trustless foundation.
+    Think of Ideal Network as shared infrastructure for fair outcomes. When protocols need randomness that no one can manipulate, secrets that unlock at specific times, or coordination across different chains, we provide the trustless foundation.
   </p>
 </section>

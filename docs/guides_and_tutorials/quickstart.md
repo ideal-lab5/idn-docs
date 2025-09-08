@@ -9,7 +9,7 @@ Welcome to the Ideal Network integration hub. This guide outlines the three prim
 
 -----
 
-### ⛓️ **Path 1: Parachain Runtime Integration**
+### ⛓️ **Parachain Runtime Integration**
 
 **Who's it for?** Teams building their own **blockchain on Polkadot**.
 
@@ -19,7 +19,7 @@ Welcome to the Ideal Network integration hub. This guide outlines the three prim
 
 -----
 
-### 💻 **Path 2: Smart Contract Integration**
+### 💻 **Smart Contract Integration**
 
 **Who's it for?** Developers building a **dApp on a smart contract parachain** (e.g., Moonbeam or Astar).
 
@@ -29,7 +29,7 @@ Welcome to the Ideal Network integration hub. This guide outlines the three prim
 
 -----
 
-### ✍️ **Path 3: Native `ink!` Smart Contract Integration**
+### ✍️ **Native `ink!` Smart Contract Integration**
 
 **Who's it for?** Developers building a **dApp directly on the Ideal Network**.
 
@@ -39,7 +39,7 @@ Welcome to the Ideal Network integration hub. This guide outlines the three prim
 
 -----
 
-### 🌐 **Path 4: Timelocked Transactions Integration**
+### 🌐 **Timelocked Transactions Integration**
 
 **Who's it for?** **Frontend or web developers** building user-facing applications.
 
