@@ -23,7 +23,7 @@ The Ideal Network (IDN) solves this by providing two core capabilities:
 ### Key Features
 
 - **Verifiable Randomness-as-a-Service (VRaaS)**: The output of each beacon is *publicly* verifiable, allowing for cost-effective and trustless verification of beacon outputs. By introducing a **subscription**-based system, the IDN allows parachains to use DOT to secure a stream of randomness directly injected to their pallets or contracts. 
-- **Timelocked Transactions and Covert Coordination**: [Timelock encryption](../concepts/timelock_encryption.md) is a cryptographic scheme that allows for messages to be encrypted to the future. By instantiating timelock encryption against the underlying randomness beacon, the IDN enables cryptographically verifiable MEV protection and provides the framing for new kinds of non-interactive and asynchronous multiparty coordination protocols.
+- **Timelocked Transactions and Covert Coordination**: **Timelock encryption** is a cryptographic scheme that allows for messages to be encrypted to the future. By instantiating timelock encryption against the underlying randomness beacon, the IDN enables cryptographically verifiable MEV protection and provides the framing for new kinds of non-interactive and asynchronous multiparty coordination protocols.
 
 # Comparison to Existing Solutions
 
