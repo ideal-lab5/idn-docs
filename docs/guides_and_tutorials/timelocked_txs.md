@@ -86,7 +86,7 @@ await delayedTx.signAndSend(alice, (result) => {
 
 #### Encrypting Arbitrary Data (Off-Chain)
 
-The SDK also provides a wrapper around the [timelock.js](https://www.npmjs.com/package/@ideallabs/timelock.js) encryption function, incorporating a secure HKDF for key deriviation from a seed. The ciphertext can be decrypted in two ways: after the specificed Drand round completes and a signature is computed or by rederiving the seed using the [HKDF](https://www.npmjs.com/package/js-crypto-hkdf) library and leveraging the timelock.js library's decryption functionality.
+The SDK also provides a wrapper around the [timelock.js](https://www.npmjs.com/package/@ideallabs/timelock.js) encryption function, incorporating a secure HKDF for key deriviation from a seed. The ciphertext can be decrypted in two ways: after the specified Drand round completes and a signature is computed or by rederiving the seed using the [HKDF](https://www.npmjs.com/package/js-crypto-hkdf) library and leveraging the timelock.js library's decryption functionality.
 
 ```javascript
 // The message to be timelock encrypted.
