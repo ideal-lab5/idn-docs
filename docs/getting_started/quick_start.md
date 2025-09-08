@@ -89,7 +89,7 @@ impl RandomnessReceiver for YourContract {
 ### **For native ink! Smart Contracts on the Ideal Network**
 
 The Ideal Network support ink! smart contracts that can fetch verifiable randomness directly from the IDN runtime through a chain extension (add link). This makes it free to consume 
-and cheap to verify, allowing developers to easily acquire verifiably random values for the dApps and protocols.
+and cheap to verify, allowing developers to easily acquire verifiably random values for their dApps and protocols.
 
 Check out the [examples](https://github.com/ideal-lab5/idn-sdk/tree/main/contracts/idn-contract-lib/examples/rand-extension-example) to get started!
 
@@ -175,7 +175,7 @@ Now that you've seen what's possible, choose your development path to find detai
   * **For ink! Smart Contract Developers:**
     * [Learn how to create a VRaaS from a contract](../guides_and_tutorials/parachains/smart_contracts/ink.md)
     * [Deploy contracts on the IDN to get randomness for free](../guides_and_tutorials/ink.md)
-  * **For Frontend Developers:** [Go to the Frontend SDK Guide](../guides_and_tutorials/timelocked_txs.md)
+  * **For Frontend Developers:** [Go to the Timelocked Transactions Guide](../guides_and_tutorials/timelocked_txs.md)
 
 
 

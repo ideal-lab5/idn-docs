@@ -55,7 +55,7 @@ use sp_idn_traits::pulse::Pulse;
 
 3. Reconstruct the expected Drand round number
 
-The message that was signed is an aggregation of the hash (in the G1 elliptic curve group) of the round numbers from each Drand pulse that was aggregated. We need reconstruct that message.
+The message that was signed is an aggregation of the hash (in the G1 elliptic curve group) of the round numbers from each Drand pulse that was aggregated. We need to reconstruct that message.
 
 ``` rust
 // construct the messages and aggregate them

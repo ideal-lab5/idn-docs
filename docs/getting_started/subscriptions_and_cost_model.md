@@ -20,7 +20,7 @@ Each subscription is defined by:
 ## How Credits Work
 
 A **credit** represents one block of computation for a subscription:  
-- Each active subscription **consumes 1 credit per block**.  
+- Currently, each active subscription **consumes 1 credit per block**.  
 - When creating a subscription, you set the **initial number of credits** to fund it.  
 
 The DOT cost of credits is based on the current [pricing tier](#pricing-tiers).
