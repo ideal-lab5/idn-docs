@@ -3,3 +3,4 @@ node_modules/
 .docusaurus/
 build/
 !docs/build
+yarn.lock
