@@ -50,6 +50,12 @@ The Ideal Network (IDN) solves this by providing two core capabilities:
 ### Protocol Designers and Researchers
 - Verifiable randomness and timelock encryption enable powerful new security models for consensus systems, allowing for temporal or condition-based control over the release of certain on-chain information
 
+## Why Choose IDN?
+✅ **No Setup Required** - No DKG, no committees, just XCM  
+✅ **Verifiable** - Cryptographic proofs for every output  
+✅ **Native to Polkadot** - Built for the ecosystem  
+✅ **Production Ready** - Live on testnet (soon in mainnet), not theoretical 
+
 ## Supported By
 
 | [![Polkadot Treasury Logo](../image.png)](https://polkadot.polkassembly.io/referenda/1383) | [![Web3 Foundation Grant](https://raw.githubusercontent.com/ideal-lab5/etf/main/resources/web3%20foundation_grants_badge_black.png)](https://github.com/ideal-lab5/Grants-Program/blob/master/applications/cryptex.md) |
