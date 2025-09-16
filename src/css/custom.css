@@ -1,30 +1,154 @@
-/**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
- */
-
-/* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #412e85;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  /* Primary color family - Deep Electric Indigo with more purple */
+  --ifm-color-primary: #5a4fcf;
+  --ifm-color-primary-dark: #4a3fb8;
+  --ifm-color-primary-darker: #3d349a;
+  --ifm-color-primary-darkest: #2f2980;
+  --ifm-color-primary-light: #7166e8;
+  --ifm-color-primary-lighter: #857af5;
+  --ifm-color-primary-lightest: #a396ff;
+  
+  /* Secondary color - Enhanced Deep Blue-Teal */
+  --ifm-color-secondary: #1e3a8a;
+  --ifm-color-secondary-dark: #1e40af;
+  --ifm-color-secondary-darker: #1d4ed8;
+  --ifm-color-secondary-darkest: #1e3a8a;
+  --ifm-color-secondary-light: #3b82f6;
+  --ifm-color-secondary-lighter: #60a5fa;
+  --ifm-color-secondary-lightest: #93c5fd;
+  
+  /* Success - Enhanced teal-green */
+  --ifm-color-success: #059669;
+  --ifm-color-success-dark: #047857;
+  --ifm-color-success-darker: #065f46;
+  --ifm-color-success-darkest: #064e3b;
+  --ifm-color-success-light: #10b981;
+  --ifm-color-success-lighter: #34d399;
+  --ifm-color-success-lightest: #6ee7b7;
+  
+  /* Info - Deeper blue for status highlights */
+  --ifm-color-info: #2563eb;
+  --ifm-color-info-dark: #1d4ed8;
+  --ifm-color-info-darker: #1e40af;
+  --ifm-color-info-darkest: #1e3a8a;
+  --ifm-color-info-light: #3b82f6;
+  --ifm-color-info-lighter: #60a5fa;
+  --ifm-color-info-lightest: #93c5fd;
+  
+  /* Warning - Rich purple accent */
+  --ifm-color-warning: #7c3aed;
+  --ifm-color-warning-dark: #6d28d9;
+  --ifm-color-warning-darker: #5b21b6;
+  --ifm-color-warning-darkest: #4c1d95;
+  --ifm-color-warning-light: #8b5cf6;
+  --ifm-color-warning-lighter: #a78bfa;
+  --ifm-color-warning-lightest: #c4b5fd;
+  
+  /* Danger - Deep magenta-red */
+  --ifm-color-danger: #dc2626;
+  --ifm-color-danger-dark: #b91c1c;
+  --ifm-color-danger-darker: #991b1b;
+  --ifm-color-danger-darkest: #7f1d1d;
+  --ifm-color-danger-light: #ef4444;
+  --ifm-color-danger-lighter: #f87171;
+  --ifm-color-danger-lightest: #fca5a5;
+  
+  /* Font and code settings */
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --docusaurus-highlighted-code-line-bg: rgba(90, 79, 207, 0.12);
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
+/* Dark theme adjustments - Much darker blacks with purple undertones */
 [data-theme='dark'] {
-  --ifm-color-primary: #6950c2;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ifm-background-color: #0a0a0f; /* Nearly black with subtle purple undertone */
+  --ifm-background-surface-color: #1a1a2e; /* Dark purple-tinged cards */
+  --ifm-background-color-transparent: rgba(10, 10, 15, 0.8);
+  
+  /* Primary - Brighter purple-blue for dark theme */
+  --ifm-color-primary: #6366f1;
+  --ifm-color-primary-dark: #4f46e5;
+  --ifm-color-primary-darker: #4338ca;
+  --ifm-color-primary-darkest: #3730a3;
+  --ifm-color-primary-light: #818cf8;
+  --ifm-color-primary-lighter: #a5b4fc;
+  --ifm-color-primary-lightest: #c7d2fe;
+  
+  /* Secondary - Enhanced blue for dark theme */
+  --ifm-color-secondary: #3b82f6;
+  --ifm-color-secondary-dark: #2563eb;
+  --ifm-color-secondary-darker: #1d4ed8;
+  --ifm-color-secondary-darkest: #1e40af;
+  --ifm-color-secondary-light: #60a5fa;
+  --ifm-color-secondary-lighter: #93c5fd;
+  --ifm-color-secondary-lightest: #bfdbfe;
+  
+  /* Success - Brighter for dark background */
+  --ifm-color-success: #10b981;
+  --ifm-color-success-dark: #059669;
+  --ifm-color-success-darker: #047857;
+  --ifm-color-success-light: #34d399;
+  --ifm-color-success-lighter: #6ee7b7;
+  --ifm-color-success-lightest: #a7f3d0;
+  
+  /* Info - Bright blue for dark theme */
+  --ifm-color-info: #60a5fa;
+  --ifm-color-info-dark: #3b82f6;
+  --ifm-color-info-darker: #2563eb;
+  --ifm-color-info-light: #93c5fd;
+  --ifm-color-info-lighter: #bfdbfe;
+  --ifm-color-info-lightest: #dbeafe;
+  
+  /* Warning - Vibrant purple for visibility */
+  --ifm-color-warning: #a855f7;
+  --ifm-color-warning-dark: #9333ea;
+  --ifm-color-warning-darker: #7c3aed;
+  --ifm-color-warning-light: #c084fc;
+  --ifm-color-warning-lighter: #d8b4fe;
+  --ifm-color-warning-lightest: #e9d5ff;
+  
+  /* Danger - Bright red for dark theme */
+  --ifm-color-danger: #f87171;
+  --ifm-color-danger-dark: #ef4444;
+  --ifm-color-danger-darker: #dc2626;
+  --ifm-color-danger-light: #fca5a5;
+  --ifm-color-danger-lighter: #fecaca;
+  --ifm-color-danger-lightest: #fee2e2;
+  
+  /* Font adjustments for better contrast on darker background */
+  --ifm-font-color-base: #f1f5f9;
+  --ifm-font-color-secondary: #cbd5e1;
+  --ifm-font-color-base-inverse: #0f172a;
+  
+  /* Additional dark theme elements */
+  --ifm-navbar-background-color: #16213e;
+  --ifm-footer-background-color: #0f1729;
+  --ifm-menu-color-background-active: rgba(99, 102, 241, 0.15);
+  --ifm-menu-color-background-hover: rgba(99, 102, 241, 0.08);
+  
+  /* Code highlight with purple-blue tint */
+  --docusaurus-highlighted-code-line-bg: rgba(99, 102, 241, 0.2);
+  
+  /* Border colors for dark theme */
+  --ifm-color-emphasis-200: #374151;
+  --ifm-color-emphasis-300: #4b5563;
+  --ifm-color-emphasis-500: #6b7280;
+  --ifm-color-emphasis-700: #9ca3af;
+  
+  /* Table and card backgrounds */
+  --ifm-table-stripe-background: rgba(30, 26, 46, 0.5);
+  --ifm-card-background-color: #1e1a2e;
+}
+
+/* Make the announcement bar fixed */
+div[class*="announcementBar_"] {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2000; /* keep it above navbar */
+}
+
+/* Push the navbar down so it’s not hidden behind the bar */
+.navbar {
+  margin-top: var(--ifm-announcement-bar-height, 2.5rem);
 }

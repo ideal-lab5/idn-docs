@@ -1,0 +1,9 @@
+{
+  "label": "Parachain Runtime Integration using a Pallet",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "title": "Integrating IDN Randomness in Parachains",
+    "description": "Learn step by step how to integrate the Ideal Network's randomness beacon into your parachain runtime using a FRAME pallet."
+  }
+}

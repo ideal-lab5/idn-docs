@@ -1,10 +1,7 @@
-/**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
- */
+/* Scoped CSS for hero + button section */
 
 .heroBanner {
-  padding: 4rem 0;
+  /* padding: 4rem 1rem; */
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -12,16 +9,366 @@
 
 @media screen and (max-width: 996px) {
   .heroBanner {
-    padding: 2rem;
+    padding: 2rem 1rem;
   }
 }
 
 .buttons {
-  display: grid;
-  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
   justify-content: center;
+  margin-top: 2rem;
 }
 
-.buttons > a {
-  margin: 3px;
+.buttons>a {
+  background-color: var(--ifm-color-primary);
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.buttons>a:hover {
+  background-color: var(--ifm-color-primary-dark);
+}
+
+/* Base font for docs body */
+body {
+  font-size: 18px;
+  font-family: var(--ifm-font-family-base);
+  line-height: 1.6;
+  color: var(--ifm-font-color-base);
+}
+
+.hero {
+  text-align: center;
+  padding: 4rem 1.5rem 3rem;
+  max-width: 900px;
+  margin: 0 auto 3rem;
+  margin-bottom: 0 !important;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--ifm-color-primary), var(--ifm-color-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: #9c9c9c;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+[data-theme='dark'] {
+  .subtitle {
+    color: var(--ifm-color-secondary-lightest); /* Using silver for dark mode */
+  }
+
+  .bigPicture {
+    color: var(--ifm-color-secondary-lightest); /* Using silver for dark mode */
+  }
+}
+
+.whySection {
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+
+.whySection h2 {
+  font-size: 2rem;
+  color: var(--ifm-color-primary);
+  margin-bottom: 0.75rem;
+}
+
+:root {
+  .whyText {
+    font-size: 1.125rem;
+    color: var(--ifm-font-color-base);
+    line-height: 1.6;
+  }
+}
+
+[data-theme='dark'] {
+  .whyText {
+    color: var(--ifm-font-color-base);
+  }
+
+  .featureCard p {
+    font-size: 1rem;
+    color: var(--ifm-font-color-base);
+  }
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+  max-width: 960px;
+  margin: 0 auto 4rem;
+  padding: 0 1rem;
+}
+
+.featureCard {
+  background: rgba(255 255 255 / 0.05);
+  border-radius: 1rem;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 0 10px rgb(0 191 255 / 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: default;
+}
+
+.featureCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgb(0 119 200 / 0.25); /* Adjusted to new secondary color */
+}
+
+.featureIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  user-select: none;
+}
+
+.featureCard h3 {
+  font-size: 1.5rem;
+  color: var(--ifm-color-secondary);
+  margin-bottom: 0.75rem;
+}
+
+.featureCard p {
+  font-size: 1rem;
+  color: var(--ifm-font-color-base);
+  line-height: 1.5;
+}
+
+.bigPicture {
+  max-width: 700px;
+  margin: 0 auto 4rem;
+  text-align: center;
+  font-size: 1.125rem;
+  color: var(--ifm-font-color-base);
+}
+
+.bigPicture h2 {
+  color: var(--ifm-color-primary);
+  margin-bottom: 0.75rem;
+}
+
+/* Better Button Styling */
+.linkBtn {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.linkBtn > a {
+  background-color: var(--ifm-color-secondary);
+  color: white;
+  padding: 12px 24px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 8px; /* Slightly more rounded */
+  font-weight: 600;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.linkBtn > a:hover {
+  background-color: var(--ifm-color-secondary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Core Capabilities Page-Specific CSS */
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  font-size: 1.125rem;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+}
+
+.service-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.unlocks-list {
+  list-style: none; /* Remove default bullets */
+  padding-left: 0;
+}
+
+.unlocks-list li {
+  position: relative;
+  padding-left: 28px; /* Space for the custom icon */
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+/* Custom checkmark or bullet icon */
+.unlocks-list li::before {
+  content: '✓'; /* Or any other character/icon */
+  position: absolute;
+  left: 0;
+  color: var(--ifm-color-primary);
+  font-weight: bold;
+}
+
+.components-list {
+  list-style: none;
+  padding-left: 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.components-list li {
+  background: var(--ifm-color-emphasis-100);
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.note-box {
+  background: var(--ifm-color-emphasis-200);
+  border-left: 4px solid var(--ifm-color-primary);
+  padding: 1rem 1.5rem;
+  border-radius: 4px;
+  max-width: 800px;
+  margin: 2rem auto;
+}
+
+
+/*
+  Component Styling
+*/
+.component-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.component-card {
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  box-shadow: 0 4px 12px var(--box-shadow-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.component-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px var(--box-shadow-color);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.card-header .emoji {
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.card-header h3 {
+  color: var(--heading-color);
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.card-summary {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.85;
+}
+
+.card-details h5 {
+  color: var(--accent-light);
+  font-size: 1.2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+.card-details h5::before {
+  content: ' ';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent-color);
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.card-details p {
+  margin-bottom: 1rem;
+}
+
+.card-details ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+}
+
+.card-details ul li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-details ul li::before {
+  content: '✓';
+  color: var(--accent-color);
+  position: absolute;
+  left: 0;
+}
+
+.strong-text {
+  font-weight: 600;
+  color: var(--accent-light);
+}
+
+/*
+  Responsive adjustments
+*/
+@media (min-width: 768px) {
+  .component-section {
+    flex-direction: row;
+    gap: 2rem;
+  }
+  .component-card {
+    flex: 1;
+  }
 }

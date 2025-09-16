@@ -11,11 +11,11 @@ const katex = require("rehype-katex");
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Ideal Network",
-  tagline: "Encryption to the Future",
+  tagline: "Polkadot's /dev/random",
   favicon: "./static/img/favicon.ico",
 
   // Set the production url of your site here
-  url: "https://www.etf.idealabs.network",
+  url: "https://www.docs.idealabs.network",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "",
@@ -53,11 +53,13 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          exclude: ['**/concepts/**'],
+          routeBasePath: '/',
           sidebarPath: "./sidebars.js",
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+          // editUrl:
+          //   "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
           remarkPlugins: [math],
           rehypePlugins: [katex],
         },
@@ -77,15 +79,24 @@ const config = {
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-    ({
+    (
+      {
+      announcementBar: {
+        id: 'support_us', // unique id
+        content:
+          '🛠️ We’re building! These docs are still evolving. Not all features are usable or stable yet.',
+        backgroundColor: '#ef4444',
+        textColor: '#000000ff',
+        isCloseable: false,
+      },
       // Replace with your project's social card
       // image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: "IDEAL",
-        // logo: {
-        //   alt: 'ETF Logo',
-        //   src: 'img/logo.svg',
-        // },
+        title: "IDEAL NETWORK",
+        logo: {
+          alt: 'IDN',
+          src: 'https://github.com/ideal-lab5/logos/blob/main/logo-variants/sticker-ISO@4x.png?raw=true',
+        },
         items: [
           {
             type: "docSidebar",
@@ -93,7 +104,6 @@ const config = {
             position: "left",
             label: "Docs",
           },
-          { to: "/blog", label: "Blog", position: "left" },
           {
             href: "https://github.com/ideal-lab5",
             label: "GitHub",
@@ -108,8 +118,8 @@ const config = {
             title: "Docs",
             items: [
               {
-                label: "Tutorial",
-                to: "/docs/intro",
+                label: "Litepaper",
+                to: "https://docs.google.com/document/d/1MGNRLJ754t-VuF7Ufy9jXV0QJRAieMOSfpWhrqVUuMI/edit?usp=sharing",
               },
             ],
           },
@@ -121,10 +131,6 @@ const config = {
                 href: "https://discord.gg/TheXVBdbbu",
               },
               {
-                label: "Matrix",
-                href: "https://matrix.to/#/#ideal-labs:matrix.org",
-              },
-              {
                 label: "Substack",
                 href: "https://ideallabs.substack.com/",
               },
@@ -133,10 +139,6 @@ const config = {
           {
             title: "More",
             items: [
-              {
-                label: "Blog",
-                to: "/blog",
-              },
               {
                 label: "GitHub",
                 href: "https://github.com/ideal-lab5",
@@ -151,6 +153,11 @@ const config = {
         darkTheme: prismThemes.dracula,
       },
     }),
+  markdown: {
+    mermaid: true,
+  },
+  themes: ['@docusaurus/theme-mermaid'],
 };
+
 
 export default config;

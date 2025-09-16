@@ -1,46 +1,62 @@
 ---
 sidebar_position: 1
+title: Welcome to the Ideal Network
+hide_table_of_contents: true
+slug: /
 ---
 
-![](../static/assets/idn_logo.png)
+import styles from '/src/pages/index.module.css';
 
-# 
+<div className={styles.hero}>
+  <h1 className={styles.title}>
+    Verifiable Randomness & Timelocked Transactions for Multichain Web3
+    <!-- The Randomness & Time Layer Web3 Has Been Waiting For -->
+  </h1>
+  <p className={styles.subtitle}>
+    The Ideal Network is like <strong>/dev/random</strong> for blockchains; a decentralized entropy daemon powering randomness, secrecy, and time-based logic across the multichain world.
+  </p>
+</div>
 
-> These docs are a WIP.
+<section className={styles.whySection}>
+  <h2>🚀 Why Ideal Network?</h2>
+  <p className={styles.whyText}>
+    We make <strong>coordination without trust</strong> possible.  
+    Games, DAOs, marketplaces, and protocols can now share randomness & time logic without leaking secrets or relying on middlemen.
+  </p>
+</section>
 
-## Overview
+<section className={styles.featuresGrid}>
+  <article className={styles.featureCard}>
+    <div className={styles.featureIcon}>🎲</div>
+    <h3>Verifiable Randomness-as-a-Service (VRaaS)</h3>
+    <p>
+      Tamper-proof, <strong>publicly verifiable randomness</strong> you can plug into any chain via XCM.  
+      Use it for lotteries, leader elections, NFT drops, matchmaking, shuffling, and more.
+    </p>
+  </article>
 
-The Ideal Network (IDN) is an interoperable and decentralized randomness beacon. Built with [Substrate](https://substrate.io/), it is a blockchain that generates publicly verifiable on-chain randomness on top of each block finalized by the network. The beacon outputs pulses of randomness that can be trustlessly verified, allowing the output of the beacon to be used in various on/off-chain scenarios. It allows blockchains to easily acquire verifiable randomness. The IDN is intended to be used in the context of a [parachain](https://wiki.polkadot.network/docs/learn-parachains), which allows the output to be *interoperable* across many different blockchains. 
+  <article className={styles.featureCard}>
+    <div className={styles.featureIcon}>⏳</div>
+    <h3>Timelocked Transactions</h3>
+    <p>
+      Encrypt transactions <strong>to the future</strong>, making them decryptable only when executed at a chosen time.
+      Perfect for sealed-bid auctions, MEV-proof transactions, hidden votes, or time-gated games.
+    </p>
+  </article>
 
+  <article className={styles.featureCard}>
+    <div className={styles.featureIcon}>🌐</div>
+    <h3>Built for the Multichain Era</h3>
+    <p>
+      Drop into any Polkadot parachain or ink! smart contract with <strong>minimal changes</strong>.  
+      Coordinate across ecosystems without sacrificing security, speed, or sovereignty.
+    </p>
+  </article>
+</section>
 
-## How does it work?
- 
-The beacon operates as a *multiparty computation protocol*. It is an extra voting round that runs on top of each finalized block, similar in concept to [beefy](https://wiki.polkadot.network/docs/learn-consensus#bridging-beefy). The beacon is constructed and secured by the network's collators. Each participant produces a threshold BLS signature on top of the finalized block hash. If at least a threshold of collators honestly participate, then the protocol will produce a set of signatures that can be combined (by interpolation). The resulting signature is verified with a type of zero-knowledge proof called a DLEQ proof.
-
-## Who is it for?
-
-coming soon
-
-## Where are we?
-
-roadmap coming soon
-
-## Supporters 
-![w3fblk](https://raw.githubusercontent.com/ideal-lab5/etf/main/resources/web3%20foundation_grants_badge_black.png)
-This project is sponsored by a [web3 foundation grant](https://github.com/ideal-lab5/Grants-Program/blob/master/applications/cryptex.md) and the web3 foundation's [Decentralized Futures](https://futures.web3.foundation/) program.
-
-## Learn More
-
-- Read the latest news on our [substack](https://ideallabs.substack.com/)!
-
-## Contact
-
-- Join the conversation on [Discord](https://discord.gg/4fMDbyRw7R)
-- Join us on matrix! https://matrix.to/#/#ideal-labs:matrix.org
-- hello@idealabs.network
-- https://idealabs.network
-
-
-
-## License
-These docs and the code for both etf, etf.js, and the etf-sdk are under the MIT license.
+<section className={styles.bigPicture}>
+  <h2>🔮 The Big Picture</h2>
+  <p>
+    Think of Ideal Network as shared infrastructure for fair outcomes. When protocols need randomness that no one can manipulate, secrets that unlock at specific times, or coordination across different chains, we provide the trustless foundation.
+  </p>
+</section>
