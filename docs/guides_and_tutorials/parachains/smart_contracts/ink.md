@@ -63,7 +63,7 @@ impl MyContract {
                 idn_manager_pallet_index,    // IDN Manager pallet index
                 self_para_id,                // Your parachain ID
                 self_contracts_pallet_index, // Contracts pallet index on your chain
-                self_contracts_call_index,   // Contract callback call index
+                self_contracts_call_index,   // Contract callback call index on your chain
                 max_idn_xcm_fees,            // Optional: Maximum XCM execution fees
             ),
             subscription_id: None,
@@ -92,7 +92,7 @@ impl MyContract {
                 40,   // IDN Manager pallet index
                 4594, // Your parachain ID
                 16,   // Contracts pallet index on your chain
-                6,    // Contract callback call index
+                6,    // Contract callback call index on your chain
                 None, // Optional: Maximum XCM execution fees
             ),
             subscription_id: None,
