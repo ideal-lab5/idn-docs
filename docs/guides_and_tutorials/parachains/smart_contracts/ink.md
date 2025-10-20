@@ -43,6 +43,8 @@ std = [
 
 3. Basic Contract Setup
 
+The smart contract interacts with the Ideal Network via the IdnClient struct which makes interacting with the network simple. All you need to provide is basic information about the IDN and your parachain to the IdnClient constructor to get started.
+
 ```rust
 use idn_contracts::xcm::{types::SubscriptionId, IdnClient, IdnConsumer, Error};
 
@@ -70,7 +72,7 @@ impl MyContract {
 }
 ```
 
-An explicit version would look like
+An explicit version would look like:
 
 ```rust
 use idn_contracts::xcm::{types::SubscriptionId, IdnClient, IdnConsumer, Error};
