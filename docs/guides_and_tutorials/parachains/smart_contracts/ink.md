@@ -23,11 +23,11 @@ The `idn-contracts` library provides functionality for interacting with the Idea
 
 To use the IDN Client library in your contract:
 
-1. Ensure cargo contract is installed `cargo install cargo-contract`
+0. Install cargo contract `cargo install cargo-contract`
 
-2. Create a new contract `cargo contract new my_contract`
+1. Create a new contract `cargo contract new my_contract`
 
-3. Add the dependency to your `Cargo.toml`:
+2. Add the dependency to your `Cargo.toml`:
 
 ```toml
 [dependencies]
@@ -41,7 +41,7 @@ std = [
 ]
 ```
 
-4. Basic Contract Setup
+3. Basic Contract Setup
 
 ```rust
 use idn_contracts::xcm::{types::SubscriptionId, IdnClient, IdnConsumer, Error};
@@ -99,14 +99,14 @@ impl MyContract {
 }
 ```
 
-5. Implement Randomness Reception
+4. Implement Randomness Reception
 
 Implement the `IdnConsumer` trait to receive randomness:
 
 - `consume_pulse`: Validate pulse with `is_valid_pulse()` then use `pulse.rand()` for randomness
 - `consume_quote` and `consume_sub_info`: Handle subscription quotes and info responses
 
-6. Use the IDN Client to manage subscriptions:
+5. Use the IDN Client to manage subscriptions:
 
 ```rust
 // Request a Quote
