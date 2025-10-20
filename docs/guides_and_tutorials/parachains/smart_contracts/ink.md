@@ -19,11 +19,16 @@ The `idn-contracts` library provides functionality for interacting with the Idea
 - Abstract away the complexity of XCM message construction
 - Configurable pallet indices and parachain IDs for different environments
 
+### Prerequisites
+
+To work with ink! smart contracts, you need to have the following tools installed:
+
+1. Rust and Cargo (latest stable version)
+2. cargo-contract CLI tool (v5.0.3 or newer)
+
 ### Usage
 
 To use the IDN Client library in your contract:
-
-0. Install cargo contract `cargo install cargo-contract`
 
 1. Create a new contract `cargo contract new my_contract`
 
@@ -136,13 +141,6 @@ See the [consumer-contract/lib.rs](https://github.com/ideal-lab5/idn-sdk/blob/ma
 - Implement proper testing
 
 ## Development
-
-### Prerequisites
-
-To work with ink! contracts, you need to have the following tools installed:
-
-1. Rust and Cargo (latest stable version)
-2. cargo-contract CLI tool (v5.0.3 or newer)
 
 ### Building Contracts
 

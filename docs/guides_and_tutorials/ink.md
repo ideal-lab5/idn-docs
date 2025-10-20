@@ -17,9 +17,14 @@ Ink! smart contracts on the Ideal Network can consume the latest randomness from
     <a href="https://github.com/ideal-lab5/idn-sdk/tree/main/contracts/examples/rand-extension" target="#">Check out the example to get started!</a>
 </div>
 
-### Integration Guide
+### Prerequisites
 
-0. Install cargo contract `cargo install cargo-contract`
+To work with ink! smart contracts, you need to have the following tools installed:
+
+1. Rust and Cargo (latest stable version)
+2. cargo-contract CLI tool (v5.0.3 or newer)
+
+### Integration Guide
 
 1. Create a new contract `cargo contract new my_contract`
 
