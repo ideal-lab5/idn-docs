@@ -67,12 +67,12 @@ mod your_contract {
         pub fn new() -> Self {
             Self {
                 idn_client: IdnClient::new(
-                    4502, // IDN parachain ID
-                    40,   // IDN Manager pallet index
-                    4594, // Your parachain ID
-                    16,   // Contracts pallet index on your chain
-                    6,    // Contract callback call index on your chain
-                    None, // Optional: Maximum XCM execution fees
+                    4502,          // IDN parachain ID
+                    40,            // IDN Manager pallet index
+                    4594,          // Your parachain ID
+                    16,            // Contracts pallet index on your chain
+                    6,             // Contract callback call index on your chain
+                    1_000_000_000, // Maximum XCM execution fees
                 ),
                 subscription_id: None,
             }
@@ -86,7 +86,7 @@ mod your_contract {
 Within your mod definition, implement the `IdnConsumer` trait to receive randomness:
 
 ```rust
-use idn_contracts::xcm::{IdnConsumer, types::{SubscriptionId, Pulse, SubInfoResponse, Quote}};
+use idn_contracts::xcm::{IdnConsumer, Error, types::{SubscriptionId, Pulse, SubInfoResponse, Quote}};
 
 // Implement the IdnConsumer trait to handle incoming randomness
 impl IdnConsumer for YourContract {
@@ -95,7 +95,7 @@ impl IdnConsumer for YourContract {
         &mut self, 
         pulse: Pulse,
         subscription_id: SubscriptionId
-    ) -> Result<()> {
+    ) -> Result<(), Error> {
         let randomness = pulse.rand();
         Ok(())
     }
@@ -104,16 +104,16 @@ impl IdnConsumer for YourContract {
     fn consume_quote(
         &mut self,
         quote: Quote
-    ) -> Result<()> {
-        ...
+    ) -> Result<(), Error> {
+        Ok(())
     }
 
     #[ink(message)]
     fn consume_sub_info(
         &mut self,
         sub_info: SubInfoResponse
-    ) -> Result<()> {
-        ...
+    ) -> Result<(), Error> {
+        Ok(())
     }
 }
 ```
