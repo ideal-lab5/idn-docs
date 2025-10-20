@@ -19,7 +19,11 @@ Ink! smart contracts on the Ideal Network can consume the latest randomness from
 
 ### Integration Guide
 
-1. Add the chain extension to your contract's Cargo.toml
+1. Ensure cargo contract is installed `cargo install cargo-contract`
+
+2. Create a new contract `cargo contract new my_contract`
+
+3. Add the chain extension to your contract's Cargo.toml
 
 ```toml
 [dependencies]
@@ -33,18 +37,20 @@ std = [
 ]
 ```
 
-2. Configure your contract
+4. Configure your contract
 
 ```rust
 use idn_contracts::ext::IDNEnvironment;
 
 #[ink::contract(env = IDNEnvironment)]
 pub mod MyContract {
+    // make the custom Environment callable
+    use crate::IDNEnvironment;
     // your contract implementation
 }
 ```
 
-3. Fetch the latest random value from the runtime
+5. Fetch the latest random value from the runtime
 
 ``` rust
 #[ink(message)]

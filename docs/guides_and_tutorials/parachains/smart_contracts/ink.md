@@ -9,6 +9,8 @@ The `idn-contracts` library provides functionality for interacting with the Idea
 
 ➜ Repository for [idn-contracts](https://github.com/ideal-lab5/idn-sdk/tree/main/contracts).
 
+> ⚠️ This library has not yet been published.
+
 ### Features
 
 - Create, pause, reactivate, update, and kill randomness subscriptions
@@ -21,7 +23,11 @@ The `idn-contracts` library provides functionality for interacting with the Idea
 
 To use the IDN Client library in your contract:
 
-1. Add the dependency to your `Cargo.toml`:
+1. Ensure cargo contract is installed `cargo install cargo-contract`
+
+2. Create a new contract `cargo contract new my_contract`
+
+3. Add the dependency to your `Cargo.toml`:
 
 ```toml
 [dependencies]
@@ -35,7 +41,7 @@ std = [
 ]
 ```
 
-2. Basic Contract Setup
+4. Basic Contract Setup
 
 ```rust
 use idn_contracts::xcm::{types::SubscriptionId, IdnClient, IdnConsumer, Error};
@@ -64,14 +70,43 @@ impl MyContract {
 }
 ```
 
-3. Implement Randomness Reception
+An explicit version would look like
+
+```rust
+use idn_contracts::xcm::{types::SubscriptionId, IdnClient, IdnConsumer, Error};
+
+#[ink(storage)]
+pub struct MyContract {
+    idn_client: IdnClient,
+    subscription_id: Option<SubscriptionId>,
+}
+
+impl MyContract {
+    #[ink(constructor)]
+    pub fn new() -> Self {
+        Self {
+            idn_client: IdnClient::new(
+                4502, // IDN parachain ID
+                40,   // IDN Manager pallet index
+                4594, // Your parachain ID
+                16,   // Contracts pallet index on your chain
+                6,    // Contract callback call index
+                None, // Optional: Maximum XCM execution fees
+            ),
+            subscription_id: None,
+        }
+    }
+}
+```
+
+5. Implement Randomness Reception
 
 Implement the `IdnConsumer` trait to receive randomness:
 
 - `consume_pulse`: Validate pulse with `is_valid_pulse()` then use `pulse.rand()` for randomness
 - `consume_quote` and `consume_sub_info`: Handle subscription quotes and info responses
 
-4. Use the IDN Client to manage subscriptions:
+6. Use the IDN Client to manage subscriptions:
 
 ```rust
 // Request a Quote
