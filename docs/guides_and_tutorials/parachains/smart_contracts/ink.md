@@ -51,27 +51,31 @@ std = [
 Smart contracts interact with the Ideal Network via the `IdnClient` struct which makes interacting with the network simple. All that's needed by the client is basic information about the IDN and your parachain.
 
 ```rust
-use idn_contracts::xcm::{types::SubscriptionId, IdnClient, IdnConsumer, Error};
+#[ink::contract]
+mod your_contract {
 
-#[ink(storage)]
-pub struct YourContract {
-    idn_client: IdnClient,
-    subscription_id: Option<SubscriptionId>,
-}
+    use idn_contracts::xcm::{types::SubscriptionId, IdnClient};
 
-impl YourContract {
-    #[ink(constructor)]
-    pub fn new() -> Self {
-        Self {
-            idn_client: IdnClient::new(
-                4502, // IDN parachain ID
-                40,   // IDN Manager pallet index
-                4594, // Your parachain ID
-                16,   // Contracts pallet index on your chain
-                6,    // Contract callback call index on your chain
-                None, // Optional: Maximum XCM execution fees
-            ),
-            subscription_id: None,
+    #[ink(storage)]
+    pub struct YourContract {
+        idn_client: IdnClient,
+        subscription_id: Option<SubscriptionId>,
+    }
+
+    impl YourContract {
+        #[ink(constructor)]
+        pub fn new() -> Self {
+            Self {
+                idn_client: IdnClient::new(
+                    4502, // IDN parachain ID
+                    40,   // IDN Manager pallet index
+                    4594, // Your parachain ID
+                    16,   // Contracts pallet index on your chain
+                    6,    // Contract callback call index on your chain
+                    None, // Optional: Maximum XCM execution fees
+                ),
+                subscription_id: None,
+            }
         }
     }
 }
@@ -79,7 +83,7 @@ impl YourContract {
 
 4. Implement Randomness Reception
 
-Implement the `IdnConsumer` trait to receive randomness:
+Within your mod definition, implement the `IdnConsumer` trait to receive randomness:
 
 ```rust
 use idn_contracts::xcm::{IdnConsumer, types::{SubscriptionId, Pulse, SubInfoResponse, Quote}};

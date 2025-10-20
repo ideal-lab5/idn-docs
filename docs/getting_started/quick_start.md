@@ -54,29 +54,35 @@ std = [
 ]
 ```
 
-2. Initialize the `IdnClient`
+2. Initialize the `IdnClient`.
+
 Initialize the `IdnClient` to begin interacting with the IDN.
 ```rust
-use idn_contracts::xcm::{types::SubscriptionId, IdnClient};
-#[ink(storage)]
-pub struct YourContract {
-    idn_client: IdnClient,
-    subscription_id: Option<SubscriptionId>,
-}
+#[ink::contract]
+mod your_contract {
 
-impl YourContract {
-    #[ink(constructor)]
-    pub fn new() -> Self {
-        Self {
-            idn_client: IdnClient::new(
-                4502, // IDN parachain ID
-                40,   // IDN Manager pallet index
-                4594, // Your parachain ID
-                16,   // Contracts pallet index on your chain
-                6,    // Contract callback call index on your chain
-                None, // Optional: Maximum XCM execution fees
-            ),
-            subscription_id: None,
+    use idn_contracts::xcm::{types::SubscriptionId, IdnClient};
+
+    #[ink(storage)]
+    pub struct YourContract {
+        idn_client: IdnClient,
+        subscription_id: Option<SubscriptionId>,
+    }
+
+    impl YourContract {
+        #[ink(constructor)]
+        pub fn new() -> Self {
+            Self {
+                idn_client: IdnClient::new(
+                    4502, // IDN parachain ID
+                    40,   // IDN Manager pallet index
+                    4594, // Your parachain ID
+                    16,   // Contracts pallet index on your chain
+                    6,    // Contract callback call index on your chain
+                    None, // Optional: Maximum XCM execution fees
+                ),
+                subscription_id: None,
+            }
         }
     }
 }
@@ -84,7 +90,7 @@ impl YourContract {
 
 3. Configure your contract  
 
-Tell your contract what to do when it receives a pulse of randomness from the IDN.
+Within your mod definiton, implement the `IdnConsumer` trait to tell your contract what to do when it receives a pulse of randomness from the IDN.
 
 ```rust
 use idn_contracts::xcm::{IdnConsumer, types::{SubscriptionId, Pulse, SubInfoResponse, Quote}};
@@ -119,7 +125,7 @@ impl IdnConsumer for YourContract {
 }
 ```
 
-For a more detailed look, take a look at our smart contracts for parachains page:
+For a more detailed look, check our smart contracts for parachains page:
 
 <div className={styles.linkBtn}>
     <a href="../guides_and_tutorials/parachains/smart_contracts/ink">Open a VRaaS Pipe from your contract</a>
