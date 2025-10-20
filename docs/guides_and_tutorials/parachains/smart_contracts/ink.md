@@ -43,36 +43,7 @@ std = [
 
 3. Basic Contract Setup
 
-The smart contract interacts with the Ideal Network via the `IdnClient` struct which makes interacting with the network simple. All you need to provide is basic information about the IDN and your parachain to the `IdnClient` constructor to get started.
-
-```rust
-use idn_contracts::xcm::{types::SubscriptionId, IdnClient, IdnConsumer, Error};
-
-#[ink(storage)]
-pub struct MyContract {
-    idn_client: IdnClient,
-    subscription_id: Option<SubscriptionId>,
-}
-
-impl MyContract {
-    #[ink(constructor)]
-    pub fn new() -> Self {
-        Self {
-            idn_client: IdnClient::new(
-                idn_para_id,                 // IDN parachain ID
-                idn_manager_pallet_index,    // IDN Manager pallet index
-                self_para_id,                // Your parachain ID
-                self_contracts_pallet_index, // Contracts pallet index on your chain
-                self_contracts_call_index,   // Contract callback call index on your chain
-                max_idn_xcm_fees,            // Optional: Maximum XCM execution fees
-            ),
-            subscription_id: None,
-        }
-    }
-}
-```
-
-An explicit version would look like:
+Smart contracts interact with the Ideal Network via the `IdnClient` struct which makes interacting with the network simple. All that's needed by the client is basic information about the IDN and your parachain.
 
 ```rust
 use idn_contracts::xcm::{types::SubscriptionId, IdnClient, IdnConsumer, Error};
@@ -110,7 +81,8 @@ Implement the `IdnConsumer` trait to receive randomness:
 
 5. Use the `IdnClient` to manage subscriptions:
 
-The `IdnClient` offers five ways to interact with your subscription. From starting a new subscription, updating your existing subscription, to killing your subscription, it has you covered.
+The `IdnClient` offers five ways to interact with your subscription. From starting a new subscription, updating your existing subscription, and even killing your subscription, the `IdnClient` has you covered.
+
 ```rust
 // Request a Quote
 self.idn_client.request_quote(
@@ -141,7 +113,9 @@ self.idn_client.request_sub_info(
         call_params, // Optional: Additional call parameters related to gas limits
         origin_kind, // Optional: origin kind (default: Native)
 )?;
+
 self.idn_client.pause_subscription(sub_id)?;
+
 self.idn_client.update_subscription(
     sub_id,    // Your subscription id
     credits,   // Optional: The new amount of credits for your subscription
