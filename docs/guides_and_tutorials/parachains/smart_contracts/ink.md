@@ -109,6 +109,7 @@ Implement the `IdnConsumer` trait to receive randomness:
 - `consume_quote` and `consume_sub_info`: Handle subscription quotes and info responses
 
 5. Use the `IdnClient` to manage subscriptions:
+
 The `IdnClient` offers five ways to interact with your subscription. From starting a new subscription, updating your existing subscription, to killing your subscription, it has you covered.
 ```rust
 // Request a Quote
