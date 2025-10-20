@@ -54,12 +54,12 @@ Smart contracts interact with the Ideal Network via the `IdnClient` struct which
 use idn_contracts::xcm::{types::SubscriptionId, IdnClient, IdnConsumer, Error};
 
 #[ink(storage)]
-pub struct MyContract {
+pub struct YourContract {
     idn_client: IdnClient,
     subscription_id: Option<SubscriptionId>,
 }
 
-impl MyContract {
+impl YourContract {
     #[ink(constructor)]
     pub fn new() -> Self {
         Self {
@@ -80,6 +80,39 @@ impl MyContract {
 4. Implement Randomness Reception
 
 Implement the `IdnConsumer` trait to receive randomness:
+
+```rust
+use idn_contracts::xcm::{IdnConsumer, types::{SubscriptionId, Pulse, SubInfoResponse, Quote}};
+
+// Implement the IdnConsumer trait to handle incoming randomness
+impl IdnConsumer for YourContract {
+    #[ink(message)]
+    fn consume_pulse(
+        &mut self, 
+        pulse: Pulse,
+        subscription_id: SubscriptionId
+    ) -> Result<()> {
+        let randomness = pulse.rand();
+        Ok(())
+    }
+
+    #[ink(message)]
+    fn consume_quote(
+        &mut self,
+        quote: Quote
+    ) -> Result<()> {
+        ...
+    }
+
+    #[ink(message)]
+    fn consume_sub_info(
+        &mut self,
+        sub_info: SubInfoResponse
+    ) -> Result<()> {
+        ...
+    }
+}
+```
 
 - `consume_pulse`: Validate pulse with `is_valid_pulse()` then use `pulse.rand()` for randomness
 - `consume_quote` and `consume_sub_info`: Handle subscription quotes and info responses
