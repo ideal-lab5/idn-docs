@@ -9,7 +9,7 @@ To create and manage subscriptions, you must first integrate with the IDN either
 - a [parachain runtime](./runtime_integration/parachain_runtime_integration.md)
 - an [ink! smart contract](./smart_contracts/ink.md)
 
-Once integrated, you can manually create, update, pause, or terminate VRaaS subscriptions [using the idn-consumer-pallet](./runtime_integration/subscription_mgmt.md) for parachains, [the idn-contract-consumer-lib](./smart_contracts/subscription_mgmt.md) for cross-chain ink! smart contracts, or through the [IDN Explorer](#) for a more streamlined experience.
+Once integrated, you can manually create, update, pause, or terminate VRaaS subscriptions [using the idn-consumer-pallet](./runtime_integration/subscription_mgmt.md) for parachains, the [idn-contracts](./smart_contracts/ink) library for cross-chain ink! smart contracts, or through the [IDN Explorer](#) for a more streamlined experience.
 
 ## Subscription Lifecycle
 

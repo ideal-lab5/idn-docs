@@ -64,7 +64,7 @@ There are three ways to retrieve a **real-time quote** from the Ideal Network:
   Use the [`idn-consumer-pallet`](../guides_and_tutorials/parachains/runtime_integration/subscription_mgmt.md#request-a-quote) extrinsic.
   
 - **From an ink! smart contract**  
-  Use the [`idn-contracts library`](../guides_and_tutorials/parachains/smart_contracts/subscription_mgmt.md).
+  Use the [`idn-contracts library`](../guides_and_tutorials/parachains/smart_contracts/ink).
 
 - **Directly from the IDN runtime**  
   Call the `quote_subscription` extrinsic manually.
@@ -82,7 +82,7 @@ You can create and manage subscriptions through any of the following methods:
   Integrated with the [`idn-consumer-pallet`](../guides_and_tutorials/parachains/runtime_integration/subscription_mgmt.md#creating-a-subscription).
 
 - **From an ink! smart contract**  
-  Using the [`idn-contracts library`](../guides_and_tutorials/parachains/smart_contracts/subscription_mgmt.md).
+  Using the [`idn-contracts library`](../guides_and_tutorials/parachains/smart_contracts/ink).
 
 - **From the Explorer UI**  
   [Launch the app](https://app.idealabs.network) and manage subscriptions visually.
