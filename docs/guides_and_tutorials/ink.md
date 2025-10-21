@@ -5,7 +5,7 @@ title: ink! Smart Contracts on the Ideal Network
 
 import styles from '/src/pages/index.module.css';
 
-The Ideal Network supports ink! smart contracts that can fetch verifiable randomness directly from the IDN runtime through a chain extension (add link). This makes it free to consume and cheap to verify, allowing developers to easily acquire verifiably random values for their dApps and protocols. While it is the easiest path to get started on the IDN, it is not without limitations, discussed below. 
+The Ideal Network supports ink! smart contracts that can fetch verifiable randomness directly from the IDN runtime through a [chain extension](https://github.com/ideal-lab5/idn-sdk/tree/main/contracts/src/ext). This makes it free to consume and cheap to verify, allowing developers to easily acquire verifiably random values for their dApps and protocols. While it is the easiest path to get started on the IDN, it is not without limitations, discussed below. 
 
 ### How it Works
 
@@ -29,42 +29,42 @@ To work with ink! smart contracts, you need to have the following tools installe
 1. Create a new contract `cargo contract new my_contract`
 
 2. Add the chain extension to your contract's Cargo.toml
-
-```toml
-[dependencies]
-idn-contracts = { version = "0.1.0", default-features = false }
-
-[features]
-default = ["std"]
-std = [
-    "idn-contracts/std",
-    # other dependencies with std feature
-]
-```
+    
+    ```toml
+    [dependencies]
+    idn-contracts = { version = "0.1.0", default-features = false }
+    
+    [features]
+    default = ["std"]
+    std = [
+        "idn-contracts/std",
+        # other dependencies with std feature
+    ]
+    ```
 
 3. Configure your contract
 
-```rust
-use idn_contracts::ext::IDNEnvironment;
-
-#[ink::contract(env = IDNEnvironment)]
-pub mod MyContract {
-    // make the custom Environment callable
-    use crate::IDNEnvironment;
-    // your contract implementation
-}
-```
+    ```rust
+    use idn_contracts::ext::IDNEnvironment;
+    
+    #[ink::contract(env = IDNEnvironment)]
+    pub mod MyContract {
+        // make the custom Environment callable
+        use crate::IDNEnvironment;
+        // your contract implementation
+    }
+    ```
 
 4. Fetch the latest random value from the runtime
 
-``` rust
-#[ink(message)]
-pub fn do_something_random(&mut self, subject: [u8; 32]) -> Result<(), RandomReadErr> {
-    // Get the on-chain random seed
-    let new_random = self.env().extension().fetch_random(subject)?;
-    self.value = new_random;
-    // do_something(new_random)
-    self.env().emit_event(RandomUpdated { new: new_random });
-    Ok(())
-}
-```
+    ``` rust
+    #[ink(message)]
+    pub fn do_something_random(&mut self, subject: [u8; 32]) -> Result<(), RandomReadErr> {
+        // Get the on-chain random seed
+        let new_random = self.env().extension().fetch_random(subject)?;
+        self.value = new_random;
+        // do_something(new_random)
+        self.env().emit_event(RandomUpdated { new: new_random });
+        Ok(())
+    }
+    ```

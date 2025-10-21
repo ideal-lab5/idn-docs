@@ -43,74 +43,56 @@ impl PulseConsumer<Pulse, SubscriptionId, (), ()> for PulseConsumerImpl {
 You can call Ideal Network services using cross-chain messaging (XCM) on smart contract parachains without the hassle of XCM message creation.
 
 1. Add the idn-contracts library as a dependency
-``` toml
-[dependencies]
-idn-contracts = { version = "0.1.0", default-features = false }
+    ``` toml
+    [dependencies]
+    idn-contracts = { version = "0.1.0", default-features = false }
+    
+    [features]
+    default = ["std"]
+    std = [
+        "idn-contracts/std",
+        # other dependencies with std feature
+    ]
+    ```
 
-[features]
-default = ["std"]
-std = [
-    "idn-contracts/std",
-    # other dependencies with std feature
-]
-```
+2. Implement the `IdnConsumer` trait
 
-2. Initialize the `IdnClient`
-```rust
-pub mod your_contract{
-    use idn_contracts::xcm::IdnClient;
-
-    #[ink(storage)]
-    pub struct YourContract {
-        idn_client: IdnClient
-    }
-
-    impl YourContract {
-        #[ink(constructor)]
-        pub fn new() -> Self {
-            Self {
-                idn_client: IdnClient::new(
-                    // Your client configurations
-                ),
-            }
+    ```rust
+    use idn_contracts::xcm::{IdnConsumer, Error, types::{SubscriptionId, Pulse, SubInfoResponse, Quote}};
+    
+    impl IdnConsumer for YourContract {
+        #[ink(message)]
+        fn consume_pulse(
+            &mut self, 
+            pulse: Pulse,
+            subscription_id: SubscriptionId
+        ) -> Result<(), Error> {
+            Ok(())
+        }
+    
+        #[ink(message)]
+        fn consume_quote(
+            &mut self,
+            quote: Quote
+        ) -> Result<(), Error> {
+            Ok(())
+        }
+    
+        #[ink(message)]
+        fn consume_sub_info(
+            &mut self,
+            sub_info: SubInfoResponse
+        ) -> Result<(), Error> {
+            Ok(())
         }
     }
-}
+    ```
 
-```
-3. Implement the `IdnConsumer` trait
-
-```rust
-use idn_contracts::xcm::{IdnConsumer, Error, types::{SubscriptionId, Pulse, SubInfoResponse, Quote}};
-
-impl IdnConsumer for YourContract {
-    #[ink(message)]
-    fn consume_pulse(
-        &mut self, 
-        pulse: Pulse,
-        subscription_id: SubscriptionId
-    ) -> Result<(), Error> {
-        Ok(())
-    }
-
-    #[ink(message)]
-    fn consume_quote(
-        &mut self,
-        quote: Quote
-    ) -> Result<(), Error> {
-        Ok(())
-    }
-
-    #[ink(message)]
-    fn consume_sub_info(
-        &mut self,
-        sub_info: SubInfoResponse
-    ) -> Result<(), Error> {
-        Ok(())
-    }
-}
-```
-
+3. Consume randomness
+    ```rust
+    let randomness = pulse.rand();
+    ```
+  
 Check our smart contracts for parachains page for more details:
 
 <div className={styles.linkBtn}>
@@ -127,36 +109,36 @@ Check out the [example](https://github.com/ideal-lab5/idn-sdk/tree/main/contract
 
 1. Add the `idn-contracts` library to your contract's Cargo.toml
 
-```toml
-[dependencies]
-idn-contracts = { version = "0.1.0", default-features = false }
-
-[features]
-default = ["std"]
-std = [
-    "idn-contracts",
-    # other dependencies with std feature
-]
-```
+    ```toml
+    [dependencies]
+    idn-contracts = { version = "0.1.0", default-features = false }
+    
+    [features]
+    default = ["std"]
+    std = [
+        "idn-contracts",
+        # other dependencies with std feature
+    ]
+    ```
 
 2. Configure your contract
 
-```rust
-use idn_contracts::ext::IDNEnvironment;
-
-#[ink::contract(env = IDNEnvironment)]
-pub mod MyContract {
-    // make the custom Environment callable
-    use crate::IDNEnvironment;
-}
-```
+    ```rust
+    use idn_contracts::ext::IDNEnvironment;
+    
+    #[ink::contract(env = IDNEnvironment)]
+    pub mod MyContract {
+        // make the custom Environment callable
+        use crate::IDNEnvironment;
+    }
+    ```
 
 3. Fetch the latest random value from the runtime
 
-``` rust
-let random = self.env().extension().random();
-```
-
+    ``` rust
+    let random = self.env().extension().random();
+    ```
+    
 <div className={styles.linkBtn}>
     <a href="../guides_and_tutorials/ink">Use randomness in ink! Smart Contracts on the IDN</a>
 </div>
