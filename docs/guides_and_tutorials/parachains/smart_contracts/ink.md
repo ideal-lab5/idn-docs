@@ -25,15 +25,15 @@ To work with ink! smart contracts, you need to have the following tools installe
 
 1. Rust and Cargo (latest stable version)
 2. cargo-contract CLI tool (v5.0.3 or newer)
-3. Ensure HRMP channels are open between your parachain and the IDN
+3. Ensure [bidirectional HRMP channels are open](https://substrate.stackexchange.com/questions/5445/how-to-open-hrmp-channels-between-parachains) between your parachain and the IDN
 
 ### Usage
 
 To use the IDN Client library in your contract:
 
-1. Create a new contract `cargo contract new my_contract`
+1. Create a new contract `cargo contract new your_contract`
 
-2. Add the dependency to your `Cargo.toml`:
+2. Add the `idn-contracts` dependency to your `Cargo.toml`:
 
 ```toml
 [dependencies]

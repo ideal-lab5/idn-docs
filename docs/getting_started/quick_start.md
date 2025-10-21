@@ -38,8 +38,9 @@ impl PulseConsumer<Pulse, SubscriptionId, (), ()> for PulseConsumerImpl {
 
 ### **For Cross-Chain ink! Smart Contracts**
 
-**Best for dApp developers on smart contract parachains or on the IDN itself.**
-You can call Ideal Network services using cross-chain messaging (XCM) on smart contract parachains, or directly on the IDN without needing a VRaaS subscription.
+**Best for dApp developers on smart contract parachains**
+
+You can call Ideal Network services using cross-chain messaging (XCM) on smart contract parachains.
 
 1. Add the idn-contracts library as a dependency
 ``` toml
@@ -57,40 +58,22 @@ std = [
 2. Initialize the `IdnClient`.
 
 Initialize the `IdnClient` to begin interacting with the IDN.
+
 ```rust
-#[ink::contract]
-mod your_contract {
-
-    use idn_contracts::xcm::{types::SubscriptionId, IdnClient};
-
-    #[ink(storage)]
-    pub struct YourContract {
-        idn_client: IdnClient,
-        subscription_id: Option<SubscriptionId>,
-    }
-
-    impl YourContract {
-        #[ink(constructor)]
-        pub fn new() -> Self {
-            Self {
-                idn_client: IdnClient::new(
-                    4502,          // IDN parachain ID
-                    40,            // IDN Manager pallet index
-                    4594,          // Your parachain ID
-                    16,            // Contracts pallet index on your chain
-                    6,             // Contract callback call index on your chain
-                    1_000_000_000, // Maximum XCM execution fees
-                ),
-                subscription_id: None,
-            }
-        }
-    }
-}
+    use idn_contracts::xcm::IdnClient;
+    let idn_client: IdnClient = IdnClient::new(
+        4502,          // IDN parachain ID
+        40,            // IDN Manager pallet index
+        4594,          // Your parachain ID
+        16,            // Contracts pallet index on your chain
+        6,             // Contract callback call index on your chain
+        1_000_000_000, // Maximum XCM execution fees
+    )
 ```
 
 3. Configure your contract  
 
-Within your mod definiton, implement the `IdnConsumer` trait to tell your contract what to do when it receives a pulse of randomness from the IDN.
+Implement the IdnConsumer trait to begin consuming pulses, quotes, and subscription information.
 
 ```rust
 use idn_contracts::xcm::{IdnConsumer, Error, types::{SubscriptionId, Pulse, SubInfoResponse, Quote}};
@@ -103,7 +86,6 @@ impl IdnConsumer for YourContract {
         pulse: Pulse,
         subscription_id: SubscriptionId
     ) -> Result<(), Error> {
-        let randomness = pulse.rand();
         Ok(())
     }
 
