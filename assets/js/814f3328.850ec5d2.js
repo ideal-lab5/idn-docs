@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkidn_docs=self.webpackChunkidn_docs||[]).push([[7472],{5513:e=>{e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Blog","permalink":"/blog/blog","unlisted":false,"date":"2023-11-10T00:00:00.000Z"}]}')}}]);
