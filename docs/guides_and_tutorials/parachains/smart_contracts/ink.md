@@ -101,6 +101,7 @@ impl IdnConsumer for YourContract {
         Ok(())
     }
 
+    // Handle subscription quotes
     #[ink(message)]
     fn consume_quote(
         &mut self,
@@ -109,6 +110,7 @@ impl IdnConsumer for YourContract {
         Ok(())
     }
 
+    // Handle subscription information responses
     #[ink(message)]
     fn consume_sub_info(
         &mut self,
@@ -119,7 +121,7 @@ impl IdnConsumer for YourContract {
 }
 ```
 
-- `consume_pulse`: Validate pulse with `is_valid_pulse()` then use `pulse.rand()` for randomness
+- `consume_pulse`: We provide a way to validate pulses with `is_valid_pulse()` to allow for trustless consumption of randomness pulses.
 - `consume_quote` and `consume_sub_info`: Handle subscription quotes and info responses
 
 5. Use the `IdnClient` to manage subscriptions:
