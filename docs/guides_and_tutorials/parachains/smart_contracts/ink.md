@@ -25,6 +25,7 @@ To work with ink! smart contracts, you need to have the following tools installe
 
 1. Rust and Cargo (latest stable version)
 2. cargo-contract CLI tool (v5.0.3 or newer)
+3. Ensure HRMP channels are open between your parachain and the IDN
 
 ### Usage
 
@@ -83,7 +84,7 @@ mod your_contract {
 
 4. Implement Randomness Reception
 
-Within your mod definition, implement the `IdnConsumer` trait to receive randomness:
+**Within your mod definition**, implement the `IdnConsumer` trait to receive randomness:
 
 ```rust
 use idn_contracts::xcm::{IdnConsumer, Error, types::{SubscriptionId, Pulse, SubInfoResponse, Quote}};

@@ -173,7 +173,7 @@ let random = self.env().extension().random();
 ```
 
 <div className={styles.linkBtn}>
-    <a href="../guides_and_tutorials/ink.md">Use randomness in ink! Smart Contracts on the IDN</a>
+    <a href="../guides_and_tutorials/ink">Use randomness in ink! Smart Contracts on the IDN</a>
 </div>
 
 ---
