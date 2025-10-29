@@ -18,12 +18,12 @@ Further, blockchains lack native mechanisms to **delay information disclosure** 
 The Ideal Network (IDN) solves this by providing two core capabilities:
 
 1. **Verifiable randomness**, delivered trustlessly via XCM.
-2. **Timelock encryption**, enabling "encryption to the future", MEV & front-running resistance, timelocked transaction pools, covert coordination, and more.
+2. **Timelock encryption [COMING SOON]**, enabling "encryption to the future", MEV & front-running resistance, timelocked transaction pools, covert coordination, and more.
 
 ### Key Features
 
 - **Verifiable Randomness-as-a-Service (VRaaS)**: The output of each beacon is *publicly* verifiable, allowing for cost-effective and trustless verification of beacon outputs. By introducing a **subscription**-based system, the IDN allows parachains to use DOT to secure a stream of randomness directly injected to their pallets or contracts. 
-- **Timelocked Transactions and Covert Coordination**: **Timelock encryption** is a cryptographic scheme that allows for messages to be encrypted to the future. By instantiating timelock encryption against the underlying randomness beacon, the IDN enables cryptographically verifiable MEV protection and provides the framing for new kinds of non-interactive and asynchronous multiparty coordination protocols.
+- **Timelocked Transactions and Covert Coordination [COMING SOON]**: **Timelock encryption** is a cryptographic scheme that allows for messages to be encrypted to the future. By instantiating timelock encryption against the underlying randomness beacon, the IDN enables cryptographically verifiable MEV protection and provides the framing for new kinds of non-interactive and asynchronous multiparty coordination protocols.
 
 # Comparison to Existing Solutions
 
@@ -31,8 +31,8 @@ The Ideal Network (IDN) solves this by providing two core capabilities:
 | --------------------------------------------- | ------------- | --------------------- | ------- | ---------------- | ------------- | ----------------- |
 | **MEV resistance**                            | ❌             | ❌                     | ✅       | ✅                | ❌             | ✅                 |
 | **On-chain VRaaS**                            | ❌             | ✅                     | ❌       | ❌                | ❌             | ✅                 |
-| **Cryptographic Timelock Support**            | ❌             | ❌                     | ✅ (TSS) | ⚠️ (IBE)          | ✅             | ✅                 |
-| **On-chain verifiability**                    | ⚠️             | ✅                     | ❌       | ⚠️ (via relayers) | ✅             | ✅                 |
+| **Cryptographic Timelock Support**            | ❌             | ❌                     | ✅  | ⚠️ (IBE)          | ✅             | ⚠️ [in progress]                |
+| **On-chain verifiability**                    | ⚠️             | ✅                     | ❌       | ⚠️ (via relayers) | ✅             | ⚠️ (expensive in contracts)                 |
 | **Built-in Cross-Chain Support**              | ❌             | ❌                     | ❌       | ❌                | ❌             | ✅                 |
 | **Integration into Polkadot**                 | ✅             | ⚠️ (BABE)              | ❌       | ❌                | ⚠️ (IDN)       | ✅                 |
 | **Enables Non-interactive & async Protocols** | ❌             | ✅                     | ❌       | ❌                | ✅             | ✅                 |
@@ -49,12 +49,6 @@ The Ideal Network (IDN) solves this by providing two core capabilities:
 
 ### Protocol Designers and Researchers
 - Verifiable randomness and timelock encryption enable powerful new security models for consensus systems, allowing for temporal or condition-based control over the release of certain on-chain information
-
-## Why Choose IDN?
-✅ **No Setup Required** - No DKG, no committees, just XCM  
-✅ **Verifiable** - Cryptographic proofs for every output  
-✅ **Native to Polkadot** - Built for the ecosystem  
-✅ **Production Ready** - Live on testnet (soon in mainnet), not theoretical 
 
 ## Supported By
 

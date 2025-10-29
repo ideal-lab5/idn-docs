@@ -11,14 +11,14 @@ This document describes the Ideal Network's "Phase 1" release as a trustless bri
 
 The Ideal Network's 'phase 1' introduces a trustless bridge from the Drand distributed randomness beacon to the Polkadot ecosystem, providing publicly verifiable randomness with low-latency and low-cost while enabling timelock encryption capabilities. The IDN is a cross-chain solution, with the goal being to allow parachain runtimes and ink! smart contracts to subscribe to randomness that is pushed to their network via XCM, minimizing latency and storage overhead. 
 
-The network is foundationally a proof-of-authority blockchain using Aura consensus. In addition to this, each collator subscribes to a gossipsub topic, to which Drand's quicknet writes all new pulses. The network acts a **sparse accumlator** of drand pulses, able to consume, verify, and prove that it has observed (or not) any given pulse. The network authorities are responsible for submitting aggregated signatures to the runtime, which then becomes the block's randomness. In addition, the network is responsible for `managing` and `handling` subscriptions to randomness, which looks like a priority-ordered XCM-dispatcher layer.
+The network is foundationally a proof-of-authority blockchain using Aura consensus for the time being. In addition to this, each collator subscribes to a gossipsub topic that Drand's Quicknet writes all new pulses. The network acts a **sparse accumlator** of drand pulses, able to consume, verify, and prove that it has observed (or not) any given pulse. The network authorities are responsible for submitting aggregated signatures to the runtime using a **post-finality-gadget**. In addition, the network is responsible for `managing` and `handling` subscriptions to randomness, which looks like a priority-ordered XCM-dispatcher layer.
 
 ## Background
 
 ### Terminology
 
-- **Collator** - Similar to a network validator, except in the context of a parachain. This is a special authority node who can produce blocks.
-- **Extrinsics and inherents** - Extrinsics are transactions within the network (applied to the runtime). Inherents are a special kind of *unsigned* extrinsic that can only be made by a block author. 
+- **Collator** - A network authority responsible for building and proposing blocks.
+- **Extrinsics** - Extrinsics are transactions within the network (applied to the runtime). They can either be signed or unsigned.
 - **Verifiable Randomness Beacon** - A probabilistic machine that outputs **pulses** of randomness in periodic **rounds**. Each pulse contains the *round number*, *signature* and *randomness* for the round.  There is an efficient algorithm $V$ that can be used to publicly verify each pulse.
 - **Multiparty Computation (MPC) Protocol** is a protocol that involves two or more parties that each individually compute *something* and share it amongst each other in order to compute a final output. The drand beacon protocol is a secure MPC protocol.
 - **Gossipsub** [4] is a an extensible baseline pubsub protocol, based on randomized topic meshes and gossip. It is a general purpose pubsub protocol with moderate amplification factors and good scaling properties.
@@ -105,11 +105,11 @@ The genesis round from which we will begin bridging drand. Authorities must wait
 
 ### Block Production
 
-Block producers execute an *inherent* when authoring blocks, where they publish the aggregated signatures they observed during the block's lifetime to the runtime. The idea is that each block produced carries with it a mutation to runtime storage, where it inserts a new aggregated pulse which defines that latest randomness. This also verifies the signatures as described above, ensuring their correctness. This is composed of an *offchain* branch of logic and an *onchain* one.
+Block authors are able to provide new randomness to the runtime through a **post-finality gadget**. When finality notifications are received, they publish the aggregated signatures they observed during the block's lifetime to the runtime. The idea is that each block produced carries with it a mutation to runtime storage, where it inserts a new aggregated pulse to define the latest randomness. This also verifies the signatures as described above, ensuring their correctness. This is composed of an *offchain* branch of logic and an *onchain* one.
 
 1. During the lifetime of block $b$, let $\{(r_i, \sigma_i)\}_{i \in b_k}$ for some $b_k > 0$ be the pulses output from the gossipsub subscription $S(t)$. Here, $b_k$ is the number of pulses observed, which we refer to as its **height**. 
 
-2. When a block author $A_i$ attempts to build block $b$, they first include the inherent call. Offchain, this aggregates the signatures to produce a single 48-byte asig that can be verified onchain: $asig = \sum_{i \in [b_k]} \sigma_i$. The inherent is then invoked with $(asig, b_k)$. 
+2. When a block author $A_i$  recieves a finality notification, they build a call to an unsigned extrinsic with a signed payload offchain. This includes the latest aggregated signatures to produce a single 48-byte signature that can be verified onchain: $asig = \sum_{i \in [b_k]} \sigma_i$.
     - If it is the genesis round, the block author also extracts the smallest round number (the genesis round: $r_G$) from the initial set of observed pulses and submits: $(asig, b_k, r_G)$.
 
 3. The runtime constructs the message that it expects to have been signed by the associated asigs and uses it to verify them. That is, it computes $Q = \sum_{i \in [b_k]} Q_i$ and $b \leftarrow \mathcal{V}(\sigma, Q, pk)$. If $b = 1$ then the signature is valid, otherwise it is rejected.
@@ -122,18 +122,14 @@ Block producers execute an *inherent* when authoring blocks, where they publish 
 
 The randomness beacon pallet contains the core logic for aggregating, verifying, and storing pulses from the randomness beacon. It stores an aggregated signature and aggregated public key that allows the runtime to efficiently verify that it has observed outputs from the randomness beacon for some sequential rounds, $r_1, r_2, ..., r_n$. In other words, the storage is designed to be minimalistic, essentially storing a commitment that we have observed and verified a set of sequential outputs, starting from some 'genesis' round to the latest one observed. 
 
-#### Inherent Logic
+#### Pulse Validity 
 
-1. read sigs (what if they are missing?)
-2. aggregate sigs & extract 'start round'
-3. call `write_pulses`
+The pallet-randomness-beacon ensures that only **new** pulses are ingested into the runtime, rejecting anything that has already been observed (eliminates replay attacks, cannot submit duplicate pulses). The runtime only accepts signatures for new round numbers.  
 
 
 #### try_submit_asig 
-The `write_pulses` extrinsic executes, where it:
-1. aggregates pulses by computing $(Q, \sigma) = (\sum_{i \in [k]} Q_{ID_i}, \sum_{i \in [k]} \sigma_i)$
-2. Verifies the aggregated signature by checking if $e(\sigma, g_2) == e(Q, pk)$
-3. If not, the call fails. Otherwise, write the aggregated signature to storage.
+
+The core pulse verification and ingestion logic lives in the `try_submit_asig` extrinsic, which is an unsigned extrinsic with a signed payload. It verifies that signatures are new and valid, while ensuring that only the current block author can provide new signatures to the runtime.
 
 The current block randomness is the hash of the aggregated signatures. That is, $rand(b) = Hash(\sigma_b || ctx)$, where $ctx$ can be any unbounded u8 slice and $\sigma_b$ is the aggregated signature of the sigs observed and written to the runtime when an authority proposed block b.
 
