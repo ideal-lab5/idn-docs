@@ -84,8 +84,8 @@ const config = {
       announcementBar: {
         id: 'support_us', // unique id
         content:
-          '🛠️ We’re building! These docs are still evolving. Not all features are usable or stable yet.',
-        backgroundColor: '#ef4444',
+          '⚡ The IDN testnet is live on Paseo!',
+        backgroundColor: '#fcff5fff',
         textColor: '#000000ff',
         isCloseable: false,
       },

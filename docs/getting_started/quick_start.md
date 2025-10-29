@@ -172,7 +172,9 @@ let random = self.env().extension().random();
 
 ---
 
-### **For Frontend Developers Sending Timelocked Transactions**
+<!-- UNCOMMENT THIS AFTER WE DEPLOY TLOCK -->
+
+<!-- ### **For Frontend Developers Sending Timelocked Transactions**
 
 **Best for web developers who want to easily interact with the network's timelock capabilities.**
 Our SDK provides a clean interface for interacting with our network's capabilities from a web application. The fastest way to get started is through the [etf.js](https://github.com/ideal-lab5/etf.js) library. To get start, install the latest version:
@@ -204,7 +206,7 @@ await delayedTx.signAndSend(alice, (result) => {
 
 <div className={styles.linkBtn}>
     <a href="../guides_and_tutorials/timelocked_txs">Send MEV-resistant timelocked transactions with the IDN</a>
-</div>
+</div> -->
 
 -----
 
@@ -216,7 +218,8 @@ Now that you've seen what's possible, choose your development path to find detai
   * **For ink! Smart Contract Developers:**
     * [Learn how to create a VRaaS from a contract](../guides_and_tutorials/parachains/smart_contracts/ink.md)
     * [Deploy contracts on the IDN to get randomness for free](../guides_and_tutorials/ink.md)
-  * **For Frontend Developers:** [Go to the Timelocked Transactions Guide](../guides_and_tutorials/timelocked_txs.md)
+    <!-- UNCOMMENT AFTER WE DEPLOY TLOC -->
+  <!-- * **For Frontend Developers:** [Go to the Timelocked Transactions Guide](../guides_and_tutorials/timelocked_txs.md) -->
 
 
 

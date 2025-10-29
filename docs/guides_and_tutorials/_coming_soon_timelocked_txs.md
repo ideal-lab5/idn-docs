@@ -1,8 +1,10 @@
 ---
-sidebar_position: 0
+# sidebar_position: 0
+unlisted: true 
+#  relist after we deploy tlock
 title: Send Timelocked Transactions
 ---
-
+<!-- 
 import styles from '/src/pages/index.module.css';
 
 [Timelocked Transactions](#) are a unique capability of the Ideal Network. By using [timelock encryption](#), call data is "encrypted to the future", where it cannot be recovered until a specific Drand round has been reached, providing the decryption key. The [etf.js](https://github.com/ideal-lab5/etf.js) SDK for JavaScript/TypeScript applications lets developers easily construct timelock-encrypted transactions that can be submitted on the Ideal Network. It encapsulates both a secure hashed key derivation function (HKDF) and timelock encryption to produce ciphertexts that can be decrypted only when:
@@ -105,4 +107,4 @@ console.log(ciphertext); // A Uint8Array containing the encrypted data.
 ```
 
 > **Note:** This SDK does **not** include decryption functionality. For decryption, you should use the **`@ideallabs/timelock.js`** library directly.
-
+ -->
