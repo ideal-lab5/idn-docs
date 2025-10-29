@@ -38,88 +38,62 @@ impl PulseConsumer<Pulse, SubscriptionId, (), ()> for PulseConsumerImpl {
 
 ### **For Cross-Chain ink! Smart Contracts**
 
-**Best for dApp developers on smart contract parachains or on the IDN itself.**
-You can call Ideal Network services using cross-chain messaging (XCM) on smart contract parachains, or directly on the IDN without needing a VRaaS subscription.
+**Best for dApp developers on smart contract parachains**
+
+You can call Ideal Network services using cross-chain messaging (XCM) on smart contract parachains without the hassle of XCM message creation.
 
 1. Add the idn-contracts library as a dependency
-``` toml
-[dependencies]
-idn-contracts = { version = "0.1.0", default-features = false }
+    ``` toml
+    [dependencies]
+    idn-contracts = { version = "0.1.0", default-features = false }
+    
+    [features]
+    default = ["std"]
+    std = [
+        "idn-contracts/std",
+        # other dependencies with std feature
+    ]
+    ```
 
-[features]
-default = ["std"]
-std = [
-    "idn-contracts/std",
-    # other dependencies with std feature
-]
-```
+2. Implement the `IdnConsumer` trait
 
-2. Initialize the `IdnClient`
-Initialize the `IdnClient` to begin interacting with the IDN.
-```rust
-use idn_contracts::xcm::{types::SubscriptionId, IdnClient};
-#[ink(storage)]
-pub struct YourContract {
-    idn_client: IdnClient,
-    subscription_id: Option<SubscriptionId>,
-}
-
-impl YourContract {
-    #[ink(constructor)]
-    pub fn new() -> Self {
-        Self {
-            idn_client: IdnClient::new(
-                4502, // IDN parachain ID
-                40,   // IDN Manager pallet index
-                4594, // Your parachain ID
-                16,   // Contracts pallet index on your chain
-                6,    // Contract callback call index on your chain
-                None, // Optional: Maximum XCM execution fees
-            ),
-            subscription_id: None,
+    ```rust
+    use idn_contracts::xcm::{IdnConsumer, Error, types::{SubscriptionId, Pulse, SubInfoResponse, Quote}};
+    
+    impl IdnConsumer for YourContract {
+        #[ink(message)]
+        fn consume_pulse(
+            &mut self, 
+            pulse: Pulse,
+            subscription_id: SubscriptionId
+        ) -> Result<(), Error> {
+            Ok(())
+        }
+    
+        #[ink(message)]
+        fn consume_quote(
+            &mut self,
+            quote: Quote
+        ) -> Result<(), Error> {
+            Ok(())
+        }
+    
+        #[ink(message)]
+        fn consume_sub_info(
+            &mut self,
+            sub_info: SubInfoResponse
+        ) -> Result<(), Error> {
+            Ok(())
         }
     }
-}
-```
+    ```
 
-3. Configure your contract  
-
-Tell your contract what to do when it receives a pulse of randomness from the IDN.
-
-```rust
-use idn_contracts::xcm::{IdnConsumer, types::{SubscriptionId, Pulse, SubInfoResponse, Quote}};
-
-// Implement the IdnConsumer trait to handle incoming randomness
-impl IdnConsumer for YourContract {
-    #[ink(message)]
-    fn consume_pulse(
-        &mut self, 
-        pulse: Pulse,
-        subscription_id: SubscriptionId
-    ) -> Result<()> {
-        let randomness = pulse.rand();
-        Ok(())
-    }
-
-    #[ink(message)]
-    fn consume_quote(
-        &mut self,
-        quote: Quote
-    ) -> Result<()> {
-        ...
-    }
-
-    #[ink(message)]
-    fn consume_sub_info(
-        &mut self,
-        sub_info: SubInfoResponse
-    ) -> Result<()> {
-        ...
-    }
-}
-```
-
-For a more detailed look, take a look at our smart contracts for parachains page:
+3. Consume randomness
+    ```rust
+    let randomness = pulse.rand();
+    ```
+  
+Check our smart contracts for parachains page for more details:
 
 <div className={styles.linkBtn}>
     <a href="../guides_and_tutorials/parachains/smart_contracts/ink">Open a VRaaS Pipe from your contract</a>
@@ -129,45 +103,44 @@ For a more detailed look, take a look at our smart contracts for parachains page
 
 ### **For native ink! Smart Contracts on the Ideal Network**
 
-The Ideal Network support ink! smart contracts that can fetch verifiable randomness directly from the IDN runtime through a chain extension (add link). This makes it free to consume 
-and cheap to verify, allowing developers to easily acquire verifiably random values for their dApps and protocols.
+The Ideal Network supports ink! smart contracts that can fetch verifiable randomness directly from the IDN runtime through a [chain extension](https://github.com/ideal-lab5/idn-sdk/tree/main/contracts/src/ext). This makes it free to consume and cheap to verify, allowing developers to easily acquire verifiably random values for their dApps and protocols.
 
 Check out the [example](https://github.com/ideal-lab5/idn-sdk/tree/main/contracts/examples/rand-extension) to get started!
 
-1. Add the chain extension to your contract's Cargo.toml
+1. Add the `idn-contracts` library to your contract's Cargo.toml
 
-```toml
-[dependencies]
-idn-contracts = { version = "0.1.0", default-features = false }
-
-[features]
-default = ["std"]
-std = [
-    "idn-contracts",
-    # other dependencies with std feature
-]
-```
+    ```toml
+    [dependencies]
+    idn-contracts = { version = "0.1.0", default-features = false }
+    
+    [features]
+    default = ["std"]
+    std = [
+        "idn-contracts",
+        # other dependencies with std feature
+    ]
+    ```
 
 2. Configure your contract
 
-```rust
-use idn_contracts::ext::IDNEnvironment;
-
-#[ink::contract(env = IDNEnvironment)]
-pub mod MyContract {
-    // make the custom Environment callable
-    use crate::IDNEnvironment;
-}
-```
+    ```rust
+    use idn_contracts::ext::IDNEnvironment;
+    
+    #[ink::contract(env = IDNEnvironment)]
+    pub mod MyContract {
+        // make the custom Environment callable
+        use crate::IDNEnvironment;
+    }
+    ```
 
 3. Fetch the latest random value from the runtime
 
-``` rust
-let random = self.env().extension().random();
-```
-
+    ``` rust
+    let random = self.env().extension().random();
+    ```
+    
 <div className={styles.linkBtn}>
-    <a href="../guides_and_tutorials/ink.md">Use randomness in ink! Smart Contracts on the IDN</a>
+    <a href="../guides_and_tutorials/ink">Use randomness in ink! Smart Contracts on the IDN</a>
 </div>
 
 ---
