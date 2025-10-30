@@ -38,11 +38,12 @@ Welcome to the Ideal Network integration hub. This guide outlines the three prim
 ➜ [Go to native ink! Smart Contract Integration Guide](./ink.md)
 
 -----
-
+<!-- UNCOMMENT AFTER WE DEPLOY TLOCK -->
+<!-- 
 ### 🌐 **Timelocked Transactions Integration**
 
 **Who's it for?** **Frontend or web developers** building user-facing applications.
 
 **What is it?** The [etf.js](https://github.com/ideal-lab5/etf.js) SDK allows your application to build timelocked transactions directly from the frontend. This is the fastest way to get started and is ideal for web3 games.
 
-➜ [Go to Frontend SDK Guide](./timelocked_txs.md)
+➜ [Go to Frontend SDK Guide](./timelocked_txs.md) -->

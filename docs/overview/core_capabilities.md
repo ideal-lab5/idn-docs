@@ -41,7 +41,7 @@ With VRaaS, randomness is not only secure but **actionable**, enabling:
 
 ---
 
-### ⏲️ Timelocked Transactions
+### ⏲️ Timelocked Transactions [COMING SOON]
 
 **Timelocked Transactions** enable cryptographic "encryption to the future," bringing MEV-resistant execution to Web3.
 
@@ -120,5 +120,5 @@ Polkadot provides the **ideal environment** for IDN:
 ## Next Steps
 - [Quickstart Integration Guide](../guides_and_tutorials/quickstart.md)  
 - [VRaaS Subscription Overview](../getting_started/subscriptions_and_cost_model.md)  
-- [Timelocked Transaction Guide](../guides_and_tutorials/timelocked_txs.md)
+<!-- - [Timelocked Transaction Guide](../guides_and_tutorials/timelocked_txs.md) -->
  

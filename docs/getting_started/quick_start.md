@@ -38,47 +38,62 @@ impl PulseConsumer<Pulse, SubscriptionId, (), ()> for PulseConsumerImpl {
 
 ### **For Cross-Chain ink! Smart Contracts**
 
-**Best for dApp developers on smart contract parachains or on the IDN itself.**
-You can call Ideal Network services using cross-chain messaging (XCM) on smart contract parachains, or directly on the IDN without needing a VRaaS subscription.
+**Best for dApp developers on smart contract parachains**
 
-1. Add the idn-client-contract-lib as a dependency
-``` toml
-[dependencies]
-idn-client-contract-lib = { version = "0.1.0", default-features = false }
+You can call Ideal Network services using cross-chain messaging (XCM) on smart contract parachains without the hassle of XCM message creation.
 
-[features]
-default = ["std"]
-std = [
-    "idn-client-contract-lib/std",
-    # other dependencies with std feature
-]
-```
+1. Add the idn-contracts library as a dependency
+    ``` toml
+    [dependencies]
+    idn-contracts = { version = "0.1.0", default-features = false }
+    
+    [features]
+    default = ["std"]
+    std = [
+        "idn-contracts/std",
+        # other dependencies with std feature
+    ]
+    ```
 
-2. Configure your contract  
+2. Implement the `IdnConsumer` trait
 
-Tell your contract what to do when it receives a pulse of randomness from the IDN.
-
-```rust
-use idn_client_contract_lib::{
-    ContractPulse, IdnClient, IdnClientImpl, RandomnessReceiver, 
-    SubscriptionId, Result, Error
-};
-use idn_client_contract_lib::Pulse;
-
-// Implement the RandomnessReceiver trait to handle incoming randomness
-impl RandomnessReceiver for YourContract {
-    fn on_randomness_received(
-        &mut self, 
-        pulse: ContractPulse,
-        subscription_id: SubscriptionId
-    ) -> Result<()> {
-        let randomness = pulse.rand();
-        Ok(())
+    ```rust
+    use idn_contracts::xcm::{IdnConsumer, Error, types::{SubscriptionId, Pulse, SubInfoResponse, Quote}};
+    
+    impl IdnConsumer for YourContract {
+        #[ink(message)]
+        fn consume_pulse(
+            &mut self, 
+            pulse: Pulse,
+            subscription_id: SubscriptionId
+        ) -> Result<(), Error> {
+            Ok(())
+        }
+    
+        #[ink(message)]
+        fn consume_quote(
+            &mut self,
+            quote: Quote
+        ) -> Result<(), Error> {
+            Ok(())
+        }
+    
+        #[ink(message)]
+        fn consume_sub_info(
+            &mut self,
+            sub_info: SubInfoResponse
+        ) -> Result<(), Error> {
+            Ok(())
+        }
     }
-}
-```
+    ```
 
-1. Create a Subsubscription
+3. Consume randomness
+    ```rust
+    let randomness = pulse.rand();
+    ```
+  
+Check our smart contracts for parachains page for more details:
 
 <div className={styles.linkBtn}>
     <a href="../guides_and_tutorials/parachains/smart_contracts/ink">Open a VRaaS Pipe from your contract</a>
@@ -88,50 +103,51 @@ impl RandomnessReceiver for YourContract {
 
 ### **For native ink! Smart Contracts on the Ideal Network**
 
-The Ideal Network support ink! smart contracts that can fetch verifiable randomness directly from the IDN runtime through a chain extension (add link). This makes it free to consume 
-and cheap to verify, allowing developers to easily acquire verifiably random values for their dApps and protocols.
+The Ideal Network supports ink! smart contracts that can fetch verifiable randomness directly from the IDN runtime through a [chain extension](https://github.com/ideal-lab5/idn-sdk/tree/main/contracts/src/ext). This makes it free to consume and cheap to verify, allowing developers to easily acquire verifiably random values for their dApps and protocols.
 
-Check out the [examples](https://github.com/ideal-lab5/idn-sdk/tree/main/contracts/idn-contract-lib/examples/rand-extension-example) to get started!
+Check out the [example](https://github.com/ideal-lab5/idn-sdk/tree/main/contracts/examples/rand-extension) to get started!
 
-1. Add the chain extension to your contract's Cargo.toml
+1. Add the `idn-contracts` library to your contract's Cargo.toml
 
-```toml
-[dependencies]
-idn-contract-lib = { version = "0.1.0", default-features = false }
-
-[features]
-default = ["std"]
-std = [
-    "idn-contract-lib/std",
-    # other dependencies with std feature
-]
-```
+    ```toml
+    [dependencies]
+    idn-contracts = { version = "0.1.0", default-features = false }
+    
+    [features]
+    default = ["std"]
+    std = [
+        "idn-contracts",
+        # other dependencies with std feature
+    ]
+    ```
 
 2. Configure your contract
 
-```rust
-use idn_contract_lib::ext::IDNEnvironment;
-
-#[ink::contract(env = IDNEnvironment)]
-pub mod MyContract {
-    // make the custom Environment callable
-    use crate::IDNEnvironment;
-}
-```
+    ```rust
+    use idn_contracts::ext::IDNEnvironment;
+    
+    #[ink::contract(env = IDNEnvironment)]
+    pub mod MyContract {
+        // make the custom Environment callable
+        use crate::IDNEnvironment;
+    }
+    ```
 
 3. Fetch the latest random value from the runtime
 
-``` rust
-let random = self.env().extension().random();
-```
-
+    ``` rust
+    let random = self.env().extension().random();
+    ```
+    
 <div className={styles.linkBtn}>
-    <a href="../guides_and_tutorials/parachains/smart_contracts/ink">Use randomness in ink! Smart Contracts on the IDN</a>
+    <a href="../guides_and_tutorials/ink">Use randomness in ink! Smart Contracts on the IDN</a>
 </div>
 
 ---
 
-### **For Frontend Developers Sending Timelocked Transactions**
+<!-- UNCOMMENT THIS AFTER WE DEPLOY TLOCK -->
+
+<!-- ### **For Frontend Developers Sending Timelocked Transactions**
 
 **Best for web developers who want to easily interact with the network's timelock capabilities.**
 Our SDK provides a clean interface for interacting with our network's capabilities from a web application. The fastest way to get started is through the [etf.js](https://github.com/ideal-lab5/etf.js) library. To get start, install the latest version:
@@ -163,7 +179,7 @@ await delayedTx.signAndSend(alice, (result) => {
 
 <div className={styles.linkBtn}>
     <a href="../guides_and_tutorials/timelocked_txs">Send MEV-resistant timelocked transactions with the IDN</a>
-</div>
+</div> -->
 
 -----
 
@@ -175,7 +191,8 @@ Now that you've seen what's possible, choose your development path to find detai
   * **For ink! Smart Contract Developers:**
     * [Learn how to create a VRaaS from a contract](../guides_and_tutorials/parachains/smart_contracts/ink.md)
     * [Deploy contracts on the IDN to get randomness for free](../guides_and_tutorials/ink.md)
-  * **For Frontend Developers:** [Go to the Timelocked Transactions Guide](../guides_and_tutorials/timelocked_txs.md)
+    <!-- UNCOMMENT AFTER WE DEPLOY TLOC -->
+  <!-- * **For Frontend Developers:** [Go to the Timelocked Transactions Guide](../guides_and_tutorials/timelocked_txs.md) -->
 
 
 

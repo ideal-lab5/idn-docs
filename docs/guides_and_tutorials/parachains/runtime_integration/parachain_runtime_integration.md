@@ -9,9 +9,9 @@ The **`pallet-idn-consumer`** provides a way for parachains to become a "consume
 
 This guide explains how to integrate the `pallet-idn-consumer` into your parachain's runtime. The core of the integration involves configuring the pallet and its dependencies to allow your parachain to interact with the Ideal Network (IDN) via XCM.
 
-➜ Repository for [pallet-idn-consumer](https://github.com/ideal-lab5/idn-sdk/tree/main/pallets/idn-consumer).
+➜ Published on [crates.io](https://crates.io/crates/pallet-idn-manager)
 
-> ⚠️ This library has not yet been published.
+➜ Repository for [pallet-idn-consumer](https://github.com/ideal-lab5/idn-sdk/tree/main/pallets/idn-consumer).
 
 ## What's next?
 
@@ -64,9 +64,8 @@ Add the pallet to your cargo.toml with `default-features = false`:
 cargo add pallet-idn-consumer
 ```
 
-> ⚠️ This library has not yet been published. Installation instructions are placeholders.
 ``` toml
-pallet-idn-consumer = { version = "0.0.0", default-features = false }
+pallet-idn-consumer = { version = "0.0.1", default-features = false }
 ```
 
 

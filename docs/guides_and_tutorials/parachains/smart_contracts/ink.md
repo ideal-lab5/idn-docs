@@ -5,12 +5,10 @@ title: Cross-Chain ink! Smart Contract Integration
  
 ## IDN Client Library
 
-The `idn-client-contract-lib` library provides functionality for interacting with the Ideal Network's IDN Manager pallet through XCM. This allows **contracts on other parachains** to subscribe to and receive randomness from the Ideal Network.
+The `idn-contracts` library provides functionality for interacting with the Ideal Network's IDN Manager pallet through XCM. This allows **contracts on other parachains** to subscribe to and receive randomness from the Ideal Network.
 
-➜ Repository for the [idn-client-contract-lib](https://github.com/ideal-lab5/idn-sdk/tree/main/contracts/idn-client-contract-lib).
-
-> ⚠️ This library has not yet been published.
-
+➜ Repository for [idn-contracts](https://github.com/ideal-lab5/idn-sdk/tree/main/contracts).
+➜ Published on [crates.io](https://crates.io/crates/idn-contracts)
 ### Features
 
 - Create, pause, reactivate, update, and kill randomness subscriptions
@@ -19,97 +17,162 @@ The `idn-client-contract-lib` library provides functionality for interacting wit
 - Abstract away the complexity of XCM message construction
 - Configurable pallet indices and parachain IDs for different environments
 
+### Prerequisites
+
+To work with ink! smart contracts, you need to have the following tools installed:
+
+1. Rust and Cargo (latest stable version)
+2. cargo-contract CLI tool (v5.0.3 or newer)
+3. Ensure [bidirectional HRMP channels are open](https://substrate.stackexchange.com/questions/5445/how-to-open-hrmp-channels-between-parachains) between your parachain and the IDN
+
 ### Usage
 
 To use the IDN Client library in your contract:
 
-1. Add the dependency to your `Cargo.toml`:
+1. Create a new contract `cargo contract new your_contract`
 
-> ⚠️ This library has not yet been published. Installation instructions are placeholders.
-> 
-```toml
-[dependencies]
-idn-client-contract-lib = { version = "0.0.0", default-features = false }
+2. Add the `idn-contracts` dependency to your `Cargo.toml`:
 
-[features]
-default = ["std"]
-std = [
-    "idn-client-contract-lib/std",
-    # other dependencies with std feature
-]
-```
+    ```toml
+    [dependencies]
+    idn-contracts = { version = "0.1.0", default-features = false }
+    
+    [features]
+    default = ["std"]
+    std = [
+        "idn-contracts/std",
+        # other dependencies with std feature
+    ]
+    ```
 
-2. Import and implement the required traits:
+3. Basic Contract Setup
 
-```rust
-use idn_client_contract_lib::{
-    ContractPulse, IdnClient, IdnClientImpl, RandomnessReceiver, 
-    SubscriptionId, Result, Error
-};
-use idn_client_contract_lib::Pulse;
+    Smart contracts interact with the Ideal Network via the `IdnClient` struct which makes interacting with the network simple. All that's needed by the client is basic information about the IDN and your parachain.
 
-// Implement the RandomnessReceiver trait to handle incoming randomness
-impl RandomnessReceiver for YourContract {
-    fn on_randomness_received(
-        &mut self, 
-        pulse: ContractPulse,
-        subscription_id: SubscriptionId
-    ) -> Result<()> {
-        // Read the randomenss from a received pulse
-        let randomness = pulse.rand();
-        // Handle the randomness
-        Ok(())
+    ```rust
+    #[ink::contract]
+    mod your_contract {
+    
+        use idn_contracts::prelude::*;
+    
+        #[ink(storage)]
+        pub struct YourContract {
+            idn_client: IdnClient,
+            subscription_id: Option<SubscriptionId>,
+        }
+    
+        impl YourContract {
+            #[ink(constructor)]
+            pub fn new() -> Self {
+                Self {
+                    idn_client: IdnClient::new(
+                        4502,          // IDN parachain ID
+                        40,            // IDN Manager pallet index
+                        4594,          // Your parachain ID
+                        16,            // Contracts pallet index on your chain
+                        6,             // Contract callback call index on your chain
+                        1_000_000_000, // Maximum XCM execution fees
+                    ),
+                    subscription_id: None,
+                }
+            }
+        }
     }
-}
-```
+    ```
 
-3. Initialize the IDN Client with configurable parameters:
+4. Implement Randomness Reception
 
-```rust
-// Initialize IDN client with configurable parameters
-let idn_client = IdnClientImpl::new(
-    idn_manager_pallet_index, // The pallet index for IDN Manager
-    ideal_network_para_id     // The parachain ID of the Ideal Network
-);
-```
+    **Within your mod definition**, implement the `IdnConsumer` trait to receive randomness:
+    
+    ```rust
 
-4. Use the IDN Client to manage subscriptions:
-
-```rust
-// Create a subscription
-self.idn_client.create_subscription(
-    CreateSubParams {
-        credits,
-        target,
-        call_index,
-        frequency,
-        metadata,
-        sub_id: None, // Let the system generate an ID
+    use idn_contracts::prelude::*;
+    
+    // Implement the IdnConsumer trait to handle incoming randomness
+    impl IdnConsumer for YourContract {
+        #[ink(message)]
+        fn consume_pulse(
+            &mut self, 
+            pulse: Pulse,
+            subscription_id: SubscriptionId
+        ) -> Result<(), Error> {
+            let randomness = pulse.rand();
+            Ok(())
+        }
+    
+        // Handle subscription quotes
+        #[ink(message)]
+        fn consume_quote(
+            &mut self,
+            quote: Quote
+        ) -> Result<(), Error> {
+            Ok(())
+        }
+    
+        // Handle subscription information responses
+        #[ink(message)]
+        fn consume_sub_info(
+            &mut self,
+            sub_info: SubInfoResponse
+        ) -> Result<(), Error> {
+            Ok(())
+        }
     }
-)?;
+    ```
+    :::note
+    When consuming pulses, we provide a way to validate pulses with `is_valid_pulse()` to allow for trustless consumption of randomness pulses.
+    :::
 
-// Later, pause, update, or kill the subscription as needed
-self.idn_client.pause_subscription(subscription_id)?;
-self.idn_client.update_subscription(UpdateSubParams { 
-    sub_id: subscription_id,
-    credits,
-    frequency
-})?;
-```
+5. Use the `IdnClient` to manage subscriptions:
 
-## Type Usage and Updates
-
-- **All types such as `Pulse`, `SubscriptionId`, `BlockNumber`, `Metadata`, and `SubscriptionState` are imported from the idn-client-contract-lib library. Do not redefine these types locally.**
-
-- The `ContractPulse` struct is provided by the library for use in contracts. This implements the `Pulse` trait with the required ink! storage derives.
-
-- Example code and trait signatures have been updated to use the canonical types from the client library.
+    The `IdnClient` offers five ways to interact with your subscription. From starting a new subscription, updating your existing subscription, and even killing your subscription, the `IdnClient` has you covered.
+    
+    ```rust
+    // Request a Quote
+    self.idn_client.request_quote(
+            number_of_pulses, // The total number of pulses you intend to receive
+            frequency,        // The number of blocks between pulses
+            metadata,         // Optional: Additional metadata about your subscription
+            sub_id,           // Optional: subscription id
+            req_ref,          // Optional: request reference for tracking requests
+            origin_kind,      // Optional: origin kind (default: Native)
+    )?;
+    
+    // Create a subscription
+    self.idn_client.create_subscription(
+            credits,      // Total number of initial credits for your subscription
+            frequency,    // The number of blocks between pulses
+            metadata,     // Optional: Additional metadata about your subscription
+            sub_id: None, // Let the system generate an ID
+            call_params,  // Optional: Additional call parameters related to gas limits
+            origin_kind,  // Optional: origin kind (default: Native)
+    )?;
+    
+    // Later request sub information, pause, update, or kill the subscription as needed
+    self.idn_client.request_sub_info(
+            sub_id,      // Your subscription id
+            metadata,    // Optional: The metadata of your subscription (required if
+                         //           metadata was provided on subscription creation)
+            req_ref,     // Optional: request reference for tracking requests
+            call_params, // Optional: Additional call parameters related to gas limits
+            origin_kind, // Optional: origin kind (default: Native)
+    )?;
+    
+    self.idn_client.pause_subscription(sub_id)?;
+    
+    self.idn_client.update_subscription(
+        sub_id,    // Your subscription id
+        credits,   // Optional: The new amount of credits for your subscription
+        frequency, // Optional: How often you would like to receive pulses
+        metadata   // Optional: The metadata of your subscription
+    )?;
+    ```
 
 ## Example Consumer
 
-The [idn-example-consumer-contract](https://github.com/ideal-lab5/idn-sdk/tree/main/contracts/idn-example-consumer-contract) contract demonstrates a complete implementation of a contract that uses the IDN Client library to create randomness subscriptions and handle received randomness.
+The example [consumer-contract](https://github.com/ideal-lab5/idn-sdk/tree/main/contracts/examples/consumer-contract) contract demonstrates a complete implementation of a contract that uses the IDN Client library to create a subscription and handle received randomness.
 
-See the [idn-example-consumer-contract/lib.rs](https://github.com/ideal-lab5/idn-sdk/blob/main/contracts/idn-example-consumer-contract/lib.rs) file for details on how to:
+See the [consumer-contract/lib.rs](https://github.com/ideal-lab5/idn-sdk/blob/main/contracts/examples/consumer-contract/lib.rs) file for details on how to:
 - Initialize a contract with IDN Client capabilities
 - Create and manage randomness subscriptions
 - Process received randomness with the Pulse trait
@@ -118,26 +181,12 @@ See the [idn-example-consumer-contract/lib.rs](https://github.com/ideal-lab5/idn
 
 ## Development
 
-### Prerequisites
-
-To work with ink! contracts, you need to have the following tools installed:
-
-1. Rust and Cargo (latest stable version)
-2. cargo-contract CLI tool (v5.0.3 or newer)
-
 ### Building Contracts
 
-To build all contracts, run the `build_all_contracts.sh` script in the contracts directory:
+To build a contract:
 
 ```bash
-cd contracts
-sh build_all_contracts.sh
-```
-
-Or to build a specific contract:
-
-```bash
-cd contracts/idn-example-consumer-contract
+cd contracts/examples/consumer-contract
 cargo contract build
 ```
 

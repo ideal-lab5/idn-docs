@@ -37,7 +37,7 @@ import styles from '/src/pages/index.module.css';
 
   <article className={styles.featureCard}>
     <div className={styles.featureIcon}>⏳</div>
-    <h3>Timelocked Transactions</h3>
+    <h3>Timelocked Transactions [COMING SOON]</h3>
     <p>
       Encrypt transactions <strong>to the future</strong>, making them decryptable only when executed at a chosen time.
       Perfect for sealed-bid auctions, MEV-proof transactions, hidden votes, or time-gated games.
