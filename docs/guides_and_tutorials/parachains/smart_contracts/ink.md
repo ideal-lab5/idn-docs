@@ -8,9 +8,7 @@ title: Cross-Chain ink! Smart Contract Integration
 The `idn-contracts` library provides functionality for interacting with the Ideal Network's IDN Manager pallet through XCM. This allows **contracts on other parachains** to subscribe to and receive randomness from the Ideal Network.
 
 ➜ Repository for [idn-contracts](https://github.com/ideal-lab5/idn-sdk/tree/main/contracts).
-
-> ⚠️ This library has not yet been published.
-
+➜ Published on [crates.io](https://crates.io/crates/idn-contracts)
 ### Features
 
 - Create, pause, reactivate, update, and kill randomness subscriptions
@@ -55,7 +53,7 @@ To use the IDN Client library in your contract:
     #[ink::contract]
     mod your_contract {
     
-        use idn_contracts::xcm::{types::SubscriptionId, IdnClient};
+        use idn_contracts::prelude::*;
     
         #[ink(storage)]
         pub struct YourContract {
@@ -87,7 +85,8 @@ To use the IDN Client library in your contract:
     **Within your mod definition**, implement the `IdnConsumer` trait to receive randomness:
     
     ```rust
-    use idn_contracts::xcm::{IdnConsumer, Error, types::{SubscriptionId, Pulse, SubInfoResponse, Quote}};
+
+    use idn_contracts::prelude::*;
     
     // Implement the IdnConsumer trait to handle incoming randomness
     impl IdnConsumer for YourContract {
